@@ -34,7 +34,10 @@ export function Sidebar({
               <li>
                 <NavLink
                   to="/"
-                  onClick={() => setSidebarOpen(false)}
+                  onClick={() => {
+                    setSidebarOpen(false);
+                    window.scrollTo(0, 0);
+                  }}
                   className={({ isActive }) =>
                     `w-full flex items-center gap-2 px-2 py-1.5 rounded-md text-sm transition-colors ${
                       isActive
@@ -52,7 +55,10 @@ export function Sidebar({
               <li>
                 <NavLink
                   to="/sources"
-                  onClick={() => setSidebarOpen(false)}
+                  onClick={() => {
+                    setSidebarOpen(false);
+                    window.scrollTo(0, 0);
+                  }}
                   className={({ isActive }) =>
                     `w-full flex items-center gap-2 px-2 py-1.5 rounded-md text-sm transition-colors ${
                       isActive
