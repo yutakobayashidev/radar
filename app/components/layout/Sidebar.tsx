@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import { sources, feedItems } from "~/data/mock";
 import { Favicon } from "~/components/ui";
 
@@ -25,7 +25,9 @@ export function Sidebar({
     >
       <div className="h-full flex flex-col">
         <div className="p-4 border-b border-gray-100">
-          <h1 className="text-lg font-bold text-gray-900">Feed</h1>
+          <Link to="/" className="text-lg font-bold text-gray-900 hover:text-gray-600 transition-colors">
+            Feed
+          </Link>
         </div>
 
         <nav className="flex-1 overflow-y-auto p-2">
