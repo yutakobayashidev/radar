@@ -14,7 +14,7 @@ export function SourcesGrid({ sources }: SourcesGridProps) {
           href={source.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group block bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all"
+          className="group block bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300"
         >
           <div className="flex items-start gap-3 mb-3">
             <Favicon domain={source.domain} size={32} className="flex-shrink-0 mt-0.5" />

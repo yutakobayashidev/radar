@@ -12,13 +12,13 @@ export function CardGrid({ feeds }: CardGridProps) {
         <a
           key={item.id}
           href={item.url}
-          className="group block bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-gray-300 hover:shadow-md transition-all"
+          className="group block bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-gray-300"
         >
-          <div className="aspect-video bg-gray-100 overflow-hidden">
+          <div className="aspect-video bg-gray-100">
             <img
               src={item.image}
               alt=""
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover"
             />
           </div>
           <div className="p-3">
