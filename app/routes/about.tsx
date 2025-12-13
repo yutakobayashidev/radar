@@ -30,26 +30,16 @@ export default function About() {
 
           <div className="space-y-4 text-sm text-gray-600 leading-relaxed">
             <p>
-              Feedは、テック系ブログやニュースサイトの更新情報をまとめてチェックできるフィードリーダーです。
+              私が日常的にチェックしているテック系ブログやニュースサイトの更新情報をまとめたフィードです。
             </p>
 
             <p>
-              お気に入りの技術ブログを一箇所で確認でき、カテゴリやソースで絞り込むことができます。
+              AI、インフラ、プログラミング言語、フレームワークなど、個人的に興味のある分野の情報を購読・キュレーションしています。
             </p>
 
-            <h3 className="text-base font-medium text-gray-900 pt-2">機能</h3>
-            <ul className="list-disc list-inside space-y-1 text-gray-600">
-              <li>複数のテックブログの更新を一覧表示</li>
-              <li>カテゴリ別フィルタリング</li>
-              <li>ソース別フィルタリング</li>
-            </ul>
-
-            <h3 className="text-base font-medium text-gray-900 pt-2">技術スタック</h3>
-            <ul className="list-disc list-inside space-y-1 text-gray-600">
-              <li>React Router v7</li>
-              <li>Tailwind CSS</li>
-              <li>TypeScript</li>
-            </ul>
+            <p>
+              同じような興味を持つ方の情報収集の参考になれば幸いです。
+            </p>
           </div>
         </div>
       </div>
