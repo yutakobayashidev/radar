@@ -14,12 +14,12 @@ export function SourcesGrid({ sources }: SourcesGridProps) {
           href={source.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group block bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300 hover:shadow-md transition-all"
+          className="group block bg-white rounded-lg border border-gray-100 p-4 hover:border-gray-200 hover:shadow-sm transition-all"
         >
           <div className="flex items-start gap-3 mb-3">
             <Favicon domain={source.domain} size={32} className="flex-shrink-0 mt-0.5" />
             <div className="flex-1 min-w-0">
-              <h3 className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors truncate">
+              <h3 className="font-medium text-gray-900 group-hover:text-gray-600 transition-colors truncate">
                 {source.name}
               </h3>
               <p className="text-xs text-gray-400 truncate">{source.domain}</p>

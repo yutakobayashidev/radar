@@ -27,10 +27,10 @@ export type Category = "AI" | "Infrastructure" | "Framework" | "Language" | "Run
 export const categories = ["All", "AI", "Infrastructure", "Framework", "Language", "Runtime", "Platform"] as const;
 
 export const categoryColors: Record<Category, string> = {
-  AI: "bg-purple-100 text-purple-700",
-  Infrastructure: "bg-blue-100 text-blue-700",
-  Framework: "bg-green-100 text-green-700",
-  Language: "bg-orange-100 text-orange-700",
-  Runtime: "bg-pink-100 text-pink-700",
-  Platform: "bg-cyan-100 text-cyan-700",
+  AI: "bg-gray-100 text-gray-600",
+  Infrastructure: "bg-gray-100 text-gray-600",
+  Framework: "bg-gray-100 text-gray-600",
+  Language: "bg-gray-100 text-gray-600",
+  Runtime: "bg-gray-100 text-gray-600",
+  Platform: "bg-gray-100 text-gray-600",
 };

@@ -27,8 +27,8 @@ function CategoryFilter({
           onClick={() => setSelectedCategory(cat)}
           className={`px-2.5 py-1 text-xs rounded-full whitespace-nowrap transition-colors ${
             selectedCategory === cat
-              ? "bg-gray-900 text-white"
-              : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              ? "bg-gray-800 text-white"
+              : "bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-600"
           }`}
         >
           {cat}
