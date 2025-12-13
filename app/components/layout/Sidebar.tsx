@@ -21,7 +21,7 @@ export function Sidebar({
     <aside
       className={`${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
-      } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-20 w-52 bg-white border-r border-gray-200 transition-transform duration-200 ease-in-out flex-shrink-0`}
+      } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-20 w-60 bg-white border-r border-gray-200 transition-transform duration-200 ease-in-out flex-shrink-0`}
     >
       <div className="h-full flex flex-col">
         <div className="p-4 border-b border-gray-100">
