@@ -1,7 +1,6 @@
 export interface Source {
   id: string;
   name: string;
-  domain: string;
   url: string;
   description: string;
   category: string;
@@ -16,7 +15,6 @@ export interface RadarItem {
   title: string;
   source: string;
   sourceName: string;
-  domain: string;
   category: string;
   summary: string;
   image: string;
@@ -36,3 +34,13 @@ export const categoryColors: Record<string, string> = {
   Runtime: "bg-gray-100 text-gray-600",
   Platform: "bg-gray-100 text-gray-600",
 };
+
+// URLからドメインを抽出するユーティリティ関数
+export function getDomainFromUrl(url: string): string {
+  try {
+    const urlObj = new URL(url);
+    return urlObj.hostname;
+  } catch {
+    return "";
+  }
+}

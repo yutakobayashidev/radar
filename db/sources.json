@@ -2,7 +2,6 @@
   {
     "id": "cloudflare",
     "name": "Cloudflare Blog",
-    "domain": "blog.cloudflare.com",
     "url": "https://blog.cloudflare.com/rss/",
     "description": "Cloudflareのプロダクトアップデート、技術解説、インターネットトレンド",
     "category": "Infrastructure"
@@ -10,7 +9,6 @@
   {
     "id": "hono",
     "name": "Hono",
-    "domain": "hono.dev",
     "url": "https://hono.dev/rss.xml",
     "description": "軽量・高速なWebフレームワーク。Cloudflare Workers、Deno、Bunで動作",
     "category": "Framework"
@@ -18,7 +16,6 @@
   {
     "id": "deno",
     "name": "Deno Blog",
-    "domain": "deno.com",
     "url": "https://deno.com/blog/rss.xml",
     "description": "Denoランタイムの最新情報、チュートリアル、エコシステム",
     "category": "Runtime"
@@ -26,7 +23,6 @@
   {
     "id": "openai",
     "name": "OpenAI Blog",
-    "domain": "openai.com",
     "url": "https://openai.com/blog/rss.xml",
     "description": "AI研究、モデルリリース、安全性に関する取り組み",
     "category": "AI"
@@ -34,7 +30,6 @@
   {
     "id": "rust",
     "name": "Rust Blog",
-    "domain": "blog.rust-lang.org",
     "url": "https://blog.rust-lang.org/feed.xml",
     "description": "Rust言語の公式ブログ。リリースノート、RFCs、コミュニティ",
     "category": "Language"
@@ -42,7 +37,6 @@
   {
     "id": "vercel",
     "name": "Vercel Blog",
-    "domain": "vercel.com",
     "url": "https://vercel.com/blog/rss.xml",
     "description": "Next.js、Edge Functions、フロントエンドインフラ",
     "category": "Infrastructure"
@@ -50,7 +44,6 @@
   {
     "id": "github",
     "name": "GitHub Blog",
-    "domain": "github.blog",
     "url": "https://github.blog/feed/",
     "description": "GitHub機能アップデート、オープンソース、開発者ツール",
     "category": "Platform"
@@ -58,7 +51,6 @@
   {
     "id": "typescript",
     "name": "TypeScript Blog",
-    "domain": "devblogs.microsoft.com",
     "url": "https://devblogs.microsoft.com/typescript/feed/",
     "description": "TypeScriptのリリースノート、新機能解説",
     "category": "Language"
@@ -66,7 +58,6 @@
   {
     "id": "anthropic",
     "name": "Anthropic",
-    "domain": "anthropic.com",
     "url": "https://www.anthropic.com/research/rss.xml",
     "description": "Claude、Constitutional AI、AI安全性研究",
     "category": "AI"

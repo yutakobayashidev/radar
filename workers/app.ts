@@ -18,7 +18,7 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
     // Step 1: RSS fetch (複数ソース)
     const feedItems = await step.do("RSS fetch from multiple sources", async () => {
       const sources = await db.query.sources.findMany();
-      const allItems: Array<{ sourceId: string; sourceName: string; domain: string; items: FeedData['items'] }> = [];
+      const allItems: Array<{ sourceId: string; sourceName: string; items: FeedData['items'] }> = [];
 
       for (const source of sources) {
         try {
@@ -39,7 +39,6 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
           allItems.push({
             sourceId: source.id,
             sourceName: source.name,
-            domain: source.domain,
             items: feed.items,
           });
         } catch (error) {
@@ -52,7 +51,7 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
 
     // Step 2: 新着判定 (D1で既読管理)
     const newItems = await step.do("Filter new items", async () => {
-      const filtered: Array<{ sourceId: string; sourceName: string; domain: string; item: FeedData['items'][0] }> = [];
+      const filtered: Array<{ sourceId: string; sourceName: string; item: FeedData['items'][0] }> = [];
 
       for (const feedData of feedItems) {
         for (const item of feedData.items) {
@@ -65,7 +64,6 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
             filtered.push({
               sourceId: feedData.sourceId,
               sourceName: feedData.sourceName,
-              domain: feedData.domain,
               item,
             });
           }
@@ -79,7 +77,7 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
     const itemsWithOGP = await step.do("Fetch OGP data", async () => {
       const results = [];
 
-      for (const { sourceId, sourceName, domain, item } of newItems) {
+      for (const { sourceId, sourceName, item } of newItems) {
         let image = "";
         let summary = item.description || "";
 
@@ -102,7 +100,6 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
         results.push({
           sourceId,
           sourceName,
-          domain,
           title: item.title || "Untitled",
           url: item.link || "",
           timestamp,
@@ -132,7 +129,6 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
           title: item.title,
           source: item.sourceId,
           sourceName: item.sourceName,
-          domain: item.domain,
           category: item.category,
           summary: item.summary,
           image: item.image,

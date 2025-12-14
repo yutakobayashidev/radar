@@ -1,4 +1,5 @@
 import type { Source } from "~/data/types";
+import { getDomainFromUrl } from "~/data/types";
 import { Favicon, CategoryBadge } from "~/components/ui";
 
 interface SourcesGridProps {
@@ -17,12 +18,12 @@ export function SourcesGrid({ sources }: SourcesGridProps) {
           className="group block bg-white rounded-lg border border-gray-200 p-4 hover:border-gray-300"
         >
           <div className="flex items-start gap-3 mb-3">
-            <Favicon domain={source.domain} size={32} className="flex-shrink-0 mt-0.5" />
+            <Favicon domain={getDomainFromUrl(source.url)} size={32} className="flex-shrink-0 mt-0.5" />
             <div className="flex-1 min-w-0">
               <h3 className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors truncate">
                 {source.name}
               </h3>
-              <p className="text-xs text-gray-400 truncate">{source.domain}</p>
+              <p className="text-xs text-gray-400 truncate">{getDomainFromUrl(source.url)}</p>
             </div>
             <svg
               className="w-4 h-4 text-gray-300 group-hover:text-gray-400 flex-shrink-0"

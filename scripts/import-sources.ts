@@ -8,7 +8,6 @@ const __dirname = dirname(__filename);
 interface Source {
   id: string;
   name: string;
-  domain: string;
   url: string;
   description: string;
   category: string;
@@ -25,24 +24,43 @@ async function importSources(local: boolean = true) {
   const mode = local ? "--local" : "--remote";
   console.log(`🌍 Target: ${local ? "Local D1" : "Remote D1"}`);
 
-  // Build SQL statements
+  const { execSync } = await import("child_process");
+
+  // Step 1: Delete sources not in JSON
+  const sourceIds = sources.map((s) => `'${s.id}'`).join(", ");
+  const deleteSQL = `DELETE FROM sources WHERE id NOT IN (${sourceIds});`;
+
+  try {
+    console.log("🗑️  Removing sources not in JSON...");
+    execSync(
+      `npx wrangler d1 execute radar ${mode} --command "${deleteSQL.replace(/"/g, '\\"')}"`,
+      {
+        encoding: "utf-8",
+        stdio: "pipe",
+      }
+    );
+    console.log("✅ Cleanup completed");
+  } catch (error: any) {
+    console.error("❌ Failed to cleanup sources:");
+    console.error(error.stderr || error.message);
+    process.exit(1);
+  }
+
+  // Step 2: Insert or replace sources from JSON
   const now = Date.now();
   const values = sources.map((source) => {
-    return `('${source.id}', '${source.name}', '${source.domain}', '${source.url}', '${source.description}', '${source.category}', 0, ${now}, ${now}, ${now})`;
+    return `('${source.id}', '${source.name}', '${source.url}', '${source.description}', '${source.category}', 0, ${now}, ${now}, ${now})`;
   });
 
-  const sql = `
-INSERT OR REPLACE INTO sources (id, name, domain, url, description, category, article_count, last_updated, created_at, updated_at)
+  const insertSQL = `
+INSERT OR REPLACE INTO sources (id, name, url, description, category, article_count, last_updated, created_at, updated_at)
 VALUES ${values.join(",\n")};
   `.trim();
-
-  // Execute via wrangler
-  const { execSync } = await import("child_process");
 
   try {
     console.log("🚀 Importing sources...");
     const output = execSync(
-      `npx wrangler d1 execute radar ${mode} --command "${sql.replace(/"/g, '\\"')}"`,
+      `npx wrangler d1 execute radar ${mode} --command "${insertSQL.replace(/"/g, '\\"')}"`,
       {
         encoding: "utf-8",
         stdio: "pipe",

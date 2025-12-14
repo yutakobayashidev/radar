@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router";
 import { Favicon } from "~/components/ui";
 import type { Source, RadarItem } from "~/data/types";
+import { getDomainFromUrl } from "~/data/types";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -151,7 +152,7 @@ export function Sidebar({
                           : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                       }`}
                     >
-                      <Favicon domain={source.domain} />
+                      <Favicon domain={getDomainFromUrl(source.url)} />
                       <span className="flex-1 text-left truncate">
                         {source.name}
                       </span>
