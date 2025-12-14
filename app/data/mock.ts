@@ -1,4 +1,4 @@
-import type { Source, FeedItem } from "./types";
+import type { Source, RadarItem } from "./types";
 
 export const sources: Source[] = [
   {
@@ -93,7 +93,7 @@ export const sources: Source[] = [
   },
 ];
 
-export const feedItems: FeedItem[] = [
+export const radarItems: RadarItem[] = [
   {
     id: 1,
     title: "Cloudflare Workers が Vite プラグイン v1.0 をリリース",

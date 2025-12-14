@@ -9,7 +9,7 @@ export interface Source {
   lastUpdated: string;
 }
 
-export interface FeedItem {
+export interface RadarItem {
   id: number;
   title: string;
   source: string;

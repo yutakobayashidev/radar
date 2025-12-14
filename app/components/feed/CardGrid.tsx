@@ -1,14 +1,14 @@
-import type { FeedItem } from "~/data/types";
+import type { RadarItem } from "~/data/types";
 import { Favicon, CategoryBadge } from "~/components/ui";
 
 interface CardGridProps {
-  feeds: FeedItem[];
+  items: RadarItem[];
 }
 
-export function CardGrid({ feeds }: CardGridProps) {
+export function CardGrid({ items }: CardGridProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-      {feeds.map((item) => (
+      {items.map((item) => (
         <a
           key={item.id}
           href={item.url}

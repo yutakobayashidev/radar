@@ -5,7 +5,7 @@ import { sources } from "~/data/mock";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Sources - Feed" },
+    { title: "Sources - Radar" },
     { name: "description", content: "お世話になってるソース一覧" },
   ];
 }
