@@ -1,0 +1,31 @@
+/**
+ * Scheduled worker configuration for testing cron triggers
+ * Usage: npx wrangler dev -c wrangler.scheduled.jsonc --test-scheduled
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "feed-app-scheduled",
+	"compatibility_date": "2025-04-04",
+	"main": "./workers/scheduled.ts",
+	"observability": {
+		"enabled": true
+	},
+	"triggers": {
+		"crons": ["0 * * * *"]
+	},
+	"workflows": [
+		{
+			"name": "my-workflow",
+			"binding": "MY_WORKFLOW",
+			"class_name": "MyWorkflow"
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "radar",
+			"database_id": "2bae0f9f-b37b-4cf5-beda-3deac070fac2",
+			"migrations_dir": "migrations"
+		}
+	]
+}
