@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router";
-import { sources, feedItems } from "~/data/mock";
+import { sources, radarItems } from "~/data/mock";
 import { Favicon } from "~/components/ui";
 
 interface SidebarProps {
@@ -29,7 +29,7 @@ export function Sidebar({
             to="/"
             className="text-lg font-bold text-gray-900 hover:text-gray-600 transition-colors"
           >
-            Feed
+            Radar
           </Link>
         </div>
 
@@ -61,7 +61,7 @@ export function Sidebar({
                       d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
                     />
                   </svg>
-                  <span>Feed</span>
+                  <span>Radar</span>
                 </NavLink>
               </li>
               <li>
@@ -130,7 +130,7 @@ export function Sidebar({
                     </div>
                     <span className="flex-1 text-left">All</span>
                     <span className="text-xs text-gray-400">
-                      {feedItems.length}
+                      {radarItems.length}
                     </span>
                   </button>
                 </li>
@@ -152,7 +152,7 @@ export function Sidebar({
                         {source.name}
                       </span>
                       <span className="text-xs text-gray-400">
-                        {feedItems.filter((f) => f.source === source.id).length}
+                        {radarItems.filter((f) => f.source === source.id).length}
                       </span>
                     </button>
                   </li>

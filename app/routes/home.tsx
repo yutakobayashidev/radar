@@ -2,13 +2,13 @@ import { useState } from "react";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
 import { CardGrid } from "~/components/feed";
-import { feedItems } from "~/data/mock";
+import { radarItems } from "~/data/mock";
 import { categories } from "~/data/types";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Feed" },
-    { name: "description", content: "Tech feed aggregator" },
+    { title: "Radar" },
+    { name: "description", content: "Tech radar aggregator" },
   ];
 }
 
@@ -42,13 +42,13 @@ export default function Home() {
   const [selectedSource, setSelectedSource] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const filteredFeeds = feedItems
+  const filteredItems = radarItems
     .filter((f) => selectedSource === "all" || f.source === selectedSource)
     .filter((f) => selectedCategory === "All" || f.category === selectedCategory);
 
   return (
     <AppLayout
-      title="Feed"
+      title="Radar"
       selectedSource={selectedSource}
       setSelectedSource={setSelectedSource}
       showSourceFilter={true}
@@ -59,8 +59,8 @@ export default function Home() {
         />
       }
     >
-      <CardGrid feeds={filteredFeeds} />
-      {filteredFeeds.length === 0 && (
+      <CardGrid items={filteredItems} />
+      {filteredItems.length === 0 && (
         <div className="text-center py-12 text-gray-500">
           該当する記事がありません
         </div>

@@ -12,7 +12,23 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+	"workflows": [
+		{
+			"name": "my-workflow",
+			"binding": "MY_WORKFLOW",
+			"class_name": "MyWorkflow"
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "radar",
+			"database_name": "radar",
+			"database_id": "2bae0f9f-b37b-4cf5-beda-3deac070fac2",
+			"remote": true,
+			"migrations_dir": "migrations"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
