@@ -30,27 +30,10 @@ async function importSources(local: boolean = true) {
 
   const { execSync } = await import("child_process");
 
-  // Step 1: Delete sources not in JSON
-  const sourceIds = sources.map((s) => `'${s.id}'`).join(", ");
-  const deleteSQL = `DELETE FROM sources WHERE id NOT IN (${sourceIds});`;
+  // Note: 削除ステップをスキップして、既存の記事を保護します
+  // 古いソースを削除したい場合は手動でDBから削除してください
 
-  try {
-    console.log("🗑️  Removing sources not in JSON...");
-    execSync(
-      `npx wrangler d1 execute radar ${mode} --command "${deleteSQL.replace(/"/g, '\\"')}"`,
-      {
-        encoding: "utf-8",
-        stdio: "pipe",
-      }
-    );
-    console.log("✅ Cleanup completed");
-  } catch (error: any) {
-    console.error("❌ Failed to cleanup sources:");
-    console.error(error.stderr || error.message);
-    process.exit(1);
-  }
-
-  // Step 2: Insert or replace sources from JSON
+  // Insert or update sources from JSON
   const now = Date.now();
   const values = sources.map((source) => {
     return `('${escapeSQLString(source.id)}', '${escapeSQLString(source.name)}', '${escapeSQLString(source.url)}', '${escapeSQLString(source.description)}', '${escapeSQLString(source.category)}', 0, ${now}, ${now}, ${now})`;

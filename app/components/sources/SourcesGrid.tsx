@@ -42,8 +42,7 @@ export function SourcesGrid({ sources }: SourcesGridProps) {
           <p className="text-sm text-gray-600 mb-3 line-clamp-2">{source.description}</p>
           <div className="flex items-center justify-between">
             <CategoryBadge category={source.category} />
-            <div className="flex items-center gap-3 text-xs text-gray-400">
-              <span>{source.articleCount} 記事</span>
+            <div className="flex items-center text-xs text-gray-400">
               <span>更新 {formatRelativeTime(source.lastUpdated)}</span>
             </div>
           </div>

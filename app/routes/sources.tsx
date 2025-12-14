@@ -18,9 +18,14 @@ export async function loader({ context }: Route.LoaderArgs) {
 }
 
 export default function Sources({ loaderData }: Route.ComponentProps) {
+  // アルファベット順にソート（英語優先、大文字小文字無視）
+  const sortedSources = [...loaderData.sources].sort((a, b) => {
+    return a.name.localeCompare(b.name, "en", { sensitivity: "base" });
+  });
+
   return (
-    <AppLayout title="お世話になってるソース一覧">
-      <SourcesGrid sources={loaderData.sources} />
+    <AppLayout title="ソース一覧">
+      <SourcesGrid sources={sortedSources} />
     </AppLayout>
   );
 }

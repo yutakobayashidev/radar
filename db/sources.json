@@ -4,97 +4,475 @@
     "name": "OpenAI Blog",
     "url": "https://openai.com/blog/rss.xml",
     "description": "AI研究、モデルリリース、安全性に関する取り組み",
-    "category": "AI"
+    "category": "AI/ML"
   },
   {
     "id": "huggingface",
     "name": "Hugging Face Blog",
     "url": "https://huggingface.co/blog/feed.xml",
     "description": "Transformers、Diffusers、機械学習モデルとデータセット",
-    "category": "AI"
+    "category": "AI/ML"
   },
   {
     "id": "deepmind",
     "name": "DeepMind Blog",
     "url": "https://deepmind.com/blog/feed/basic/",
     "description": "DeepMindの最新AI研究、AlphaFold、強化学習",
-    "category": "AI"
+    "category": "AI/ML"
   },
   {
     "id": "google-ai",
     "name": "Google AI Blog",
     "url": "https://feeds.feedburner.com/blogspot/gJZg",
     "description": "Googleの最新AI研究、機械学習、TensorFlow",
-    "category": "AI"
+    "category": "AI/ML"
+  },
+  {
+    "id": "simonwillison",
+    "name": "Simon Willison's Weblog",
+    "url": "https://simonwillison.net/atom/everything/",
+    "description": "AI、LLM、データベース、Web開発に関する記事",
+    "category": "AI/ML"
+  },
+  {
+    "id": "mcp",
+    "name": "Model Context Protocol Blog",
+    "url": "http://blog.modelcontextprotocol.io/index.xml",
+    "description": "MCP、AI統合、コンテキストプロトコルに関する記事",
+    "category": "AI/ML"
+  },
+  {
+    "id": "karpathy",
+    "name": "Andrej Karpathy's Blog",
+    "url": "https://karpathy.bearblog.dev/feed/",
+    "description": "AI、機械学習、ニューラルネットワークに関する記事",
+    "category": "AI/ML"
   },
   {
     "id": "pytorch",
     "name": "PyTorch Blog",
-    "url": "https://pytorch.org/feed.xml",
+    "url": "https://pytorch.org/feed/",
     "description": "PyTorchの最新情報、チュートリアル、リリースノート",
-    "category": "Framework"
+    "category": "Developer Tools"
   },
   {
-    "id": "meta",
-    "name": "Meta AI Blog",
-    "url": "https://www.meta.com/blog/rss/",
-    "description": "MetaのAI研究、LLaMA、コンピュータビジョン",
-    "category": "AI"
+    "id": "react",
+    "name": "React Blog",
+    "url": "https://react.dev/rss.xml",
+    "description": "React公式ブログ、新機能、リリース情報",
+    "category": "Developer Tools"
   },
   {
-    "id": "restofworld",
-    "name": "Rest of World",
-    "url": "https://restofworld.org/feed/latest",
-    "description": "新興国のテクノロジーとカルチャーに関するニュース",
-    "category": "Platform"
+    "id": "typescript",
+    "name": "TypeScript Blog",
+    "url": "https://devblogs.microsoft.com/typescript/feed/",
+    "description": "TypeScriptの新機能、リリース情報、言語設計に関する記事",
+    "category": "Developer Tools"
   },
   {
-    "id": "shanematsuo",
-    "name": "Shane Matsuo on Medium",
-    "url": "https://shanematsuo.medium.com/feed",
-    "description": "デジタルアイデンティティ、OAuth、セキュリティに関する記事",
-    "category": "Platform"
+    "id": "nodejs",
+    "name": "Node.js Blog",
+    "url": "https://nodejs.org/en/feed/blog.xml",
+    "description": "Node.jsの新機能、リリース情報、ランタイムに関する記事",
+    "category": "Developer Tools"
   },
   {
-    "id": "sakimura",
-    "name": "Sakimura's Blog",
-    "url": "https://www.sakimura.org/feed/",
-    "description": "アイデンティティ、セキュリティ、OAuth、OpenID Connectに関する記事",
-    "category": "Platform"
+    "id": "bun",
+    "name": "Bun Blog",
+    "url": "https://bun.com/rss.xml",
+    "description": "高速JavaScriptランタイムBunの最新情報、パフォーマンス改善に関する記事",
+    "category": "Developer Tools"
   },
   {
-    "id": "vitalik",
-    "name": "Vitalik Buterin's Blog",
-    "url": "https://vitalik.eth.limo/feed.xml",
-    "description": "Ethereum、ブロックチェーン、暗号経済学、分散システムに関する記事",
-    "category": "Platform"
+    "id": "tailwindcss",
+    "name": "Tailwind CSS",
+    "url": "https://tailwindcss.com/feeds/feed.xml",
+    "description": "ユーティリティファーストCSS、デザインシステム、新機能に関する記事",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "vite",
+    "name": "Vite Blog",
+    "url": "https://vite.dev/blog.rss",
+    "description": "Viteの最新情報、パフォーマンス改善、エコシステムに関する記事",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "oxc",
+    "name": "Oxc Blog",
+    "url": "https://oxc.rs/feeds/blog-en.rss",
+    "description": "Rustベースの高速JavaScriptツールチェーン開発",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "voidzero",
+    "name": "VoidZero",
+    "url": "https://voidzero.dev/feed.xml",
+    "description": "次世代JavaScriptツールチェーン、Webインフラに関する記事",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "w3c",
+    "name": "W3C Blog",
+    "url": "https://www.w3.org/blog/feed/",
+    "description": "Web標準、仕様策定、W3Cの活動に関する記事",
+    "category": "Web Standards"
   },
   {
     "id": "momdo",
     "name": "momdo blog",
     "url": "https://momdo.hatenablog.jp/feed",
     "description": "Web標準、HTML、アクセシビリティに関する記事",
-    "category": "Platform"
+    "category": "Web Standards"
   },
   {
-    "id": "yamdas",
-    "name": "yamdas blog",
-    "url": "https://yamdas.hatenablog.com/feed",
-    "description": "テクノロジー、翻訳、書評に関する記事",
-    "category": "Platform"
+    "id": "jxck",
+    "name": "blog.jxck.io",
+    "url": "https://blog.jxck.io/feeds/atom.xml",
+    "description": "Web標準、HTTP、セキュリティ、パフォーマンスに関する記事",
+    "category": "Web Standards"
   },
   {
-    "id": "takanorip",
-    "name": "takanorip blog",
-    "url": "https://blog.takanorip.com/feed.xml",
-    "description": "フロントエンド開発、デザインシステム、Web技術に関する記事",
-    "category": "Platform"
+    "id": "mozaicfm",
+    "name": "mozaic.fm",
+    "url": "https://feed.mozaic.fm",
+    "description": "Web技術、標準化、プラットフォームに関するポッドキャスト",
+    "category": "Web Standards"
+  },
+  {
+    "id": "tokumaru",
+    "name": "徳丸浩の日記",
+    "url": "https://blog.tokumaru.org/feeds/posts/default",
+    "description": "Webセキュリティ、脆弱性、セキュアコーディングに関する記事",
+    "category": "Security & Privacy"
+  },
+  {
+    "id": "schneier",
+    "name": "Schneier on Security",
+    "url": "https://www.schneier.com/feed/atom/",
+    "description": "暗号、セキュリティ、プライバシー、リスク分析に関する記事",
+    "category": "Security & Privacy"
+  },
+  {
+    "id": "signal",
+    "name": "Signal",
+    "url": "https://signal.org/blog/rss.xml",
+    "description": "プライバシー、暗号化メッセージング、セキュリティに関する記事",
+    "category": "Security & Privacy"
+  },
+  {
+    "id": "shanematsuo",
+    "name": "Shane Matsuo on Medium",
+    "url": "https://shanematsuo.medium.com/feed",
+    "description": "デジタルアイデンティティ、OAuth、セキュリティに関する記事",
+    "category": "Digital Identity"
+  },
+  {
+    "id": "sakimura",
+    "name": "Sakimura's Blog",
+    "url": "https://www.sakimura.org/feed/",
+    "description": "アイデンティティ、セキュリティ、OAuth、OpenID Connectに関する記事",
+    "category": "Digital Identity"
+  },
+  {
+    "id": "vitalik",
+    "name": "Vitalik Buterin's Blog",
+    "url": "https://vitalik.eth.limo/feed.xml",
+    "description": "Ethereum、ブロックチェーン、暗号経済学、分散システムに関する記事",
+    "category": "Digital Identity"
+  },
+  {
+    "id": "protocol-labs",
+    "name": "Protocol Labs",
+    "url": "https://protocol.ai/rss.xml",
+    "description": "IPFS、Filecoin、分散Web技術に関する記事",
+    "category": "Digital Identity"
+  },
+  {
+    "id": "ipfs",
+    "name": "IPFS Blog",
+    "url": "https://blog.ipfs.tech/index.xml",
+    "description": "分散ファイルシステム、Web3、コンテンツアドレッシングに関する記事",
+    "category": "Digital Identity"
+  },
+  {
+    "id": "ethereum",
+    "name": "Ethereum Foundation Blog",
+    "url": "https://blog.ethereum.org/en/feed.xml",
+    "description": "Ethereum、スマートコントラクト、ブロックチェーンに関する記事",
+    "category": "Digital Identity"
+  },
+  {
+    "id": "bluesky",
+    "name": "Bluesky Blog",
+    "url": "https://bsky.social/about/rss.xml",
+    "description": "分散型SNS Bluesky、AT Protocol、ソーシャルネットワークに関する記事",
+    "category": "Digital Identity"
+  },
+  {
+    "id": "mastodon",
+    "name": "Mastodon Blog",
+    "url": "https://blog.joinmastodon.org/index.xml",
+    "description": "分散型SNS Mastodon、ActivityPub、Fediverseに関する記事",
+    "category": "Digital Identity"
+  },
+  {
+    "id": "github-changelog",
+    "name": "GitHub Changelog",
+    "url": "https://github.blog/changelog/feed/",
+    "description": "GitHubの新機能、アップデート、変更履歴",
+    "category": "Platform & Services"
+  },
+  {
+    "id": "vercel",
+    "name": "Vercel Changelog",
+    "url": "https://vercel.com/atom",
+    "description": "フロントエンド、Next.js、Webパフォーマンス、デプロイに関する記事",
+    "category": "Platform & Services"
+  },
+  {
+    "id": "cloudflare",
+    "name": "Cloudflare Blog",
+    "url": "https://blog.cloudflare.com/rss",
+    "description": "CDN、DNS、セキュリティ、エッジコンピューティングに関する記事",
+    "category": "Platform & Services"
   },
   {
     "id": "digital-gov",
     "name": "デジタル庁 note",
     "url": "https://digital-gov.note.jp/rss",
     "description": "デジタル庁の取り組み、デジタル社会、行政DXに関する記事",
-    "category": "Platform"
+    "category": "Platform & Services"
+  },
+  {
+    "id": "meta-engineering",
+    "name": "Meta Engineering Blog",
+    "url": "https://engineering.fb.com/feed/",
+    "description": "Metaの研究、コンピュータビジョン",
+    "category": "Company Engineering"
+  },
+  {
+    "id": "meituan",
+    "name": "美团技术团队",
+    "url": "https://tech.meituan.com/feed/",
+    "description": "Meituanのエンジニアリング、技術スタックに関する記事",
+    "category": "Company Engineering"
+  },
+  {
+    "id": "mercari-engineering",
+    "name": "Mercari Engineering Blog",
+    "url": "https://engineering.mercari.com/blog/feed.xml",
+    "description": "マイクロサービス、Go、モバイル開発、インフラに関する記事",
+    "category": "Company Engineering"
+  },
+  {
+    "id": "lycorp-techblog",
+    "name": "LINEヤフー Tech Blog",
+    "url": "https://techblog.lycorp.co.jp/ja/feed/index.xml",
+    "description": "メッセージング、検索、広告、インフラに関する技術記事",
+    "category": "Company Engineering"
+  },
+  {
+    "id": "yamdas",
+    "name": "yamdas blog",
+    "url": "https://yamdas.hatenablog.com/feed",
+    "description": "テクノロジー、翻訳、書評に関する記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "takanorip",
+    "name": "takanorip blog",
+    "url": "https://blog.takanorip.com/feed.xml",
+    "description": "フロントエンド開発、デザインシステム、Web技術に関する記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "sara-soueidan",
+    "name": "Sara Soueidan's Blog",
+    "url": "https://www.sarasoueidan.com/blog/index.xml",
+    "description": "フロントエンド開発、CSS、SVG、アクセシビリティに関する記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "wong-mjane",
+    "name": "Jane Manchun Wong",
+    "url": "https://wongmjane.com/blog/feed",
+    "description": "アプリリバースエンジニアリング、未公開機能の発見、テクノロジー分析",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "antfu",
+    "name": "Anthony Fu",
+    "url": "https://antfu.me/feed.xml",
+    "description": "Vue.js、Vite、オープンソース開発に関する記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "ruanyifeng",
+    "name": "阮一峰的网络日志",
+    "url": "https://feeds.feedburner.com/ruanyifeng",
+    "description": "技術、プログラミング、Web開発に関する中国語の記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "coolshell",
+    "name": "酷壳 CoolShell",
+    "url": "https://coolshell.cn/feed",
+    "description": "プログラミング、技術、ソフトウェア開発に関する中国語の記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "stephango",
+    "name": "Steph Ango",
+    "url": "https://stephango.com/feed.xml",
+    "description": "デジタル哲学、生産性、デザイン、テクノロジーに関するエッセイ（Obsidian CEO）",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "sh1ma",
+    "name": "blog.sh1ma.dev",
+    "url": "https://blog.sh1ma.dev/feed",
+    "description": "インフラ、クラウド、IoT、電子工作に関する技術記事と日記",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "joi-ito",
+    "name": "Joi Ito's Web",
+    "url": "https://feeds.feedburner.com/joi-ito/weblog",
+    "description": "テクノロジー、イノベーション、社会変革に関する記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "kevin-kelly",
+    "name": "Kevin Kelly",
+    "url": "https://kk.org/feed/",
+    "description": "テクノロジー、文化、未来予測に関する記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "eff",
+    "name": "EFF Updates",
+    "url": "https://www.eff.org/rss/updates.xml",
+    "description": "デジタル権利、プライバシー、言論の自由に関するニュース",
+    "category": "Social Impact"
+  },
+  {
+    "id": "ooni",
+    "name": "OONI Blog",
+    "url": "https://ooni.org/blog/index.xml",
+    "description": "インターネット検閲、ネットワーク干渉の測定と分析",
+    "category": "Social Impact"
+  },
+  {
+    "id": "craphound",
+    "name": "Cory Doctorow's Craphound",
+    "url": "https://craphound.com/feed/",
+    "description": "テクノロジー、デジタル権利、著作権、SF作家の視点",
+    "category": "Social Impact"
+  },
+  {
+    "id": "citizenlab",
+    "name": "Citizen Lab",
+    "url": "https://citizenlab.ca/feed/",
+    "description": "デジタルセキュリティ、人権、インターネット検閲の研究",
+    "category": "Social Impact"
+  },
+  {
+    "id": "pew-research",
+    "name": "Pew Research Center",
+    "url": "https://www.pewresearch.org/feed/",
+    "description": "社会調査、世論、デモグラフィック、テクノロジー利用動向に関する記事",
+    "category": "Social Impact"
+  },
+  {
+    "id": "insight-zeynep",
+    "name": "Insight by Zeynep",
+    "url": "https://www.theinsight.org/feed",
+    "description": "テクノロジー、社会、AIに関する深い洞察と分析",
+    "category": "Social Impact"
+  },
+  {
+    "id": "zephoria",
+    "name": "danah boyd - apophenia",
+    "url": "https://www.zephoria.org/thoughts/feed",
+    "description": "ソーシャルメディア、プライバシー、若者とテクノロジーに関する研究",
+    "category": "Social Impact"
+  },
+  {
+    "id": "jigsaw",
+    "name": "Jigsaw",
+    "url": "https://medium.com/feed/jigsaw",
+    "description": "Google傘下のインキュベーター、検閲対策、AI、オンライン安全性に関する記事",
+    "category": "Social Impact"
+  },
+  {
+    "id": "restofworld",
+    "name": "Rest of World",
+    "url": "https://restofworld.org/feed/latest",
+    "description": "新興国のテクノロジーとカルチャーに関するニュース",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "theinitium",
+    "name": "端传媒",
+    "url": "https://theinitium.com/rss/",
+    "description": "中華圏のニュース、深層報道、社会問題に関する記事",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "mayshi-rao",
+    "name": "Mayshi Rao",
+    "url": "https://mayshirao.com/feed/",
+    "description": "ダンス研究、編集、文化に関する記事",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "designing",
+    "name": "designing.jp",
+    "url": "https://designing.jp/feed.xml",
+    "description": "デザイン、UI/UX、クリエイティブに関する記事",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "yukai-engineering",
+    "name": "ユカイ工学",
+    "url": "https://note.com/ux_xu/rss",
+    "description": "ロボティクス、IoT、プロダクト開発に関する記事",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "lleedd",
+    "name": "山中俊治の「デザインの骨格」",
+    "url": "https://lleedd.com/blog/feed/",
+    "description": "プロダクトデザイン、デザイン思考、ものづくりに関する記事",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "oura",
+    "name": "Oura Blog",
+    "url": "https://ouraring.com/blog/feed/",
+    "description": "ウェアラブル、睡眠トラッキング、ヘルステックに関する記事",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "vrchat",
+    "name": "VRChat Blog",
+    "url": "https://hello.vrchat.com/blog?format=rss",
+    "description": "VR SNS、メタバース、クリエイターコンテスト、プラットフォーム安全性に関する記事",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "aespa",
+    "name": "aespa",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC9GtSLeksfK4yuJ_g1lgQbg",
+    "description": "K-POPグループaespaの公式YouTubeチャンネル",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "hatsuhoshi",
+    "name": "初星学園",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC2dXx-3RXeeP8hA5AGt8vuw",
+    "description": "初星学園の公式YouTubeチャンネル",
+    "category": "Media & Culture"
   }
 ]
