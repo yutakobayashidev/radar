@@ -59,7 +59,14 @@
     "id": "shanematsuo",
     "name": "Shane Matsuo on Medium",
     "url": "https://shanematsuo.medium.com/feed",
-    "description": "テクノロジー、プロダクト、デザインに関する記事",
+    "description": "デジタルアイデンティティ、OAuth、セキュリティに関する記事",
+    "category": "Platform"
+  },
+  {
+    "id": "sakimura",
+    "name": "Sakimura's Blog",
+    "url": "https://www.sakimura.org/feed/",
+    "description": "アイデンティティ、セキュリティ、OAuth、OpenID Connectに関する記事",
     "category": "Platform"
   }
 ]

@@ -13,6 +13,10 @@ interface Source {
   category: string;
 }
 
+function escapeSQLString(str: string): string {
+  return str.replace(/'/g, "''");
+}
+
 async function importSources(local: boolean = true) {
   // Read sources.json
   const sourcesPath = join(__dirname, "..", "db", "sources.json");
@@ -49,7 +53,7 @@ async function importSources(local: boolean = true) {
   // Step 2: Insert or replace sources from JSON
   const now = Date.now();
   const values = sources.map((source) => {
-    return `('${source.id}', '${source.name}', '${source.url}', '${source.description}', '${source.category}', 0, ${now}, ${now}, ${now})`;
+    return `('${escapeSQLString(source.id)}', '${escapeSQLString(source.name)}', '${escapeSQLString(source.url)}', '${escapeSQLString(source.description)}', '${escapeSQLString(source.category)}', 0, ${now}, ${now}, ${now})`;
   });
 
   const insertSQL = `
