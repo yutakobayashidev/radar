@@ -1,13 +1,11 @@
 import { createRequestHandler } from "react-router";
 import { WorkflowEntrypoint, type WorkflowStep, type WorkflowEvent } from 'cloudflare:workers';
+import { drizzle, type DrizzleD1Database } from "drizzle-orm/d1";
+import * as schema from "../db/schema";
 
 declare global {
   interface CloudflareEnvironment extends Env { }
 }
-
-type Env = {
-  MY_WORKFLOW: Workflow;
-};
 
 export class MyWorkflow extends WorkflowEntrypoint<Env> {
   override async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
@@ -31,6 +29,7 @@ declare module "react-router" {
       env: Env;
       ctx: ExecutionContext;
     };
+    db: DrizzleD1Database<typeof schema>;
   }
 }
 
@@ -41,8 +40,12 @@ const requestHandler = createRequestHandler(
 
 export default {
   async fetch(request, env, ctx) {
+    const db = drizzle(env.DB, {
+      schema,
+    });
     return requestHandler(request, {
       cloudflare: { env, ctx },
+      db,
     });
   },
 } satisfies ExportedHandler<Env>;
