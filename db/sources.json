@@ -54,5 +54,12 @@
     "url": "https://restofworld.org/feed/latest",
     "description": "新興国のテクノロジーとカルチャーに関するニュース",
     "category": "Platform"
+  },
+  {
+    "id": "shanematsuo",
+    "name": "Shane Matsuo on Medium",
+    "url": "https://shanematsuo.medium.com/feed",
+    "description": "テクノロジー、プロダクト、デザインに関する記事",
+    "category": "Platform"
   }
 ]
