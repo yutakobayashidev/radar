@@ -8,6 +8,8 @@
     "cf-typegen": "wrangler types",
     "deploy": "pnpm run build && wrangler deploy",
     "dev": "react-router dev",
+    "import-sources": "tsx scripts/import-sources.ts",
+    "import-sources:remote": "tsx scripts/import-sources.ts --remote",
     "postinstall": "npm run cf-typegen",
     "preview": "pnpm run build && vite preview",
     "typecheck": "npm run cf-typegen && react-router typegen && tsc -b"
@@ -30,6 +32,7 @@
     "dotenv": "^17.2.3",
     "drizzle-kit": "^0.31.8",
     "tailwindcss": "^4.1.13",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.2",
     "vite": "^7.1.7",
     "vite-tsconfig-paths": "^5.1.4",
