@@ -1,26 +1,5 @@
 [
   {
-    "id": "cloudflare",
-    "name": "Cloudflare Blog",
-    "url": "https://blog.cloudflare.com/rss/",
-    "description": "Cloudflareのプロダクトアップデート、技術解説、インターネットトレンド",
-    "category": "Infrastructure"
-  },
-  {
-    "id": "hono",
-    "name": "Hono",
-    "url": "https://hono.dev/rss.xml",
-    "description": "軽量・高速なWebフレームワーク。Cloudflare Workers、Deno、Bunで動作",
-    "category": "Framework"
-  },
-  {
-    "id": "deno",
-    "name": "Deno Blog",
-    "url": "https://deno.com/blog/rss.xml",
-    "description": "Denoランタイムの最新情報、チュートリアル、エコシステム",
-    "category": "Runtime"
-  },
-  {
     "id": "openai",
     "name": "OpenAI Blog",
     "url": "https://openai.com/blog/rss.xml",
@@ -28,38 +7,45 @@
     "category": "AI"
   },
   {
-    "id": "rust",
-    "name": "Rust Blog",
-    "url": "https://blog.rust-lang.org/feed.xml",
-    "description": "Rust言語の公式ブログ。リリースノート、RFCs、コミュニティ",
-    "category": "Language"
+    "id": "huggingface-papers",
+    "name": "Hugging Face Daily Papers",
+    "url": "https://rsshub.app/huggingface/daily-papers",
+    "description": "Hugging Faceで毎日公開される注目の機械学習論文",
+    "category": "AI"
   },
   {
-    "id": "vercel",
-    "name": "Vercel Blog",
-    "url": "https://vercel.com/blog/rss.xml",
-    "description": "Next.js、Edge Functions、フロントエンドインフラ",
-    "category": "Infrastructure"
+    "id": "huggingface",
+    "name": "Hugging Face Blog",
+    "url": "https://huggingface.co/blog/feed.xml",
+    "description": "Transformers、Diffusers、機械学習モデルとデータセット",
+    "category": "AI"
   },
   {
-    "id": "github",
-    "name": "GitHub Blog",
-    "url": "https://github.blog/feed/",
-    "description": "GitHub機能アップデート、オープンソース、開発者ツール",
-    "category": "Platform"
+    "id": "deepmind",
+    "name": "DeepMind Blog",
+    "url": "https://deepmind.com/blog/feed/basic/",
+    "description": "DeepMindの最新AI研究、AlphaFold、強化学習",
+    "category": "AI"
   },
   {
-    "id": "typescript",
-    "name": "TypeScript Blog",
-    "url": "https://devblogs.microsoft.com/typescript/feed/",
-    "description": "TypeScriptのリリースノート、新機能解説",
-    "category": "Language"
+    "id": "google-ai",
+    "name": "Google AI Blog",
+    "url": "https://feeds.feedburner.com/blogspot/gJZg",
+    "description": "Googleの最新AI研究、機械学習、TensorFlow",
+    "category": "AI"
   },
   {
-    "id": "anthropic",
-    "name": "Anthropic",
-    "url": "https://www.anthropic.com/research/rss.xml",
-    "description": "Claude、Constitutional AI、AI安全性研究",
+    "id": "pytorch",
+    "name": "PyTorch Blog",
+    "url": "https://pytorch.org/feed.xml",
+    "description": "PyTorchの最新情報、チュートリアル、リリースノート",
+    "category": "Framework"
+  },
+  {
+    "id": "meta",
+    "name": "Meta AI Blog",
+    "url": "https://www.meta.com/blog/rss/",
+    "description": "MetaのAI研究、LLaMA、コンピュータビジョン",
     "category": "AI"
   }
 ]
