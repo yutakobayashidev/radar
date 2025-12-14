@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router";
-import { sources, radarItems } from "~/data/mock";
 import { Favicon } from "~/components/ui";
+import type { Source, RadarItem } from "~/data/types";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -8,6 +8,8 @@ interface SidebarProps {
   selectedSource?: string;
   setSelectedSource?: (source: string) => void;
   showSourceFilter?: boolean;
+  sources?: Source[];
+  radarItems?: RadarItem[];
 }
 
 export function Sidebar({
@@ -16,6 +18,8 @@ export function Sidebar({
   selectedSource = "all",
   setSelectedSource,
   showSourceFilter = false,
+  sources = [],
+  radarItems = [],
 }: SidebarProps) {
   return (
     <aside
