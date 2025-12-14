@@ -68,5 +68,19 @@
     "url": "https://www.sakimura.org/feed/",
     "description": "アイデンティティ、セキュリティ、OAuth、OpenID Connectに関する記事",
     "category": "Platform"
+  },
+  {
+    "id": "vitalik",
+    "name": "Vitalik Buterin's Blog",
+    "url": "https://vitalik.eth.limo/feed.xml",
+    "description": "Ethereum、ブロックチェーン、暗号経済学、分散システムに関する記事",
+    "category": "Platform"
+  },
+  {
+    "id": "momdo",
+    "name": "momdo blog",
+    "url": "https://momdo.hatenablog.jp/feed",
+    "description": "Web標準、HTML、アクセシビリティに関する記事",
+    "category": "Platform"
   }
 ]
