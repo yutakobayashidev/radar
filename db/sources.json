@@ -47,5 +47,12 @@
     "url": "https://www.meta.com/blog/rss/",
     "description": "MetaのAI研究、LLaMA、コンピュータビジョン",
     "category": "AI"
+  },
+  {
+    "id": "restofworld",
+    "name": "Rest of World",
+    "url": "https://restofworld.org/feed/latest",
+    "description": "新興国のテクノロジーとカルチャーに関するニュース",
+    "category": "Platform"
   }
 ]
