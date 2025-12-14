@@ -173,4 +173,20 @@ export default {
       db,
     });
   },
+
+  async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext) {
+    ctx.waitUntil(
+      (async () => {
+        const instance = await env.MY_WORKFLOW.create({
+          params: {
+            reason: "cron",
+            cron: controller.cron,
+            scheduledTime: new Date(controller.scheduledTime).toISOString(),
+          },
+        });
+
+        console.log("Started workflow:", instance.id, "at", new Date(controller.scheduledTime));
+      })(),
+    );
+  },
 } satisfies ExportedHandler<Env>;
