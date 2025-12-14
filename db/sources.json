@@ -82,5 +82,12 @@
     "url": "https://momdo.hatenablog.jp/feed",
     "description": "Web標準、HTML、アクセシビリティに関する記事",
     "category": "Platform"
+  },
+  {
+    "id": "yamdas",
+    "name": "yamdas blog",
+    "url": "https://yamdas.hatenablog.com/feed",
+    "description": "テクノロジー、翻訳、書評に関する記事",
+    "category": "Platform"
   }
 ]
