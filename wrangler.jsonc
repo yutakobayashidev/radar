@@ -22,7 +22,6 @@
 			"binding": "DB",
 			"database_name": "radar",
 			"database_id": "2bae0f9f-b37b-4cf5-beda-3deac070fac2",
-			"remote": true,
 			"migrations_dir": "migrations"
 		}
 	]
