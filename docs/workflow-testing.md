@@ -1,14 +1,45 @@
 # Workflow Testing Guide
 
-## ローカルで Cron Trigger をテストする
+## プロジェクト構成
 
-### 1. Cron トリガー付きで開発サーバーを起動
+### ファイル構成
 
-```bash
-npx wrangler dev --test-scheduled
+```
+workers/
+├── app.ts          # メインエントリーポイント (React Router + Scheduled)
+├── workflow.ts     # Workflowロジック (MyWorkflow class)
+└── scheduled.ts    # Scheduled専用エントリーポイント (テスト用)
+
+wrangler.jsonc           # 本番・通常開発用設定
+wrangler.scheduled.jsonc # Scheduled開発専用設定
 ```
 
-### 2. Cron を手動でトリガー
+### 設定の使い分け
+
+- **`wrangler.jsonc`** - 本番デプロイと通常の開発で使用
+  - `main: "./workers/app.ts"` - React Routerアプリ + Scheduledハンドラ
+
+- **`wrangler.scheduled.jsonc`** - Scheduledトリガーのテスト専用
+  - `main: "./workers/scheduled.ts"` - Scheduledハンドラのみ
+  - React Routerの動的インポートを回避
+
+## ローカルで Cron Trigger をテストする
+
+### 方法1: Scheduled専用設定を使う（推奨）
+
+`wrangler.scheduled.jsonc` を使用することで、React Routerの動的インポートエラーを回避できます。
+
+#### 1. Scheduled専用サーバーを起動
+
+```bash
+# pnpmスクリプトを使用（推奨）
+pnpm dev:scheduled
+
+# または直接wranglerコマンドで
+npx wrangler dev -c wrangler.scheduled.jsonc --test-scheduled
+```
+
+#### 2. Cron を手動でトリガー
 
 別のターミナルで以下を実行:
 
@@ -21,6 +52,15 @@ curl "http://localhost:8787/__scheduled?cron=0+*+*+*+*"
 1. `scheduled()` ハンドラが呼ばれる
 2. `env.MY_WORKFLOW.create()` でワークフローインスタンスが作成される
 3. MyWorkflow の `run()` メソッドが実行される
+
+### 方法2: 通常の設定を使う
+
+```bash
+# 通常の設定でScheduledテストも可能（React Routerも起動される）
+npx wrangler dev --test-scheduled
+```
+
+**注意**: この方法では `import("virtual:react-router/server-build")` の動的インポートによりエラーが発生する可能性があります。その場合は方法1を使用してください。
 
 ### 3. ワークフローの実行を確認
 

@@ -8,6 +8,7 @@
     "cf-typegen": "wrangler types",
     "deploy": "pnpm run build && wrangler deploy",
     "dev": "react-router dev",
+    "dev:scheduled": "wrangler dev -c wrangler.scheduled.jsonc --test-scheduled",
     "import-sources": "tsx scripts/import-sources.ts",
     "import-sources:remote": "tsx scripts/import-sources.ts --remote",
     "postinstall": "npm run cf-typegen",

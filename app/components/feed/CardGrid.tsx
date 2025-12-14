@@ -1,5 +1,5 @@
 import type { RadarItem } from "~/data/types";
-import { getDomainFromUrl } from "~/data/types";
+import { getDomainFromUrl, formatRelativeTime } from "~/data/types";
 import { Favicon, CategoryBadge } from "~/components/ui";
 
 interface CardGridProps {
@@ -27,7 +27,7 @@ export function CardGrid({ items }: CardGridProps) {
               <Favicon domain={getDomainFromUrl(item.url)} />
               <span className="truncate">{item.sourceName}</span>
               <span>·</span>
-              <span className="flex-shrink-0">{item.timestamp}</span>
+              <span className="flex-shrink-0">{formatRelativeTime(item.timestamp)}</span>
             </div>
             <h3 className="font-medium text-sm text-gray-900 mb-1 group-hover:text-blue-600 transition-colors line-clamp-2">
               {item.title}

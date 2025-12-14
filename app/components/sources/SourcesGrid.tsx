@@ -1,5 +1,5 @@
 import type { Source } from "~/data/types";
-import { getDomainFromUrl } from "~/data/types";
+import { getDomainFromUrl, formatRelativeTime } from "~/data/types";
 import { Favicon, CategoryBadge } from "~/components/ui";
 
 interface SourcesGridProps {
@@ -44,7 +44,7 @@ export function SourcesGrid({ sources }: SourcesGridProps) {
             <CategoryBadge category={source.category} />
             <div className="flex items-center gap-3 text-xs text-gray-400">
               <span>{source.articleCount} 記事</span>
-              <span>更新 {source.lastUpdated}</span>
+              <span>更新 {formatRelativeTime(source.lastUpdated)}</span>
             </div>
           </div>
         </a>

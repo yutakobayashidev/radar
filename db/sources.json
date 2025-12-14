@@ -7,13 +7,6 @@
     "category": "AI"
   },
   {
-    "id": "huggingface-papers",
-    "name": "Hugging Face Daily Papers",
-    "url": "https://rsshub.app/huggingface/daily-papers",
-    "description": "Hugging Faceで毎日公開される注目の機械学習論文",
-    "category": "AI"
-  },
-  {
     "id": "huggingface",
     "name": "Hugging Face Blog",
     "url": "https://huggingface.co/blog/feed.xml",
