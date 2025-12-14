@@ -1,7 +1,6 @@
 import type { Route } from "./+types/sources";
 import { AppLayout } from "~/components/layout";
 import { SourcesGrid } from "~/components/sources";
-import { sources } from "~/data/mock";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -10,10 +9,18 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Sources() {
+export async function loader({ context }: Route.LoaderArgs) {
+  const sources = await context.db.query.sources.findMany({
+    orderBy: (sources, { asc }) => [asc(sources.name)],
+  });
+
+  return { sources };
+}
+
+export default function Sources({ loaderData }: Route.ComponentProps) {
   return (
     <AppLayout title="お世話になってるソース一覧">
-      <SourcesGrid sources={sources} />
+      <SourcesGrid sources={loaderData.sources} />
     </AppLayout>
   );
 }

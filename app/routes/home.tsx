@@ -2,7 +2,6 @@ import { useState } from "react";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
 import { CardGrid } from "~/components/feed";
-import { radarItems } from "~/data/mock";
 import { categories } from "~/data/types";
 
 export function meta({}: Route.MetaArgs) {
@@ -10,6 +9,19 @@ export function meta({}: Route.MetaArgs) {
     { title: "Radar" },
     { name: "description", content: "Tech radar aggregator" },
   ];
+}
+
+export async function loader({ context }: Route.LoaderArgs) {
+  const [radarItems, sources] = await Promise.all([
+    context.db.query.radarItems.findMany({
+      orderBy: (radarItems, { desc }) => [desc(radarItems.timestamp)],
+    }),
+    context.db.query.sources.findMany({
+      orderBy: (sources, { asc }) => [asc(sources.name)],
+    }),
+  ]);
+
+  return { radarItems, sources };
 }
 
 function CategoryFilter({
@@ -38,11 +50,11 @@ function CategoryFilter({
   );
 }
 
-export default function Home() {
+export default function Home({ loaderData }: Route.ComponentProps) {
   const [selectedSource, setSelectedSource] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const filteredItems = radarItems
+  const filteredItems = loaderData.radarItems
     .filter((f) => selectedSource === "all" || f.source === selectedSource)
     .filter((f) => selectedCategory === "All" || f.category === selectedCategory);
 
@@ -52,6 +64,8 @@ export default function Home() {
       selectedSource={selectedSource}
       setSelectedSource={setSelectedSource}
       showSourceFilter={true}
+      sources={loaderData.sources}
+      radarItems={loaderData.radarItems}
       headerContent={
         <CategoryFilter
           selectedCategory={selectedCategory}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Sidebar } from "./Sidebar";
+import type { Source, RadarItem } from "~/data/types";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -8,6 +9,8 @@ interface AppLayoutProps {
   selectedSource?: string;
   setSelectedSource?: (source: string) => void;
   showSourceFilter?: boolean;
+  sources?: Source[];
+  radarItems?: RadarItem[];
 }
 
 export function AppLayout({
@@ -17,6 +20,8 @@ export function AppLayout({
   selectedSource = "all",
   setSelectedSource,
   showSourceFilter = false,
+  sources,
+  radarItems,
 }: AppLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -35,6 +40,8 @@ export function AppLayout({
         selectedSource={selectedSource}
         setSelectedSource={setSelectedSource}
         showSourceFilter={showSourceFilter}
+        sources={sources}
+        radarItems={radarItems}
       />
 
       <div className="flex-1 flex flex-col min-w-0">

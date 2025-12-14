@@ -4,9 +4,11 @@ export interface Source {
   domain: string;
   url: string;
   description: string;
-  category: Category;
+  category: string;
   articleCount: number;
-  lastUpdated: string;
+  lastUpdated: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface RadarItem {
@@ -15,18 +17,18 @@ export interface RadarItem {
   source: string;
   sourceName: string;
   domain: string;
-  category: Category;
+  category: string;
   summary: string;
   image: string;
   url: string;
-  timestamp: string;
+  timestamp: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
-
-export type Category = "AI" | "Infrastructure" | "Framework" | "Language" | "Runtime" | "Platform";
 
 export const categories = ["All", "AI", "Infrastructure", "Framework", "Language", "Runtime", "Platform"] as const;
 
-export const categoryColors: Record<Category, string> = {
+export const categoryColors: Record<string, string> = {
   AI: "bg-gray-100 text-gray-600",
   Infrastructure: "bg-gray-100 text-gray-600",
   Framework: "bg-gray-100 text-gray-600",
