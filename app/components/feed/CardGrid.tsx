@@ -7,6 +7,12 @@ interface CardGridProps {
 }
 
 export function CardGrid({ items }: CardGridProps) {
+  // OGP画像が取得できなかった場合のフォールバック画像を生成
+  const getFallbackImage = (itemId: number) => {
+    // アイテムIDをシードとして使用し、一貫性のあるランダム画像を取得
+    return `https://picsum.photos/seed/${itemId}/1200/630`;
+  };
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {items.map((item) => (
@@ -17,7 +23,7 @@ export function CardGrid({ items }: CardGridProps) {
         >
           <div className="aspect-video bg-gray-100">
             <img
-              src={item.image}
+              src={item.image || getFallbackImage(item.id)}
               alt=""
               className="w-full h-full object-cover"
             />
