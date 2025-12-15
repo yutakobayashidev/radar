@@ -831,5 +831,12 @@
     "url": "https://www.icd.cs.tut.ac.jp/index.php/feed/",
     "description": "豊橋技術科学大学の「弱いロボット」研究、人とロボットのインタラクション、HCIに関する記事",
     "category": "Media & Culture"
+  },
+  {
+    "id": "data-society",
+    "name": "Data & Society",
+    "url": "https://datasociety.net/feed/",
+    "description": "データ、テクノロジー、社会の交差点に関する研究、AI倫理、アルゴリズムの公平性に関する記事",
+    "category": "Social Impact"
   }
 ]
