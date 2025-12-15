@@ -175,6 +175,13 @@
     "category": "Developer Tools"
   },
   {
+    "id": "rolldown",
+    "name": "Rolldown Releases",
+    "url": "https://github.com/rolldown/rolldown/releases.atom",
+    "description": "Rustベースの高速JavaScriptバンドラー Rolldownのリリース情報",
+    "category": "Developer Tools"
+  },
+  {
     "id": "w3c",
     "name": "W3C Blog",
     "url": "https://www.w3.org/blog/feed/",
