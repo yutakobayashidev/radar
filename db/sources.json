@@ -63,6 +63,13 @@
     "category": "AI/ML"
   },
   {
+    "id": "aaif",
+    "name": "Agentic AI Foundation",
+    "url": "https://aaif.io/feed/",
+    "description": "AIエージェント技術の標準化と相互運用性、Model Context Protocol、オープンソースAI",
+    "category": "AI/ML"
+  },
+  {
     "id": "pytorch",
     "name": "PyTorch Blog",
     "url": "https://pytorch.org/feed/",
@@ -229,6 +236,13 @@
     "url": "https://www.deque.com/feed/",
     "description": "Webアクセシビリティ、WCAG、インクルーシブデザインに関する記事",
     "category": "Web Standards"
+  },
+  {
+    "id": "accessible-games",
+    "name": "Accessible Games Initiative",
+    "url": "https://accessiblegames.com/feed/",
+    "description": "ゲームアクセシビリティの標準化、タグシステム、業界パートナーシップ",
+    "category": "Social Impact"
   },
   {
     "id": "whatwg",
@@ -417,6 +431,13 @@
     "name": "freee Developers Blog",
     "url": "https://developers.freee.co.jp/feed",
     "description": "会計ソフトfreeeの開発、マイクロサービス、SaaSに関する技術記事",
+    "category": "Company Engineering"
+  },
+  {
+    "id": "dwango-edu",
+    "name": "ドワンゴ教育サービス開発者ブログ",
+    "url": "https://blog.nnn.dev/feed",
+    "description": "N高・S高のEdTech開発、項目反応理論、Web標準、教育プラットフォームに関する技術記事",
     "category": "Company Engineering"
   },
   {
