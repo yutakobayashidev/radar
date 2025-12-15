@@ -726,5 +726,40 @@
     "url": "https://sevish.com/feed/",
     "description": "電子マイクロトーナル音楽、音楽ツール、チューニング技術に関する記事",
     "category": "Media & Culture"
+  },
+  {
+    "id": "lai",
+    "name": "Lai's Blog",
+    "url": "https://blog.lai.so/rss/",
+    "description": "個人ブログ、技術、プログラミングに関する記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "azukiazusa",
+    "name": "azukiazusa.dev",
+    "url": "https://azukiazusa.dev/rss.xml",
+    "description": "Web開発、フロントエンド、技術に関する記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "mizchi",
+    "name": "mizchi on Zenn",
+    "url": "https://zenn.dev/mizchi/feed",
+    "description": "フロントエンド、TypeScript、Webツールチェーンに関する記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "jser",
+    "name": "JSer.info",
+    "url": "https://jser.info/rss/",
+    "description": "JavaScriptの最新情報、ライブラリ、ツール、記事を毎週紹介",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "drizzle-orm",
+    "name": "Drizzle ORM Releases",
+    "url": "https://github.com/drizzle-team/drizzle-orm/releases.atom",
+    "description": "TypeScript ORMのリリース情報",
+    "category": "Developer Tools"
   }
 ]
