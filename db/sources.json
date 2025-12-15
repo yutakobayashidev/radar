@@ -761,5 +761,26 @@
     "url": "https://github.com/drizzle-team/drizzle-orm/releases.atom",
     "description": "TypeScript ORMのリリース情報",
     "category": "Developer Tools"
+  },
+  {
+    "id": "henkaku-center",
+    "name": "変革センター",
+    "url": "https://www.henkaku.center/ja/feed/feed.xml",
+    "description": "千葉工業大学の変革センターによるデジタル社会、テクノロジー、イノベーションに関する記事",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "mit-media-lab",
+    "name": "MIT Media Lab",
+    "url": "https://www.media.mit.edu/feed.rss",
+    "description": "MITメディアラボの研究、イノベーション、テクノロジーとデザインの融合に関する記事",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "moonbit",
+    "name": "MoonBit",
+    "url": "https://www.moonbitlang.com/blog/rss.xml",
+    "description": "MoonBitプログラミング言語の開発、言語設計、WebAssemblyに関する記事",
+    "category": "Developer Tools"
   }
 ]
