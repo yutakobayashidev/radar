@@ -518,6 +518,34 @@
     "category": "Social Impact"
   },
   {
+    "id": "openrightsgroup",
+    "name": "Open Rights Group",
+    "url": "https://www.openrightsgroup.org/feed/",
+    "description": "英国のデジタル権、オンラインプライバシー、表現の自由、政府の監視に関する記事",
+    "category": "Social Impact"
+  },
+  {
+    "id": "accessnow",
+    "name": "Access Now",
+    "url": "https://www.accessnow.org/feed/",
+    "description": "デジタル人権、インターネット遮断、通信の自由、データプライバシーに関する国際的な取り組み",
+    "category": "Social Impact"
+  },
+  {
+    "id": "dispatches",
+    "name": "Dispatches",
+    "url": "https://dispatches.substack.com/feed",
+    "description": "Adrian Chenによる社会論、文化批評、テクノロジーレビューに関するニュースレター",
+    "category": "Social Impact"
+  },
+  {
+    "id": "ethanzuckerman",
+    "name": "Ethan Zuckerman",
+    "url": "https://ethanzuckerman.com/feed/",
+    "description": "デジタル技術、メディア、民主主義、AI、気候変動に関する思想的議論",
+    "category": "Social Impact"
+  },
+  {
     "id": "ooni",
     "name": "OONI Blog",
     "url": "https://ooni.org/blog/index.xml",
