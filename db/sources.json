@@ -217,6 +217,13 @@
     "category": "Web Standards"
   },
   {
+    "id": "rebuildfm",
+    "name": "Rebuild",
+    "url": "https://feeds.rebuild.fm/rebuildfm",
+    "description": "Web開発、プログラミング、モバイル、ガジェットに関するテクノロジーポッドキャスト",
+    "category": "Media & Culture"
+  },
+  {
     "id": "deque",
     "name": "Deque",
     "url": "https://www.deque.com/feed/",
