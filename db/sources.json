@@ -49,6 +49,13 @@
     "category": "AI/ML"
   },
   {
+    "id": "lilianweng",
+    "name": "Lil'Log",
+    "url": "https://lilianweng.github.io/posts/index.xml",
+    "description": "深層学習、強化学習、LLMに関する技術的な解説記事",
+    "category": "AI/ML"
+  },
+  {
     "id": "pytorch",
     "name": "PyTorch Blog",
     "url": "https://pytorch.org/feed/",
@@ -112,6 +119,62 @@
     "category": "Developer Tools"
   },
   {
+    "id": "rust",
+    "name": "Rust Blog",
+    "url": "https://blog.rust-lang.org/feed.xml",
+    "description": "Rustの新機能、リリース情報、言語設計に関する記事",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "hono",
+    "name": "Hono Releases",
+    "url": "https://github.com/honojs/hono/releases.atom",
+    "description": "軽量高速Webフレームワーク Honoのリリース情報",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "mold",
+    "name": "mold Releases",
+    "url": "https://github.com/rui314/mold/releases.atom",
+    "description": "高速リンカ moldのリリース情報",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "servo",
+    "name": "Servo Blog",
+    "url": "https://servo.org/blog/feed.xml",
+    "description": "Rust製ブラウザエンジン Servoの開発状況と技術記事",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "turborepo",
+    "name": "Turborepo Releases",
+    "url": "https://github.com/vercel/turborepo/releases.atom",
+    "description": "高性能ビルドシステム Turborepoのリリース情報",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "rustowl",
+    "name": "RustOwl Releases",
+    "url": "https://github.com/cordx56/rustowl/releases.atom",
+    "description": "Rustの所有権とライフタイムを可視化するツールのリリース情報",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "playwright",
+    "name": "Playwright Releases",
+    "url": "https://github.com/microsoft/playwright/releases.atom",
+    "description": "ブラウザ自動化・E2Eテストフレームワーク Playwrightのリリース情報",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "nextjs",
+    "name": "Next.js Releases",
+    "url": "https://github.com/vercel/next.js/releases.atom",
+    "description": "Reactフレームワーク Next.jsのリリース情報",
+    "category": "Developer Tools"
+  },
+  {
     "id": "w3c",
     "name": "W3C Blog",
     "url": "https://www.w3.org/blog/feed/",
@@ -137,6 +200,20 @@
     "name": "mozaic.fm",
     "url": "https://feed.mozaic.fm",
     "description": "Web技術、標準化、プラットフォームに関するポッドキャスト",
+    "category": "Web Standards"
+  },
+  {
+    "id": "deque",
+    "name": "Deque",
+    "url": "https://www.deque.com/feed/",
+    "description": "Webアクセシビリティ、WCAG、インクルーシブデザインに関する記事",
+    "category": "Web Standards"
+  },
+  {
+    "id": "whatwg",
+    "name": "WHATWG Blog",
+    "url": "https://blog.whatwg.org/feed",
+    "description": "HTML Living Standard、DOM、Fetch、Web標準の策定に関する記事",
     "category": "Web Standards"
   },
   {
@@ -172,6 +249,20 @@
     "name": "Sakimura's Blog",
     "url": "https://www.sakimura.org/feed/",
     "description": "アイデンティティ、セキュリティ、OAuth、OpenID Connectに関する記事",
+    "category": "Digital Identity"
+  },
+  {
+    "id": "openid",
+    "name": "OpenID Foundation",
+    "url": "https://openid.net/feed/",
+    "description": "OpenID、デジタルアイデンティティ標準化に関する記事",
+    "category": "Digital Identity"
+  },
+  {
+    "id": "inkandswitch",
+    "name": "Ink & Switch",
+    "url": "https://www.inkandswitch.com/index.xml",
+    "description": "ローカルファーストソフトウェア、分散システム、CRDT、コラボレーションツールの研究",
     "category": "Digital Identity"
   },
   {
@@ -214,6 +305,13 @@
     "name": "Mastodon Blog",
     "url": "https://blog.joinmastodon.org/index.xml",
     "description": "分散型SNS Mastodon、ActivityPub、Fediverseに関する記事",
+    "category": "Digital Identity"
+  },
+  {
+    "id": "fiatjaf",
+    "name": "fiatjaf",
+    "url": "https://fiatjaf.com/-/rss",
+    "description": "Nostr、分散型プロトコル、暗号通貨に関する記事",
     "category": "Digital Identity"
   },
   {
@@ -273,6 +371,13 @@
     "category": "Company Engineering"
   },
   {
+    "id": "freee-developers",
+    "name": "freee Developers Blog",
+    "url": "https://developers.freee.co.jp/feed",
+    "description": "会計ソフトfreeeの開発、マイクロサービス、SaaSに関する技術記事",
+    "category": "Company Engineering"
+  },
+  {
     "id": "yamdas",
     "name": "yamdas blog",
     "url": "https://yamdas.hatenablog.com/feed",
@@ -305,6 +410,20 @@
     "name": "Anthony Fu",
     "url": "https://antfu.me/feed.xml",
     "description": "Vue.js、Vite、オープンソース開発に関する記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "kentcdodds",
+    "name": "Kent C. Dodds",
+    "url": "https://kentcdodds.com/blog/rss.xml",
+    "description": "React、Testing、Web開発、教育に関する記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "overreacted",
+    "name": "Overreacted",
+    "url": "https://overreacted.io/rss.xml",
+    "description": "Dan AbramovによるReact、JavaScript、プログラミングに関する記事",
     "category": "Personal Blog"
   },
   {
@@ -406,10 +525,31 @@
     "category": "Social Impact"
   },
   {
+    "id": "g0v",
+    "name": "g0v.news",
+    "url": "https://g0v.news/feed",
+    "description": "台湾のシビックハック、オープンガバメント、市民参加に関する記事",
+    "category": "Social Impact"
+  },
+  {
+    "id": "humane-tech",
+    "name": "Center for Humane Technology",
+    "url": "https://centerforhumanetechnology.substack.com/feed",
+    "description": "テクノロジーの人間性、デジタルウェルビーイング、倫理的デザインに関する記事",
+    "category": "Social Impact"
+  },
+  {
     "id": "restofworld",
     "name": "Rest of World",
     "url": "https://restofworld.org/feed/latest",
     "description": "新興国のテクノロジーとカルチャーに関するニュース",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "wired",
+    "name": "WIRED",
+    "url": "https://www.wired.com/feed/rss",
+    "description": "テクノロジー、科学、カルチャー、ビジネスに関するニュースと記事",
     "category": "Media & Culture"
   },
   {

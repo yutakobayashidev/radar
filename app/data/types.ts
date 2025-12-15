@@ -5,7 +5,6 @@ export interface Source {
   description: string;
   category: string;
   articleCount: number;
-  lastUpdated: Date;
   createdAt: Date;
   updatedAt: Date;
 }

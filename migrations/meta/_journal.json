@@ -15,6 +15,13 @@
       "when": 1765735259930,
       "tag": "0001_special_the_santerians",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1765810112803,
+      "tag": "0002_nosy_paibok",
+      "breakpoints": true
     }
   ]
 }

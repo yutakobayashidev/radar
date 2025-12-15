@@ -36,12 +36,18 @@ async function importSources(local: boolean = true) {
   // Insert or update sources from JSON
   const now = Date.now();
   const values = sources.map((source) => {
-    return `('${escapeSQLString(source.id)}', '${escapeSQLString(source.name)}', '${escapeSQLString(source.url)}', '${escapeSQLString(source.description)}', '${escapeSQLString(source.category)}', 0, ${now}, ${now}, ${now})`;
+    return `('${escapeSQLString(source.id)}', '${escapeSQLString(source.name)}', '${escapeSQLString(source.url)}', '${escapeSQLString(source.description)}', '${escapeSQLString(source.category)}', ${now}, ${now})`;
   });
 
   const insertSQL = `
-INSERT OR REPLACE INTO sources (id, name, url, description, category, article_count, last_updated, created_at, updated_at)
-VALUES ${values.join(",\n")};
+INSERT INTO sources (id, name, url, description, category, created_at, updated_at)
+VALUES ${values.join(",\n")}
+ON CONFLICT(id) DO UPDATE SET
+  name = excluded.name,
+  url = excluded.url,
+  description = excluded.description,
+  category = excluded.category,
+  updated_at = excluded.updated_at;
   `.trim();
 
   try {

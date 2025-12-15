@@ -7,7 +7,6 @@ export const sources = sqliteTable("sources", {
   description: text("description").notNull(),
   category: text("category").notNull(), // "AI" | "Infrastructure" | "Framework" | "Language" | "Runtime" | "Platform"
   articleCount: integer("article_count").notNull().default(0),
-  lastUpdated: integer("last_updated", { mode: "timestamp" }).notNull(), // UNIX timestamp
   createdAt: integer("created_at", { mode: "timestamp" }).notNull().$defaultFn(() => new Date()),
   updatedAt: integer("updated_at", { mode: "timestamp" }).notNull().$defaultFn(() => new Date()),
 });
