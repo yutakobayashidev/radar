@@ -782,5 +782,47 @@
     "url": "https://www.moonbitlang.com/blog/rss.xml",
     "description": "MoonBitプログラミング言語の開発、言語設計、WebAssemblyに関する記事",
     "category": "Developer Tools"
+  },
+  {
+    "id": "prototype-fund",
+    "name": "Prototype Fund",
+    "url": "https://www.prototypefund.de/en/feed.rss",
+    "description": "ドイツのオープンソースプロジェクト支援プログラム、公共インフラ、シビックテックに関する記事",
+    "category": "Social Impact"
+  },
+  {
+    "id": "boomerang-effect",
+    "name": "Digital Rights",
+    "url": "https://boomerang-effect.espivblogs.net/feed/",
+    "description": "デジタル権利、監視、インターネット検閲、人権保護に関する記事",
+    "category": "Social Impact"
+  },
+  {
+    "id": "berkman-klein",
+    "name": "Berkman Klein Center",
+    "url": "https://medium.com/feed/berkman-klein-center",
+    "description": "ハーバード大学のインターネット・社会研究センター、デジタル権利、オープンインターネット、テクノロジーと社会に関する記事",
+    "category": "Social Impact"
+  },
+  {
+    "id": "barrett-lyon",
+    "name": "Barrett Lyon",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCeLz-dzQd675Zd47a1xY1wA",
+    "description": "The Opte Project創設者によるインターネット可視化、ネットワーク構造、新しいインターネットの原則に関する動画",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "bruno-latour",
+    "name": "Bruno Latour",
+    "url": "http://www.bruno-latour.fr/rss.xml",
+    "description": "科学技術社会論、アクターネットワーク理論、ポストヒューマニズムに関する記事",
+    "category": "Social Impact"
+  },
+  {
+    "id": "anthropolojamz",
+    "name": "AnthropoloJamz",
+    "url": "https://anthropolojamz.wordpress.com/feed/",
+    "description": "人類学、文化研究、社会理論に関する記事",
+    "category": "Social Impact"
   }
 ]
