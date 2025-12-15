@@ -238,6 +238,13 @@
     "category": "Security & Privacy"
   },
   {
+    "id": "torproject",
+    "name": "Tor Project Blog",
+    "url": "https://blog.torproject.org/feed.xml",
+    "description": "匿名性、プライバシー保護、Torネットワークに関する記事",
+    "category": "Security & Privacy"
+  },
+  {
     "id": "shanematsuo",
     "name": "Shane Matsuo on Medium",
     "url": "https://shanematsuo.medium.com/feed",
@@ -466,6 +473,20 @@
     "name": "Kevin Kelly",
     "url": "https://kk.org/feed/",
     "description": "テクノロジー、文化、未来予測に関する記事",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "photomatt",
+    "name": "Matt Mullenweg",
+    "url": "https://ma.tt/feed/",
+    "description": "WordPress、オープンソース、テクノロジー、ビジネスに関する記事（WordPress創業者）",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "craftzdog",
+    "name": "Takuya Matsuyama's Blog",
+    "url": "https://www.devas.life/rss/",
+    "description": "Inkdrop開発、React Native、Electron、インディー開発に関する記事",
     "category": "Personal Blog"
   },
   {
