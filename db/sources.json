@@ -28,6 +28,13 @@
     "category": "AI/ML"
   },
   {
+    "id": "google-testing",
+    "name": "Google Testing Blog",
+    "url": "https://feeds.feedburner.com/blogspot/RLXA",
+    "description": "Googleのテスト技術、ソフトウェア品質、コード品質、自動化に関する記事",
+    "category": "Developer Tools"
+  },
+  {
     "id": "simonwillison",
     "name": "Simon Willison's Weblog",
     "url": "https://simonwillison.net/atom/everything/",
@@ -228,6 +235,13 @@
     "name": "徳丸浩の日記",
     "url": "https://blog.tokumaru.org/feeds/posts/default",
     "description": "Webセキュリティ、脆弱性、セキュアコーディングに関する記事",
+    "category": "Security & Privacy"
+  },
+  {
+    "id": "project-zero",
+    "name": "Project Zero",
+    "url": "https://googleprojectzero.blogspot.com/feeds/posts/default",
+    "description": "Googleセキュリティ研究チームによるゼロデイ脆弱性の発見と分析",
     "category": "Security & Privacy"
   },
   {
@@ -697,6 +711,13 @@
     "name": "初星学園",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC2dXx-3RXeeP8hA5AGt8vuw",
     "description": "初星学園の公式YouTubeチャンネル",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "sevish",
+    "name": "Sevish",
+    "url": "https://sevish.com/feed/",
+    "description": "電子マイクロトーナル音楽、音楽ツール、チューニング技術に関する記事",
     "category": "Media & Culture"
   }
 ]
