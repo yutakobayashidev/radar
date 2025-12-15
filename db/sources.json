@@ -252,6 +252,13 @@
     "category": "Security & Privacy"
   },
   {
+    "id": "simplex",
+    "name": "SimpleX Chat Blog",
+    "url": "https://simplex.chat/feed.rss",
+    "description": "プライバシー重視メッセージング、分散型通信、E2E暗号化に関する記事",
+    "category": "Security & Privacy"
+  },
+  {
     "id": "shanematsuo",
     "name": "Shane Matsuo on Medium",
     "url": "https://shanematsuo.medium.com/feed",
@@ -497,6 +504,13 @@
     "category": "Personal Blog"
   },
   {
+    "id": "catnose",
+    "name": "catnose - しずかなインターネット",
+    "url": "https://sizu.me/catnose/rss",
+    "description": "しずかなインターネット開発者による日記、エッセイ、運営メモ",
+    "category": "Personal Blog"
+  },
+  {
     "id": "eff",
     "name": "EFF Updates",
     "url": "https://www.eff.org/rss/updates.xml",
@@ -529,6 +543,13 @@
     "name": "Pew Research Center",
     "url": "https://www.pewresearch.org/feed/",
     "description": "社会調査、世論、デモグラフィック、テクノロジー利用動向に関する記事",
+    "category": "Social Impact"
+  },
+  {
+    "id": "eurostat",
+    "name": "Eurostat News",
+    "url": "https://ec.europa.eu/eurostat/en/search?p_p_id=estatsearchportlet_WAR_estatsearchportlet&p_p_lifecycle=2&p_p_state=maximized&p_p_mode=view&p_p_resource_id=atom&_estatsearchportlet_WAR_estatsearchportlet_collection=CAT_EURNEW",
+    "description": "欧州連合の統計、経済データ、社会指標に関するニュース",
     "category": "Social Impact"
   },
   {
