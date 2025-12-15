@@ -546,6 +546,13 @@
     "category": "Social Impact"
   },
   {
+    "id": "natematias",
+    "name": "J. Nathan Matias",
+    "url": "https://medium.com/feed/@natematias",
+    "description": "AIの科学、デジタル技術、民主主義、環境問題、市民科学に関する記事",
+    "category": "Social Impact"
+  },
+  {
     "id": "ooni",
     "name": "OONI Blog",
     "url": "https://ooni.org/blog/index.xml",
