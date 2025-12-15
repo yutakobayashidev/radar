@@ -824,5 +824,12 @@
     "url": "https://anthropolojamz.wordpress.com/feed/",
     "description": "人類学、文化研究、社会理論に関する記事",
     "category": "Social Impact"
+  },
+  {
+    "id": "icd-lab",
+    "name": "ICD-lab",
+    "url": "https://www.icd.cs.tut.ac.jp/index.php/feed/",
+    "description": "豊橋技術科学大学の「弱いロボット」研究、人とロボットのインタラクション、HCIに関する記事",
+    "category": "Media & Culture"
   }
 ]
