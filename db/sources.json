@@ -887,5 +887,12 @@
     "url": "https://lexfridman.com/feed/podcast/",
     "description": "AI、科学、テクノロジー、哲学などについての長時間インタビューポッドキャスト",
     "category": "Media & Culture"
+  },
+  {
+    "id": "ai-shift",
+    "name": "AI Shift Tech Blog",
+    "url": "https://www.ai-shift.co.jp/techblog/feed",
+    "description": "AIチャットボット、カスタマーサポート技術に関する記事",
+    "category": "Company Engineering"
   }
 ]
