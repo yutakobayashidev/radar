@@ -1013,5 +1013,19 @@
     "url": "https://podcast.darknetdiaries.com",
     "description": "ハッカー、データ侵害、サイバー犯罪に関するストーリーを語るポッドキャスト",
     "category": "Security & Privacy"
+  },
+  {
+    "id": "p-hone",
+    "name": "p-hone.info",
+    "url": "https://p-hone.info/index.xml",
+    "description": "アニメ、イラスト、技術、インターネット文化に関する個人ブログ",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "yuki0311",
+    "name": "yuki0311's blog",
+    "url": "https://blog.yuki0311.com/feed/",
+    "description": "インフラ、開発ツール、VRChat、AI活用に関する技術ブログ",
+    "category": "Personal Blog"
   }
 ]
