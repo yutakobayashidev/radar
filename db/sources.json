@@ -873,5 +873,12 @@
     "url": "https://misreading.chat/category/episodes/feed/",
     "description": "コンピュータサイエンスの論文を読んで話をするポッドキャスト",
     "category": "Media & Culture"
+  },
+  {
+    "id": "fukabori",
+    "name": "fukabori.fm",
+    "url": "https://rss.art19.com/fukabori",
+    "description": "技術・組織・マネジメントなどを深掘りして楽しむポッドキャスト",
+    "category": "Media & Culture"
   }
 ]
