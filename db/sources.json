@@ -999,5 +999,19 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCLreIXyMtLaFtVYvg2dCbLQ",
     "description": "言語学、数学、科学など需要のない動画を作るYouTubeチャンネル",
     "category": "Media & Culture"
+  },
+  {
+    "id": "yatteiki",
+    "name": "yatteiki.fm",
+    "url": "https://yatteiki.fm/feed.xml",
+    "description": "技術、開発、日常などについて話すポッドキャスト",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "darknet-diaries",
+    "name": "Darknet Diaries",
+    "url": "https://podcast.darknetdiaries.com",
+    "description": "ハッカー、データ侵害、サイバー犯罪に関するストーリーを語るポッドキャスト",
+    "category": "Security & Privacy"
   }
 ]
