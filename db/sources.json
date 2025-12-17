@@ -978,5 +978,26 @@
     "url": "https://astral.sh/blog/rss.xml",
     "description": "Ruff、uv、Python開発ツールに関する記事",
     "category": "Developer Tools"
+  },
+  {
+    "id": "minerva-scientia",
+    "name": "minerva scientia",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UClsyp848PT_kJ0VSR0zvWFg",
+    "description": "歴史言語学、着ぐるみ、アルゴリズム作曲、動画生成AIに関するYouTubeチャンネル",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "yukkuri-maccha",
+    "name": "ゆっくりまっちゃ",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCQBxe2pLyaVGylZpck_WkOw",
+    "description": "ゆっくり解説チャンネル",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "ngethoma",
+    "name": "け゚とま-ngethoma",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCLreIXyMtLaFtVYvg2dCbLQ",
+    "description": "言語学、数学、科学など需要のない動画を作るYouTubeチャンネル",
+    "category": "Media & Culture"
   }
 ]
