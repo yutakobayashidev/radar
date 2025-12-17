@@ -971,5 +971,12 @@
     "url": "https://zenn.dev/p/cover_corp/feed",
     "description": "カバー株式会社の技術記事、VTuber技術、配信プラットフォームに関する記事",
     "category": "Company Engineering"
+  },
+  {
+    "id": "astral",
+    "name": "Astral Blog",
+    "url": "https://astral.sh/blog/rss.xml",
+    "description": "Ruff、uv、Python開発ツールに関する記事",
+    "category": "Developer Tools"
   }
 ]
