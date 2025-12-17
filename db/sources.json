@@ -859,5 +859,19 @@
     "url": "https://datasociety.net/feed/",
     "description": "データ、テクノロジー、社会の交差点に関する研究、AI倫理、アルゴリズムの公平性に関する記事",
     "category": "Social Impact"
+  },
+  {
+    "id": "turingcomplete",
+    "name": "Turing Complete FM",
+    "url": "https://feeds.turingcomplete.fm/tcfm",
+    "description": "コンピュータサイエンスとテクノロジーに関するポッドキャスト",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "misreading",
+    "name": "misreading.chat",
+    "url": "https://misreading.chat/category/episodes/feed/",
+    "description": "コンピュータサイエンスの論文を読んで話をするポッドキャスト",
+    "category": "Media & Culture"
   }
 ]
