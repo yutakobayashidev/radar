@@ -1069,5 +1069,12 @@
     "url": "https://beepb00p.xyz/atom.xml",
     "description": "個人データ管理、知識管理、データ統合システム構築に関する技術ブログ",
     "category": "Personal Blog"
+  },
+  {
+    "id": "mozilla-hacks",
+    "name": "Mozilla Hacks",
+    "url": "https://hacks.mozilla.org/feed/",
+    "description": "Web開発、ブラウザ技術、Firefox、Web標準、WebAssemblyに関する記事",
+    "category": "Developer Tools"
   }
 ]
