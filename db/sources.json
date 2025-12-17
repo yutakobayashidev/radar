@@ -880,5 +880,12 @@
     "url": "https://rss.art19.com/fukabori",
     "description": "技術・組織・マネジメントなどを深掘りして楽しむポッドキャスト",
     "category": "Media & Culture"
+  },
+  {
+    "id": "lexfridman",
+    "name": "Lex Fridman Podcast",
+    "url": "https://lexfridman.com/feed/podcast/",
+    "description": "AI、科学、テクノロジー、哲学などについての長時間インタビューポッドキャスト",
+    "category": "Media & Culture"
   }
 ]
