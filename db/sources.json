@@ -1132,5 +1132,26 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCWpk9PSGHoJW1hZT4egxTNQ",
     "description": "ユニークな場所を探索する独立系ドキュメンタリー映画製作者による旅行チャンネル",
     "category": "Media & Culture"
+  },
+  {
+    "id": "josephg",
+    "name": "Seph",
+    "url": "https://josephg.com/blog/rss/",
+    "description": "CRDT、リアルタイム協調編集、分散システムに関する技術ブログ",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "figma-blog",
+    "name": "Figma Blog",
+    "url": "https://www.figma.com/blog/rss/",
+    "description": "デザインツール、マルチプレイヤー技術、プロダクト開発に関する記事",
+    "category": "Developer Tools"
+  },
+  {
+    "id": "safecast",
+    "name": "Safecast",
+    "url": "https://safecast.jp/feed/",
+    "description": "放射線測定、環境モニタリング、オープンデータに関する市民科学プロジェクト",
+    "category": "Social Impact"
   }
 ]
