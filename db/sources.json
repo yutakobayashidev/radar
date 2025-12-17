@@ -1027,5 +1027,12 @@
     "url": "https://blog.yuki0311.com/feed/",
     "description": "インフラ、開発ツール、VRChat、AI活用に関する技術ブログ",
     "category": "Personal Blog"
+  },
+  {
+    "id": "jmuk",
+    "name": "Jun Mukai's Blog",
+    "url": "https://www.jmuk.org/blog/index.xml",
+    "description": "ソフトウェアエンジニアリング、日本語入力、文化、言語に関する個人ブログ",
+    "category": "Personal Blog"
   }
 ]
