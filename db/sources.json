@@ -1118,5 +1118,19 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCM--uemqoP45daIZG2-VpOA",
     "description": "CTF、Vim、競技プログラミング、テトリスに関する動画",
     "category": "Media & Culture"
+  },
+  {
+    "id": "bappa-shota",
+    "name": "Bappa Shota",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCcrpFRRYkH185Xb8D-JQT7Q",
+    "description": "地球を旅し目の当たりにした未知の世界を共有する旅行チャンネル",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "ruhi-cenet",
+    "name": "Ruhi Çenet",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCWpk9PSGHoJW1hZT4egxTNQ",
+    "description": "ユニークな場所を探索する独立系ドキュメンタリー映画製作者による旅行チャンネル",
+    "category": "Media & Culture"
   }
 ]
