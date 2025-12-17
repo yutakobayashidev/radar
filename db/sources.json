@@ -950,5 +950,26 @@
     "url": "https://github.com/automerge/automerge/releases.atom",
     "description": "CRDTベースのデータ同期ライブラリAutomergeのリリース情報",
     "category": "Developer Tools"
+  },
+  {
+    "id": "mastra",
+    "name": "Mastra Releases",
+    "url": "https://github.com/mastra-ai/mastra/releases.atom",
+    "description": "AIエージェント開発フレームワークMastraのリリース情報",
+    "category": "AI/ML"
+  },
+  {
+    "id": "strands-agents",
+    "name": "Strands Agents SDK Python Releases",
+    "url": "https://github.com/strands-agents/sdk-python/releases.atom",
+    "description": "Strands AgentsのPython SDKリリース情報",
+    "category": "AI/ML"
+  },
+  {
+    "id": "cover-corp-zenn",
+    "name": "カバー株式会社 on Zenn",
+    "url": "https://zenn.dev/p/cover_corp/feed",
+    "description": "カバー株式会社の技術記事、VTuber技術、配信プラットフォームに関する記事",
+    "category": "Company Engineering"
   }
 ]
