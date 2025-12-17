@@ -1076,5 +1076,19 @@
     "url": "https://hacks.mozilla.org/feed/",
     "description": "Web開発、ブラウザ技術、Firefox、Web標準、WebAssemblyに関する記事",
     "category": "Developer Tools"
+  },
+  {
+    "id": "lamplight",
+    "name": "LΛMPLIGHT",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCtF6NLMHd0hHDmKeFcNYdmg",
+    "description": "微分音音楽、言語創作（人工言語）、和音図・文法図による芸術表現",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "hojo-minori",
+    "name": "豊穣ミノリ / Hojo Minori",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC5r80UZbwfM5bCgGM5soZkg",
+    "description": "折り紙、数学、プログラミング、作曲、微分音音楽の生放送とゲーム実況",
+    "category": "Media & Culture"
   }
 ]
