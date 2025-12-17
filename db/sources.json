@@ -1090,5 +1090,33 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC5r80UZbwfM5bCgGM5soZkg",
     "description": "折り紙、数学、プログラミング、作曲、微分音音楽の生放送とゲーム実況",
     "category": "Media & Culture"
+  },
+  {
+    "id": "3blue1brown",
+    "name": "3Blue1Brown",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw",
+    "description": "数学、物理学、コンピュータサイエンスをアニメーションで視覚化し解説する教育チャンネル",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "ufolium",
+    "name": "Ufolium",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCEmNPlkTWfM1zmLRjLW3CPQ",
+    "description": "中高レベルで楽しめる数学の動画教材配信サービス",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "teireiya-girl",
+    "name": "低レイヤーガール",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCMsstGhINXdpMqo9tsElCMQ",
+    "description": "低レイヤープログラミング、OS開発、ペアプログラミング配信",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "kurenaif",
+    "name": "kurenaif",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCM--uemqoP45daIZG2-VpOA",
+    "description": "CTF、Vim、競技プログラミング、テトリスに関する動画",
+    "category": "Media & Culture"
   }
 ]
