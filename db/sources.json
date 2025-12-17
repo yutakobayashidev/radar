@@ -1034,5 +1034,40 @@
     "url": "https://www.jmuk.org/blog/index.xml",
     "description": "ソフトウェアエンジニアリング、日本語入力、文化、言語に関する個人ブログ",
     "category": "Personal Blog"
+  },
+  {
+    "id": "tex2e",
+    "name": "晴耕雨読",
+    "url": "https://tex2e.github.io/blog/feed.xml",
+    "description": "プログラミング全般、Python、Linux、Azure、SQL等の技術備忘録ブログ",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "bret-victor",
+    "name": "Bret Victor",
+    "url": "https://worrydream.com/feed.xml",
+    "description": "インタラクティブメディア、人間中心設計、計算機科学とデザインの交点に関する活動",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "sunday-letters",
+    "name": "Sunday Letters from Sam",
+    "url": "https://sundaylettersfromsam.substack.com/feed",
+    "description": "AI、組織論、システム思考、技術変革に関するニュースレター",
+    "category": "Personal Blog"
+  },
+  {
+    "id": "feeling-of-computing",
+    "name": "Feeling of Computing",
+    "url": "https://www.omnycontent.com/d/playlist/c4157e60-c7f8-470d-b13f-a7b30040df73/564f493f-af32-4c48-862f-a7b300e4df49/ac317852-8807-44b8-8eff-a7b300e4df52/podcast.rss",
+    "description": "プログラミング言語の哲学、デザイン、歴史、未来について議論するポッドキャスト",
+    "category": "Media & Culture"
+  },
+  {
+    "id": "beepb00p",
+    "name": "beepb00p",
+    "url": "https://beepb00p.xyz/atom.xml",
+    "description": "個人データ管理、知識管理、データ統合システム構築に関する技術ブログ",
+    "category": "Personal Blog"
   }
 ]
