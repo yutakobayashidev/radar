@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 import { useFetcher } from "react-router";
 import { useInView } from "react-intersection-observer";
+import { count } from "drizzle-orm";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
 import { CardGrid } from "~/components/feed";
 import { categories, type FetchRadarItemsResponse, type RadarItem } from "~/data/types";
+import { radarItems } from "../../db/schema";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -16,17 +18,8 @@ export function meta({}: Route.MetaArgs) {
 const ITEMS_PER_PAGE = 20;
 
 export async function loader({ context }: Route.LoaderArgs) {
-  // 総数を取得（カウント計算用）
-  const totalRadarItems = await context.db.query.radarItems.findMany();
-  const totalCount = totalRadarItems.length;
-
-  // 各ソースごとのカウントを事前計算
-  const sourceCounts: Record<string, number> = {};
-  totalRadarItems.forEach((item) => {
-    sourceCounts[item.source] = (sourceCounts[item.source] || 0) + 1;
-  });
-
-  const [radarItems, sources] = await Promise.all([
+  const [totalCountResult, items, sources] = await Promise.all([
+    context.db.select({ count: count() }).from(radarItems),
     context.db.query.radarItems.findMany({
       orderBy: (radarItems, { desc }) => [desc(radarItems.timestamp)],
       limit: ITEMS_PER_PAGE,
@@ -36,15 +29,14 @@ export async function loader({ context }: Route.LoaderArgs) {
     }),
   ]);
 
-  const hasMore = radarItems.length < totalCount;
+  const totalCount = totalCountResult[0]?.count ?? 0;
+  const hasMore = items.length < totalCount;
 
   return {
-    radarItems,
+    radarItems: items,
     sources,
     hasMore,
     currentPage: 1,
-    totalCount,
-    sourceCounts,
   };
 }
 
@@ -130,8 +122,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       setSelectedSource={setSelectedSource}
       showSourceFilter={true}
       sources={loaderData.sources}
-      totalCount={loaderData.totalCount}
-      sourceCounts={loaderData.sourceCounts}
       headerContent={
         <CategoryFilter
           selectedCategory={selectedCategory}

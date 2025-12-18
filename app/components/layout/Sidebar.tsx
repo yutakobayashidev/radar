@@ -10,8 +10,6 @@ interface SidebarProps {
   setSelectedSource?: (source: string) => void;
   showSourceFilter?: boolean;
   sources?: Source[];
-  totalCount?: number;
-  sourceCounts?: Record<string, number>;
 }
 
 export function Sidebar({
@@ -21,8 +19,6 @@ export function Sidebar({
   setSelectedSource,
   showSourceFilter = false,
   sources = [],
-  totalCount = 0,
-  sourceCounts = {},
 }: SidebarProps) {
   return (
     <aside
@@ -136,9 +132,6 @@ export function Sidebar({
                       </svg>
                     </div>
                     <span className="flex-1 text-left">All</span>
-                    <span className="text-xs text-gray-400">
-                      {totalCount}
-                    </span>
                   </button>
                 </li>
                 {sources.map((source) => (
@@ -157,9 +150,6 @@ export function Sidebar({
                       <Favicon domain={getDomainFromUrl(source.url)} />
                       <span className="flex-1 text-left truncate">
                         {source.name}
-                      </span>
-                      <span className="text-xs text-gray-400">
-                        {sourceCounts[source.id] || 0}
                       </span>
                     </button>
                   </li>

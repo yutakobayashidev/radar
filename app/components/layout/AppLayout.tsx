@@ -10,8 +10,6 @@ interface AppLayoutProps {
   setSelectedSource?: (source: string) => void;
   showSourceFilter?: boolean;
   sources?: Source[];
-  totalCount?: number;
-  sourceCounts?: Record<string, number>;
 }
 
 export function AppLayout({
@@ -22,8 +20,6 @@ export function AppLayout({
   setSelectedSource,
   showSourceFilter = false,
   sources,
-  totalCount,
-  sourceCounts,
 }: AppLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -43,8 +39,6 @@ export function AppLayout({
         setSelectedSource={setSelectedSource}
         showSourceFilter={showSourceFilter}
         sources={sources}
-        totalCount={totalCount}
-        sourceCounts={sourceCounts}
       />
 
       <div className="flex-1 flex flex-col min-w-0 lg:ml-60">

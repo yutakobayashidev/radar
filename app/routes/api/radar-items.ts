@@ -1,4 +1,6 @@
+import { count } from "drizzle-orm";
 import type { Route } from "./+types/radar-items";
+import { radarItems as radarItemsTable } from "../../../db/schema";
 
 const ITEMS_PER_PAGE = 20;
 
@@ -7,22 +9,22 @@ export async function loader({ request, context }: Route.LoaderArgs) {
   const page = parseInt(url.searchParams.get("page") || "1");
   const offset = (page - 1) * ITEMS_PER_PAGE;
 
-  // 総数を取得
-  const totalCount = await context.db.query.radarItems.findMany();
+  const [totalCountResult, radarItems] = await Promise.all([
+    context.db.select({ count: count() }).from(radarItemsTable),
+    context.db.query.radarItems.findMany({
+      orderBy: (radarItems, { desc }) => [desc(radarItems.timestamp)],
+      limit: ITEMS_PER_PAGE,
+      offset,
+    }),
+  ]);
 
-  // ページネーションでデータを取得
-  const radarItems = await context.db.query.radarItems.findMany({
-    orderBy: (radarItems, { desc }) => [desc(radarItems.timestamp)],
-    limit: ITEMS_PER_PAGE,
-    offset,
-  });
-
-  const hasMore = offset + radarItems.length < totalCount.length;
+  const totalCount = totalCountResult[0]?.count ?? 0;
+  const hasMore = offset + radarItems.length < totalCount;
 
   return {
     radarItems,
     hasMore,
     currentPage: page,
-    totalCount: totalCount.length,
+    totalCount,
   };
 }

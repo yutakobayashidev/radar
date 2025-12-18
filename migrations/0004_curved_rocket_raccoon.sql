@@ -1,0 +1,1 @@
+ALTER TABLE `sources` DROP COLUMN `article_count`;
