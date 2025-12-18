@@ -16,7 +16,7 @@ export interface RadarItem {
   sourceName: string;
   category: string;
   summary: string;
-  image: string;
+  image: string | null;
   url: string;
   timestamp: Date;
   createdAt: Date;
@@ -49,6 +49,13 @@ export const categoryColors: Record<string, string> = {
   "Social Impact": "bg-yellow-100 text-yellow-700",
   "Media & Culture": "bg-teal-100 text-teal-700",
 };
+
+export interface FetchRadarItemsResponse {
+  radarItems: RadarItem[];
+  hasMore: boolean;
+  currentPage: number;
+  totalCount: number;
+}
 
 // URLからドメインを抽出するユーティリティ関数
 export function getDomainFromUrl(url: string): string {

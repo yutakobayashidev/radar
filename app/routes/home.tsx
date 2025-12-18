@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useFetcher } from "react-router";
+import { useInView } from "react-intersection-observer";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
 import { CardGrid } from "~/components/feed";
-import { categories } from "~/data/types";
+import { categories, type FetchRadarItemsResponse, type RadarItem } from "~/data/types";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -11,17 +13,39 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
+const ITEMS_PER_PAGE = 20;
+
 export async function loader({ context }: Route.LoaderArgs) {
+  // 総数を取得（カウント計算用）
+  const totalRadarItems = await context.db.query.radarItems.findMany();
+  const totalCount = totalRadarItems.length;
+
+  // 各ソースごとのカウントを事前計算
+  const sourceCounts: Record<string, number> = {};
+  totalRadarItems.forEach((item) => {
+    sourceCounts[item.source] = (sourceCounts[item.source] || 0) + 1;
+  });
+
   const [radarItems, sources] = await Promise.all([
     context.db.query.radarItems.findMany({
       orderBy: (radarItems, { desc }) => [desc(radarItems.timestamp)],
+      limit: ITEMS_PER_PAGE,
     }),
     context.db.query.sources.findMany({
       orderBy: (sources, { asc }) => [asc(sources.name)],
     }),
   ]);
 
-  return { radarItems, sources };
+  const hasMore = radarItems.length < totalCount;
+
+  return {
+    radarItems,
+    sources,
+    hasMore,
+    currentPage: 1,
+    totalCount,
+    sourceCounts,
+  };
 }
 
 function CategoryFilter({
@@ -51,10 +75,51 @@ function CategoryFilter({
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
+  const fetcher = useFetcher<FetchRadarItemsResponse>();
+
   const [selectedSource, setSelectedSource] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const filteredItems = loaderData.radarItems
+  // 状態管理を追加
+  const [radarItems, setRadarItems] = useState<RadarItem[]>(loaderData.radarItems);
+  const [page, setPage] = useState(loaderData.currentPage);
+  const [hasMore, setHasMore] = useState(loaderData.hasMore);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // 新しいページのデータ取得
+  const loadMore = useCallback(() => {
+    if (hasMore && fetcher.state === "idle" && !isLoading) {
+      const nextPage = page + 1;
+      setPage(nextPage);
+      setIsLoading(true);
+      fetcher.load(`/api/radar-items?page=${nextPage}`);
+    }
+  }, [hasMore, page, fetcher, isLoading]);
+
+  // fetcher からデータが返ってきたら統合する
+  useEffect(() => {
+    const data = fetcher.data;
+    if (data?.radarItems) {
+      setRadarItems((prev) => [...prev, ...data.radarItems]);
+      setHasMore(data.hasMore);
+      setIsLoading(false);
+    }
+  }, [fetcher.data]);
+
+  // Intersection Observer のセットアップ
+  const { ref: observerRef, inView } = useInView({
+    threshold: 0,
+    rootMargin: "100px",
+  });
+
+  // Intersection Observer がトリガーされたら読み込み
+  useEffect(() => {
+    if (inView && hasMore && fetcher.state === "idle" && !isLoading) {
+      loadMore();
+    }
+  }, [inView, hasMore, fetcher.state, loadMore, isLoading]);
+
+  const filteredItems = radarItems
     .filter((f) => selectedSource === "all" || f.source === selectedSource)
     .filter((f) => selectedCategory === "All" || f.category === selectedCategory);
 
@@ -65,7 +130,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       setSelectedSource={setSelectedSource}
       showSourceFilter={true}
       sources={loaderData.sources}
-      radarItems={loaderData.radarItems}
+      totalCount={loaderData.totalCount}
+      sourceCounts={loaderData.sourceCounts}
       headerContent={
         <CategoryFilter
           selectedCategory={selectedCategory}
@@ -77,6 +143,16 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       {filteredItems.length === 0 && (
         <div className="text-center py-12 text-gray-500">
           該当する記事がありません
+        </div>
+      )}
+
+      {hasMore && (
+        <div ref={observerRef} className="p-2.5 text-center">
+          {isLoading && (
+            <div className="flex justify-center items-center">
+              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900"></div>
+            </div>
+          )}
         </div>
       )}
     </AppLayout>

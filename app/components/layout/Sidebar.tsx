@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router";
 import { Favicon } from "~/components/ui";
-import type { Source, RadarItem } from "~/data/types";
+import type { Source } from "~/data/types";
 import { getDomainFromUrl } from "~/data/types";
 
 interface SidebarProps {
@@ -10,7 +10,8 @@ interface SidebarProps {
   setSelectedSource?: (source: string) => void;
   showSourceFilter?: boolean;
   sources?: Source[];
-  radarItems?: RadarItem[];
+  totalCount?: number;
+  sourceCounts?: Record<string, number>;
 }
 
 export function Sidebar({
@@ -20,7 +21,8 @@ export function Sidebar({
   setSelectedSource,
   showSourceFilter = false,
   sources = [],
-  radarItems = [],
+  totalCount = 0,
+  sourceCounts = {},
 }: SidebarProps) {
   return (
     <aside
@@ -135,7 +137,7 @@ export function Sidebar({
                     </div>
                     <span className="flex-1 text-left">All</span>
                     <span className="text-xs text-gray-400">
-                      {radarItems.length}
+                      {totalCount}
                     </span>
                   </button>
                 </li>
@@ -157,7 +159,7 @@ export function Sidebar({
                         {source.name}
                       </span>
                       <span className="text-xs text-gray-400">
-                        {radarItems.filter((f) => f.source === source.id).length}
+                        {sourceCounts[source.id] || 0}
                       </span>
                     </button>
                   </li>

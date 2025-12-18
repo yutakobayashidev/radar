@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Sidebar } from "./Sidebar";
-import type { Source, RadarItem } from "~/data/types";
+import type { Source } from "~/data/types";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -10,7 +10,8 @@ interface AppLayoutProps {
   setSelectedSource?: (source: string) => void;
   showSourceFilter?: boolean;
   sources?: Source[];
-  radarItems?: RadarItem[];
+  totalCount?: number;
+  sourceCounts?: Record<string, number>;
 }
 
 export function AppLayout({
@@ -21,7 +22,8 @@ export function AppLayout({
   setSelectedSource,
   showSourceFilter = false,
   sources,
-  radarItems,
+  totalCount,
+  sourceCounts,
 }: AppLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -41,7 +43,8 @@ export function AppLayout({
         setSelectedSource={setSelectedSource}
         showSourceFilter={showSourceFilter}
         sources={sources}
-        radarItems={radarItems}
+        totalCount={totalCount}
+        sourceCounts={sourceCounts}
       />
 
       <div className="flex-1 flex flex-col min-w-0 lg:ml-60">
