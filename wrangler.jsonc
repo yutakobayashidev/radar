@@ -24,7 +24,7 @@
 	],
 	"d1_databases": [
 		{
-			"binding": "radar",
+			"binding": "DB",
 			"database_name": "radar",
 			"database_id": "0475464a-cce6-413f-86d4-553f2648d24d",
 			"remote": true
