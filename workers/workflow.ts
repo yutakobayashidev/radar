@@ -4,8 +4,6 @@ import { parseFeed } from "htmlparser2";
 import { eq } from "drizzle-orm";
 import * as schema from "../db/schema";
 
-type FeedData = NonNullable<ReturnType<typeof parseFeed>>;
-
 export class MyWorkflow extends WorkflowEntrypoint<Env> {
   override async run(_event: WorkflowEvent<Params>, step: WorkflowStep) {
     const db = drizzle(this.env.DB, { schema });
@@ -143,14 +141,13 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
       return results;
     });
 
-    // Step 3: LLM処理 (カテゴリ + サマリー生成)
-    const processedItems = await step.do("LLM processing for category and summary", async () => {
+    // Step 3: LLM処理 (サマリー生成)
+    const processedItems = await step.do("LLM processing for summary", async () => {
       console.log(`🤖 Step 3: Processing ${itemsWithOGP.length} items with LLM...`);
-      // TODO: AI bindings を使ってカテゴリとサマリーを生成
+      // TODO: AI bindings を使ってサマリーを生成
       // 現在は仮実装として、デフォルト値を設定
       const processed = itemsWithOGP.map((item) => ({
         ...item,
-        category: "Infrastructure", // TODO: LLMで判定
         summary: item.summary.substring(0, 200), // TODO: LLMで要約
       }));
       console.log(`✅ Step 3 complete: ${processed.length} items processed`);
@@ -165,7 +162,6 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
           title: item.title,
           source: item.sourceId,
           sourceName: item.sourceName,
-          category: item.category,
           summary: item.summary,
           image: item.image,
           url: item.url,

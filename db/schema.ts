@@ -15,7 +15,6 @@ export const radarItems = sqliteTable("radar_items", {
   title: text("title").notNull(),
   source: text("source").notNull().references(() => sources.id, { onDelete: "cascade" }),
   sourceName: text("source_name").notNull(),
-  category: text("category").notNull(), // "AI" | "Infrastructure" | "Framework" | "Language" | "Runtime" | "Platform"
   summary: text("summary").notNull(),
   image: text("image"), // OGP画像が取得できない場合は空文字列またはnull
   url: text("url").notNull(),

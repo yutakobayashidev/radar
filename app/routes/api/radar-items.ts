@@ -1,6 +1,6 @@
-import { count } from "drizzle-orm";
+import { count, eq, desc } from "drizzle-orm";
 import type { Route } from "./+types/radar-items";
-import { radarItems as radarItemsTable } from "../../../db/schema";
+import { radarItems as radarItemsTable, sources } from "../../../db/schema";
 
 const ITEMS_PER_PAGE = 20;
 
@@ -11,11 +11,25 @@ export async function loader({ request, context }: Route.LoaderArgs) {
 
   const [totalCountResult, radarItems] = await Promise.all([
     context.db.select({ count: count() }).from(radarItemsTable),
-    context.db.query.radarItems.findMany({
-      orderBy: (radarItems, { desc }) => [desc(radarItems.timestamp)],
-      limit: ITEMS_PER_PAGE,
-      offset,
-    }),
+    context.db
+      .select({
+        id: radarItemsTable.id,
+        title: radarItemsTable.title,
+        source: radarItemsTable.source,
+        sourceName: radarItemsTable.sourceName,
+        summary: radarItemsTable.summary,
+        image: radarItemsTable.image,
+        url: radarItemsTable.url,
+        timestamp: radarItemsTable.timestamp,
+        createdAt: radarItemsTable.createdAt,
+        updatedAt: radarItemsTable.updatedAt,
+        category: sources.category,
+      })
+      .from(radarItemsTable)
+      .innerJoin(sources, eq(radarItemsTable.source, sources.id))
+      .orderBy(desc(radarItemsTable.timestamp))
+      .limit(ITEMS_PER_PAGE)
+      .offset(offset),
   ]);
 
   const totalCount = totalCountResult[0]?.count ?? 0;

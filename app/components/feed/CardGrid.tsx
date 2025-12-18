@@ -1,9 +1,9 @@
-import type { RadarItem } from "~/data/types";
+import type { RadarItemWithCategory } from "~/data/types";
 import { getDomainFromUrl, formatRelativeTime } from "~/data/types";
 import { Favicon, CategoryBadge } from "~/components/ui";
 
 interface CardGridProps {
-  items: RadarItem[];
+  items: RadarItemWithCategory[];
 }
 
 export function CardGrid({ items }: CardGridProps) {

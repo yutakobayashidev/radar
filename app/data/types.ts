@@ -13,7 +13,6 @@ export interface RadarItem {
   title: string;
   source: string;
   sourceName: string;
-  category: string;
   summary: string;
   image: string | null;
   url: string;
@@ -36,6 +35,8 @@ export const categories = [
   "Media & Culture"
 ] as const;
 
+export type Category = typeof categories[number];
+
 export const categoryColors: Record<string, string> = {
   "AI/ML": "bg-purple-100 text-purple-700",
   "Developer Tools": "bg-blue-100 text-blue-700",
@@ -50,7 +51,7 @@ export const categoryColors: Record<string, string> = {
 };
 
 export interface FetchRadarItemsResponse {
-  radarItems: RadarItem[];
+  radarItems: RadarItemWithCategory[];
   hasMore: boolean;
   currentPage: number;
   totalCount: number;

@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 import { useFetcher } from "react-router";
 import { useInView } from "react-intersection-observer";
-import { count } from "drizzle-orm";
+import { count, eq, desc } from "drizzle-orm";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
 import { CardGrid } from "~/components/feed";
-import { categories, type FetchRadarItemsResponse, type RadarItem } from "~/data/types";
-import { radarItems } from "../../db/schema";
+import { categories, type FetchRadarItemsResponse, type RadarItemWithCategory } from "~/data/types";
+import { radarItems, sources } from "../../db/schema";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -18,12 +18,26 @@ export function meta({}: Route.MetaArgs) {
 const ITEMS_PER_PAGE = 20;
 
 export async function loader({ context }: Route.LoaderArgs) {
-  const [totalCountResult, items, sources] = await Promise.all([
+  const [totalCountResult, items, sourcesData] = await Promise.all([
     context.db.select({ count: count() }).from(radarItems),
-    context.db.query.radarItems.findMany({
-      orderBy: (radarItems, { desc }) => [desc(radarItems.timestamp)],
-      limit: ITEMS_PER_PAGE,
-    }),
+    context.db
+      .select({
+        id: radarItems.id,
+        title: radarItems.title,
+        source: radarItems.source,
+        sourceName: radarItems.sourceName,
+        summary: radarItems.summary,
+        image: radarItems.image,
+        url: radarItems.url,
+        timestamp: radarItems.timestamp,
+        createdAt: radarItems.createdAt,
+        updatedAt: radarItems.updatedAt,
+        category: sources.category,
+      })
+      .from(radarItems)
+      .innerJoin(sources, eq(radarItems.source, sources.id))
+      .orderBy(desc(radarItems.timestamp))
+      .limit(ITEMS_PER_PAGE),
     context.db.query.sources.findMany({
       orderBy: (sources, { asc }) => [asc(sources.name)],
     }),
@@ -34,7 +48,7 @@ export async function loader({ context }: Route.LoaderArgs) {
 
   return {
     radarItems: items,
-    sources,
+    sources: sourcesData,
     hasMore,
     currentPage: 1,
   };
@@ -73,7 +87,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   // 状態管理を追加
-  const [radarItems, setRadarItems] = useState<RadarItem[]>(loaderData.radarItems);
+  const [radarItems, setRadarItems] = useState<RadarItemWithCategory[]>(loaderData.radarItems);
   const [page, setPage] = useState(loaderData.currentPage);
   const [hasMore, setHasMore] = useState(loaderData.hasMore);
   const [isLoading, setIsLoading] = useState(false);

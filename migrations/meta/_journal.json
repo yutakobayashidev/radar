@@ -36,6 +36,13 @@
       "when": 1766074993232,
       "tag": "0004_curved_rocket_raccoon",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1766075478500,
+      "tag": "0005_late_rictor",
+      "breakpoints": true
     }
   ]
 }

@@ -1,0 +1,1 @@
+ALTER TABLE `radar_items` DROP COLUMN `category`;
