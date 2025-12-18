@@ -11,7 +11,9 @@
 		"enabled": true
 	},
 	"triggers": {
-		"crons": ["0 * * * *"]
+		"crons": [
+			"0 * * * *"
+		]
 	},
 	"workflows": [
 		{
@@ -22,10 +24,10 @@
 	],
 	"d1_databases": [
 		{
-			"binding": "DB",
+			"binding": "radar",
 			"database_name": "radar",
-			"database_id": "2bae0f9f-b37b-4cf5-beda-3deac070fac2",
-			"migrations_dir": "migrations"
+			"database_id": "0475464a-cce6-413f-86d4-553f2648d24d",
+			"remote": true
 		}
 	]
 	/**
