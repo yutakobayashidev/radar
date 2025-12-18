@@ -1,8 +1,7 @@
-import type { Category } from "~/data/types";
 import { categoryColors } from "~/data/types";
 
 interface CategoryBadgeProps {
-  category: Category;
+  category: string;
   className?: string;
 }
 

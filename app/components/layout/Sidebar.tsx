@@ -1,13 +1,15 @@
 import { Link, NavLink } from "react-router";
 import { Favicon } from "~/components/ui";
-import type { Source } from "~/data/types";
-import { getDomainFromUrl } from "~/data/types";
+import type { Source, Period } from "~/data/types";
+import { getDomainFromUrl, periods } from "~/data/types";
 
 interface SidebarProps {
   sidebarOpen: boolean;
   setSidebarOpen: (open: boolean) => void;
   selectedSource?: string;
   setSelectedSource?: (source: string) => void;
+  selectedPeriod?: Period;
+  setSelectedPeriod?: (period: Period) => void;
   showSourceFilter?: boolean;
   sources?: Source[];
 }
@@ -17,6 +19,8 @@ export function Sidebar({
   setSidebarOpen,
   selectedSource = "all",
   setSelectedSource,
+  selectedPeriod = "All",
+  setSelectedPeriod,
   showSourceFilter = false,
   sources = [],
 }: SidebarProps) {
@@ -97,6 +101,46 @@ export function Sidebar({
               </li>
             </ul>
           </div>
+
+          {showSourceFilter && setSelectedPeriod && (
+            <div className="mb-4">
+              <h2 className="text-xs font-medium text-gray-400 uppercase tracking-wider px-2 mb-1">
+                Period
+              </h2>
+              <ul className="space-y-0.5">
+                {periods.map((period) => (
+                  <li key={period}>
+                    <button
+                      onClick={() => {
+                        setSelectedPeriod(period);
+                        setSidebarOpen(false);
+                      }}
+                      className={`w-full flex items-center gap-2 px-2 py-1.5 rounded-md text-sm transition-colors ${
+                        selectedPeriod === period
+                          ? "bg-gray-100 text-gray-900 font-medium"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                      }`}
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.5}
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                      <span className="flex-1 text-left">{period}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {showSourceFilter && setSelectedSource && (
             <div>

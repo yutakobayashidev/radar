@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { useFetcher } from "react-router";
 import { useInView } from "react-intersection-observer";
-import { count, eq, desc } from "drizzle-orm";
+import { count, eq, desc, gte } from "drizzle-orm";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
 import { CardGrid } from "~/components/feed";
-import { categories, type FetchRadarItemsResponse, type RadarItemWithCategory } from "~/data/types";
+import { categories, type FetchRadarItemsResponse, type RadarItemWithCategory, type Period } from "~/data/types";
 import { radarItems, sources } from "../../db/schema";
 
 export function meta({}: Route.MetaArgs) {
@@ -85,6 +85,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
   const [selectedSource, setSelectedSource] = useState("all");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedPeriod, setSelectedPeriod] = useState<Period>("All");
 
   // 状態管理を追加
   const [radarItems, setRadarItems] = useState<RadarItemWithCategory[]>(loaderData.radarItems);
@@ -127,13 +128,29 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
   const filteredItems = radarItems
     .filter((f) => selectedSource === "all" || f.source === selectedSource)
-    .filter((f) => selectedCategory === "All" || f.category === selectedCategory);
+    .filter((f) => selectedCategory === "All" || f.category === selectedCategory)
+    .filter((f) => {
+      if (selectedPeriod === "All") return true;
+      const now = new Date();
+      const itemDate = new Date(f.timestamp);
+      if (selectedPeriod === "Today") {
+        return itemDate.toDateString() === now.toDateString();
+      }
+      if (selectedPeriod === "Month") {
+        const oneMonthAgo = new Date();
+        oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+        return itemDate >= oneMonthAgo;
+      }
+      return true;
+    });
 
   return (
     <AppLayout
       title="Radar"
       selectedSource={selectedSource}
       setSelectedSource={setSelectedSource}
+      selectedPeriod={selectedPeriod}
+      setSelectedPeriod={setSelectedPeriod}
       showSourceFilter={true}
       sources={loaderData.sources}
       headerContent={

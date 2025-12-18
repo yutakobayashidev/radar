@@ -37,6 +37,13 @@ export const categories = [
 
 export type Category = typeof categories[number];
 
+export const periods = ["All", "Month", "Today"] as const;
+export type Period = typeof periods[number];
+
+export interface RadarItemWithCategory extends RadarItem {
+  category: string;
+}
+
 export const categoryColors: Record<string, string> = {
   "AI/ML": "bg-purple-100 text-purple-700",
   "Developer Tools": "bg-blue-100 text-blue-700",
