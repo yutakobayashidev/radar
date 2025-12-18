@@ -1,4 +1,4 @@
-import { categoryColors } from "~/data/types";
+import { getCategoryByName } from "~/data/types";
 
 interface CategoryBadgeProps {
   category: string;
@@ -6,8 +6,9 @@ interface CategoryBadgeProps {
 }
 
 export function CategoryBadge({ category, className = "" }: CategoryBadgeProps) {
+  const categoryInfo = getCategoryByName(category);
   return (
-    <span className={`text-xs px-1.5 py-0.5 rounded ${categoryColors[category]} ${className}`}>
+    <span className={`text-xs px-1.5 py-0.5 rounded ${categoryInfo.color} ${className}`}>
       {category}
     </span>
   );

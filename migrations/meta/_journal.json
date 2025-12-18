@@ -43,6 +43,13 @@
       "when": 1766075478500,
       "tag": "0005_late_rictor",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1766076553911,
+      "tag": "0006_gray_chat",
+      "breakpoints": true
     }
   ]
 }

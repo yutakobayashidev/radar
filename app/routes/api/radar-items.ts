@@ -24,6 +24,7 @@ export async function loader({ request, context }: Route.LoaderArgs) {
         createdAt: radarItemsTable.createdAt,
         updatedAt: radarItemsTable.updatedAt,
         category: sources.category,
+        categorySlug: sources.categorySlug,
       })
       .from(radarItemsTable)
       .innerJoin(sources, eq(radarItemsTable.source, sources.id))

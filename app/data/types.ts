@@ -4,6 +4,7 @@ export interface Source {
   url: string;
   description: string;
   category: string;
+  categorySlug: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -21,41 +22,39 @@ export interface RadarItem {
   updatedAt: Date;
 }
 
-export const categories = [
-  "All",
-  "AI/ML",
-  "Developer Tools",
-  "Web Standards",
-  "Security & Privacy",
-  "Digital Identity",
-  "Platform & Services",
-  "Company Engineering",
-  "Personal Blog",
-  "Social Impact",
-  "Media & Culture"
+export const categoryList = [
+  { name: "All", slug: "all", color: "bg-gray-100 text-gray-700" },
+  { name: "AI/ML", slug: "ai-ml", color: "bg-purple-100 text-purple-700" },
+  { name: "Developer Tools", slug: "developer-tools", color: "bg-blue-100 text-blue-700" },
+  { name: "Web Standards", slug: "web-standards", color: "bg-green-100 text-green-700" },
+  { name: "Security & Privacy", slug: "security-privacy", color: "bg-red-100 text-red-700" },
+  { name: "Digital Identity", slug: "digital-identity", color: "bg-indigo-100 text-indigo-700" },
+  { name: "Platform & Services", slug: "platform-services", color: "bg-cyan-100 text-cyan-700" },
+  { name: "Company Engineering", slug: "company-engineering", color: "bg-orange-100 text-orange-700" },
+  { name: "Personal Blog", slug: "personal-blog", color: "bg-pink-100 text-pink-700" },
+  { name: "Social Impact", slug: "social-impact", color: "bg-yellow-100 text-yellow-700" },
+  { name: "Media & Culture", slug: "media-culture", color: "bg-teal-100 text-teal-700" },
 ] as const;
 
-export type Category = typeof categories[number];
+export type CategoryInfo = typeof categoryList[number];
+export type CategoryName = CategoryInfo["name"];
+export type CategorySlug = CategoryInfo["slug"];
+
+export function getCategoryBySlug(slug: string): CategoryInfo {
+  return categoryList.find(c => c.slug === slug) || categoryList[0];
+}
+
+export function getCategoryByName(name: string): CategoryInfo {
+  return categoryList.find(c => c.name === name) || categoryList[0];
+}
 
 export const periods = ["All", "Month", "Today"] as const;
 export type Period = typeof periods[number];
 
 export interface RadarItemWithCategory extends RadarItem {
   category: string;
+  categorySlug: string;
 }
-
-export const categoryColors: Record<string, string> = {
-  "AI/ML": "bg-purple-100 text-purple-700",
-  "Developer Tools": "bg-blue-100 text-blue-700",
-  "Web Standards": "bg-green-100 text-green-700",
-  "Security & Privacy": "bg-red-100 text-red-700",
-  "Digital Identity": "bg-indigo-100 text-indigo-700",
-  "Platform & Services": "bg-cyan-100 text-cyan-700",
-  "Company Engineering": "bg-orange-100 text-orange-700",
-  "Personal Blog": "bg-pink-100 text-pink-700",
-  "Social Impact": "bg-yellow-100 text-yellow-700",
-  "Media & Culture": "bg-teal-100 text-teal-700",
-};
 
 export interface FetchRadarItemsResponse {
   radarItems: RadarItemWithCategory[];

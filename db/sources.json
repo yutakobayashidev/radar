@@ -4,1154 +4,1319 @@
     "name": "OpenAI Blog",
     "url": "https://openai.com/blog/rss.xml",
     "description": "AI研究、モデルリリース、安全性に関する取り組み",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "huggingface",
     "name": "Hugging Face Blog",
     "url": "https://huggingface.co/blog/feed.xml",
     "description": "Transformers、Diffusers、機械学習モデルとデータセット",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "deepmind",
     "name": "DeepMind Blog",
     "url": "https://deepmind.com/blog/feed/basic/",
     "description": "DeepMindの最新AI研究、AlphaFold、強化学習",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "google-ai",
     "name": "Google AI Blog",
     "url": "https://feeds.feedburner.com/blogspot/gJZg",
     "description": "Googleの最新AI研究、機械学習、TensorFlow",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "google-testing",
     "name": "Google Testing Blog",
     "url": "https://feeds.feedburner.com/blogspot/RLXA",
     "description": "Googleのテスト技術、ソフトウェア品質、コード品質、自動化に関する記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "simonwillison",
     "name": "Simon Willison's Weblog",
     "url": "https://simonwillison.net/atom/everything/",
     "description": "AI、LLM、データベース、Web開発に関する記事",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "mcp",
     "name": "Model Context Protocol Blog",
     "url": "http://blog.modelcontextprotocol.io/index.xml",
     "description": "MCP、AI統合、コンテキストプロトコルに関する記事",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "karpathy",
     "name": "Andrej Karpathy's Blog",
     "url": "https://karpathy.bearblog.dev/feed/",
     "description": "AI、機械学習、ニューラルネットワークに関する記事",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "lilianweng",
     "name": "Lil'Log",
     "url": "https://lilianweng.github.io/posts/index.xml",
     "description": "深層学習、強化学習、LLMに関する技術的な解説記事",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "aaif",
     "name": "Agentic AI Foundation",
     "url": "https://aaif.io/feed/",
     "description": "AIエージェント技術の標準化と相互運用性、Model Context Protocol、オープンソースAI",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "pytorch",
     "name": "PyTorch Blog",
     "url": "https://pytorch.org/feed/",
     "description": "PyTorchの最新情報、チュートリアル、リリースノート",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "react",
     "name": "React Blog",
     "url": "https://react.dev/rss.xml",
     "description": "React公式ブログ、新機能、リリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "typescript",
     "name": "TypeScript Blog",
     "url": "https://devblogs.microsoft.com/typescript/feed/",
     "description": "TypeScriptの新機能、リリース情報、言語設計に関する記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "nodejs",
     "name": "Node.js Blog",
     "url": "https://nodejs.org/en/feed/blog.xml",
     "description": "Node.jsの新機能、リリース情報、ランタイムに関する記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "bun",
     "name": "Bun Blog",
     "url": "https://bun.com/rss.xml",
     "description": "高速JavaScriptランタイムBunの最新情報、パフォーマンス改善に関する記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "tailwindcss",
     "name": "Tailwind CSS",
     "url": "https://tailwindcss.com/feeds/feed.xml",
     "description": "ユーティリティファーストCSS、デザインシステム、新機能に関する記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "vite",
     "name": "Vite Blog",
     "url": "https://vite.dev/blog.rss",
     "description": "Viteの最新情報、パフォーマンス改善、エコシステムに関する記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "oxc",
     "name": "Oxc Blog",
     "url": "https://oxc.rs/feeds/blog-en.rss",
     "description": "Rustベースの高速JavaScriptツールチェーン開発",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "voidzero",
     "name": "VoidZero",
     "url": "https://voidzero.dev/feed.xml",
     "description": "次世代JavaScriptツールチェーン、Webインフラに関する記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "rust",
     "name": "Rust Blog",
     "url": "https://blog.rust-lang.org/feed.xml",
     "description": "Rustの新機能、リリース情報、言語設計に関する記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "hono",
     "name": "Hono Releases",
     "url": "https://github.com/honojs/hono/releases.atom",
     "description": "軽量高速Webフレームワーク Honoのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "mold",
     "name": "mold Releases",
     "url": "https://github.com/rui314/mold/releases.atom",
     "description": "高速リンカ moldのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "servo",
     "name": "Servo Blog",
     "url": "https://servo.org/blog/feed.xml",
     "description": "Rust製ブラウザエンジン Servoの開発状況と技術記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "turborepo",
     "name": "Turborepo Releases",
     "url": "https://github.com/vercel/turborepo/releases.atom",
     "description": "高性能ビルドシステム Turborepoのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "rustowl",
     "name": "RustOwl Releases",
     "url": "https://github.com/cordx56/rustowl/releases.atom",
     "description": "Rustの所有権とライフタイムを可視化するツールのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "playwright",
     "name": "Playwright Releases",
     "url": "https://github.com/microsoft/playwright/releases.atom",
     "description": "ブラウザ自動化・E2Eテストフレームワーク Playwrightのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "nextjs",
     "name": "Next.js Releases",
     "url": "https://github.com/vercel/next.js/releases.atom",
     "description": "Reactフレームワーク Next.jsのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "rolldown",
     "name": "Rolldown Releases",
     "url": "https://github.com/rolldown/rolldown/releases.atom",
     "description": "Rustベースの高速JavaScriptバンドラー Rolldownのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "w3c",
     "name": "W3C Blog",
     "url": "https://www.w3.org/blog/feed/",
     "description": "Web標準、仕様策定、W3Cの活動に関する記事",
-    "category": "Web Standards"
+    "category": "Web Standards",
+    "categorySlug": "web-standards"
   },
   {
     "id": "momdo",
     "name": "momdo blog",
     "url": "https://momdo.hatenablog.jp/feed",
     "description": "Web標準、HTML、アクセシビリティに関する記事",
-    "category": "Web Standards"
+    "category": "Web Standards",
+    "categorySlug": "web-standards"
   },
   {
     "id": "jxck",
     "name": "blog.jxck.io",
     "url": "https://blog.jxck.io/feeds/atom.xml",
     "description": "Web標準、HTTP、セキュリティ、パフォーマンスに関する記事",
-    "category": "Web Standards"
+    "category": "Web Standards",
+    "categorySlug": "web-standards"
   },
   {
     "id": "mozaicfm",
     "name": "mozaic.fm",
     "url": "https://feed.mozaic.fm",
     "description": "Web技術、標準化、プラットフォームに関するポッドキャスト",
-    "category": "Web Standards"
+    "category": "Web Standards",
+    "categorySlug": "web-standards"
   },
   {
     "id": "rebuildfm",
     "name": "Rebuild",
     "url": "https://feeds.rebuild.fm/rebuildfm",
     "description": "Web開発、プログラミング、モバイル、ガジェットに関するテクノロジーポッドキャスト",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "deque",
     "name": "Deque",
     "url": "https://www.deque.com/feed/",
     "description": "Webアクセシビリティ、WCAG、インクルーシブデザインに関する記事",
-    "category": "Web Standards"
+    "category": "Web Standards",
+    "categorySlug": "web-standards"
   },
   {
     "id": "accessible-games",
     "name": "Accessible Games Initiative",
     "url": "https://accessiblegames.com/feed/",
     "description": "ゲームアクセシビリティの標準化、タグシステム、業界パートナーシップ",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "whatwg",
     "name": "WHATWG Blog",
     "url": "https://blog.whatwg.org/feed",
     "description": "HTML Living Standard、DOM、Fetch、Web標準の策定に関する記事",
-    "category": "Web Standards"
+    "category": "Web Standards",
+    "categorySlug": "web-standards"
   },
   {
     "id": "tokumaru",
     "name": "徳丸浩の日記",
     "url": "https://blog.tokumaru.org/feeds/posts/default",
     "description": "Webセキュリティ、脆弱性、セキュアコーディングに関する記事",
-    "category": "Security & Privacy"
+    "category": "Security & Privacy",
+    "categorySlug": "security-privacy"
   },
   {
     "id": "project-zero",
     "name": "Project Zero",
     "url": "https://googleprojectzero.blogspot.com/feeds/posts/default",
     "description": "Googleセキュリティ研究チームによるゼロデイ脆弱性の発見と分析",
-    "category": "Security & Privacy"
+    "category": "Security & Privacy",
+    "categorySlug": "security-privacy"
   },
   {
     "id": "schneier",
     "name": "Schneier on Security",
     "url": "https://www.schneier.com/feed/atom/",
     "description": "暗号、セキュリティ、プライバシー、リスク分析に関する記事",
-    "category": "Security & Privacy"
+    "category": "Security & Privacy",
+    "categorySlug": "security-privacy"
   },
   {
     "id": "signal",
     "name": "Signal",
     "url": "https://signal.org/blog/rss.xml",
     "description": "プライバシー、暗号化メッセージング、セキュリティに関する記事",
-    "category": "Security & Privacy"
+    "category": "Security & Privacy",
+    "categorySlug": "security-privacy"
   },
   {
     "id": "torproject",
     "name": "Tor Project Blog",
     "url": "https://blog.torproject.org/feed.xml",
     "description": "匿名性、プライバシー保護、Torネットワークに関する記事",
-    "category": "Security & Privacy"
+    "category": "Security & Privacy",
+    "categorySlug": "security-privacy"
   },
   {
     "id": "simplex",
     "name": "SimpleX Chat Blog",
     "url": "https://simplex.chat/feed.rss",
     "description": "プライバシー重視メッセージング、分散型通信、E2E暗号化に関する記事",
-    "category": "Security & Privacy"
+    "category": "Security & Privacy",
+    "categorySlug": "security-privacy"
   },
   {
     "id": "shanematsuo",
     "name": "Shane Matsuo on Medium",
     "url": "https://shanematsuo.medium.com/feed",
     "description": "デジタルアイデンティティ、OAuth、セキュリティに関する記事",
-    "category": "Digital Identity"
+    "category": "Digital Identity",
+    "categorySlug": "digital-identity"
   },
   {
     "id": "sakimura",
     "name": "Sakimura's Blog",
     "url": "https://www.sakimura.org/feed/",
     "description": "アイデンティティ、セキュリティ、OAuth、OpenID Connectに関する記事",
-    "category": "Digital Identity"
+    "category": "Digital Identity",
+    "categorySlug": "digital-identity"
   },
   {
     "id": "openid",
     "name": "OpenID Foundation",
     "url": "https://openid.net/feed/",
     "description": "OpenID、デジタルアイデンティティ標準化に関する記事",
-    "category": "Digital Identity"
+    "category": "Digital Identity",
+    "categorySlug": "digital-identity"
   },
   {
     "id": "inkandswitch",
     "name": "Ink & Switch",
     "url": "https://www.inkandswitch.com/index.xml",
     "description": "ローカルファーストソフトウェア、分散システム、CRDT、コラボレーションツールの研究",
-    "category": "Digital Identity"
+    "category": "Digital Identity",
+    "categorySlug": "digital-identity"
   },
   {
     "id": "vitalik",
     "name": "Vitalik Buterin's Blog",
     "url": "https://vitalik.eth.limo/feed.xml",
     "description": "Ethereum、ブロックチェーン、暗号経済学、分散システムに関する記事",
-    "category": "Digital Identity"
+    "category": "Digital Identity",
+    "categorySlug": "digital-identity"
   },
   {
     "id": "protocol-labs",
     "name": "Protocol Labs",
     "url": "https://protocol.ai/rss.xml",
     "description": "IPFS、Filecoin、分散Web技術に関する記事",
-    "category": "Digital Identity"
+    "category": "Digital Identity",
+    "categorySlug": "digital-identity"
   },
   {
     "id": "ipfs",
     "name": "IPFS Blog",
     "url": "https://blog.ipfs.tech/index.xml",
     "description": "分散ファイルシステム、Web3、コンテンツアドレッシングに関する記事",
-    "category": "Digital Identity"
+    "category": "Digital Identity",
+    "categorySlug": "digital-identity"
   },
   {
     "id": "ethereum",
     "name": "Ethereum Foundation Blog",
     "url": "https://blog.ethereum.org/en/feed.xml",
     "description": "Ethereum、スマートコントラクト、ブロックチェーンに関する記事",
-    "category": "Digital Identity"
+    "category": "Digital Identity",
+    "categorySlug": "digital-identity"
   },
   {
     "id": "bluesky",
     "name": "Bluesky Blog",
     "url": "https://bsky.social/about/rss.xml",
     "description": "分散型SNS Bluesky、AT Protocol、ソーシャルネットワークに関する記事",
-    "category": "Digital Identity"
+    "category": "Digital Identity",
+    "categorySlug": "digital-identity"
   },
   {
     "id": "mastodon",
     "name": "Mastodon Blog",
     "url": "https://blog.joinmastodon.org/index.xml",
     "description": "分散型SNS Mastodon、ActivityPub、Fediverseに関する記事",
-    "category": "Digital Identity"
+    "category": "Digital Identity",
+    "categorySlug": "digital-identity"
   },
   {
     "id": "fiatjaf",
     "name": "fiatjaf",
     "url": "https://fiatjaf.com/-/rss",
     "description": "Nostr、分散型プロトコル、暗号通貨に関する記事",
-    "category": "Digital Identity"
+    "category": "Digital Identity",
+    "categorySlug": "digital-identity"
   },
   {
     "id": "github-changelog",
     "name": "GitHub Changelog",
     "url": "https://github.blog/changelog/feed/",
     "description": "GitHubの新機能、アップデート、変更履歴",
-    "category": "Platform & Services"
+    "category": "Platform & Services",
+    "categorySlug": "platform-services"
   },
   {
     "id": "vercel",
     "name": "Vercel Changelog",
     "url": "https://vercel.com/atom",
     "description": "フロントエンド、Next.js、Webパフォーマンス、デプロイに関する記事",
-    "category": "Platform & Services"
+    "category": "Platform & Services",
+    "categorySlug": "platform-services"
   },
   {
     "id": "cloudflare",
     "name": "Cloudflare Blog",
     "url": "https://blog.cloudflare.com/rss",
     "description": "CDN、DNS、セキュリティ、エッジコンピューティングに関する記事",
-    "category": "Platform & Services"
+    "category": "Platform & Services",
+    "categorySlug": "platform-services"
   },
   {
     "id": "digital-gov",
     "name": "デジタル庁 note",
     "url": "https://digital-gov.note.jp/rss",
     "description": "デジタル庁の取り組み、デジタル社会、行政DXに関する記事",
-    "category": "Platform & Services"
+    "category": "Platform & Services",
+    "categorySlug": "platform-services"
   },
   {
     "id": "meta-engineering",
     "name": "Meta Engineering Blog",
     "url": "https://engineering.fb.com/feed/",
     "description": "Metaの研究、コンピュータビジョン",
-    "category": "Company Engineering"
+    "category": "Company Engineering",
+    "categorySlug": "company-engineering"
   },
   {
     "id": "meituan",
     "name": "美团技术团队",
     "url": "https://tech.meituan.com/feed/",
     "description": "Meituanのエンジニアリング、技術スタックに関する記事",
-    "category": "Company Engineering"
+    "category": "Company Engineering",
+    "categorySlug": "company-engineering"
   },
   {
     "id": "mercari-engineering",
     "name": "Mercari Engineering Blog",
     "url": "https://engineering.mercari.com/blog/feed.xml",
     "description": "マイクロサービス、Go、モバイル開発、インフラに関する記事",
-    "category": "Company Engineering"
+    "category": "Company Engineering",
+    "categorySlug": "company-engineering"
   },
   {
     "id": "lycorp-techblog",
     "name": "LINEヤフー Tech Blog",
     "url": "https://techblog.lycorp.co.jp/ja/feed/index.xml",
     "description": "メッセージング、検索、広告、インフラに関する技術記事",
-    "category": "Company Engineering"
+    "category": "Company Engineering",
+    "categorySlug": "company-engineering"
   },
   {
     "id": "freee-developers",
     "name": "freee Developers Blog",
     "url": "https://developers.freee.co.jp/feed",
     "description": "会計ソフトfreeeの開発、マイクロサービス、SaaSに関する技術記事",
-    "category": "Company Engineering"
+    "category": "Company Engineering",
+    "categorySlug": "company-engineering"
   },
   {
     "id": "dwango-edu",
     "name": "ドワンゴ教育サービス開発者ブログ",
     "url": "https://blog.nnn.dev/feed",
     "description": "N高・S高のEdTech開発、項目反応理論、Web標準、教育プラットフォームに関する技術記事",
-    "category": "Company Engineering"
+    "category": "Company Engineering",
+    "categorySlug": "company-engineering"
   },
   {
     "id": "yamdas",
     "name": "yamdas blog",
     "url": "https://yamdas.hatenablog.com/feed",
     "description": "テクノロジー、翻訳、書評に関する記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "takanorip",
     "name": "takanorip blog",
     "url": "https://blog.takanorip.com/feed.xml",
     "description": "フロントエンド開発、デザインシステム、Web技術に関する記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "sara-soueidan",
     "name": "Sara Soueidan's Blog",
     "url": "https://www.sarasoueidan.com/blog/index.xml",
     "description": "フロントエンド開発、CSS、SVG、アクセシビリティに関する記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "wong-mjane",
     "name": "Jane Manchun Wong",
     "url": "https://wongmjane.com/blog/feed",
     "description": "アプリリバースエンジニアリング、未公開機能の発見、テクノロジー分析",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "antfu",
     "name": "Anthony Fu",
     "url": "https://antfu.me/feed.xml",
     "description": "Vue.js、Vite、オープンソース開発に関する記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "kentcdodds",
     "name": "Kent C. Dodds",
     "url": "https://kentcdodds.com/blog/rss.xml",
     "description": "React、Testing、Web開発、教育に関する記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "overreacted",
     "name": "Overreacted",
     "url": "https://overreacted.io/rss.xml",
     "description": "Dan AbramovによるReact、JavaScript、プログラミングに関する記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "ruanyifeng",
     "name": "阮一峰的网络日志",
     "url": "https://feeds.feedburner.com/ruanyifeng",
     "description": "技術、プログラミング、Web開発に関する中国語の記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "coolshell",
     "name": "酷壳 CoolShell",
     "url": "https://coolshell.cn/feed",
     "description": "プログラミング、技術、ソフトウェア開発に関する中国語の記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "stephango",
     "name": "Steph Ango",
     "url": "https://stephango.com/feed.xml",
     "description": "デジタル哲学、生産性、デザイン、テクノロジーに関するエッセイ（Obsidian CEO）",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "sh1ma",
     "name": "blog.sh1ma.dev",
     "url": "https://blog.sh1ma.dev/feed",
     "description": "インフラ、クラウド、IoT、電子工作に関する技術記事と日記",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "joi-ito",
     "name": "Joi Ito's Web",
     "url": "https://feeds.feedburner.com/joi-ito/weblog",
     "description": "テクノロジー、イノベーション、社会変革に関する記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "kevin-kelly",
     "name": "Kevin Kelly",
     "url": "https://kk.org/feed/",
     "description": "テクノロジー、文化、未来予測に関する記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "photomatt",
     "name": "Matt Mullenweg",
     "url": "https://ma.tt/feed/",
     "description": "WordPress、オープンソース、テクノロジー、ビジネスに関する記事（WordPress創業者）",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "craftzdog",
     "name": "Takuya Matsuyama's Blog",
     "url": "https://www.devas.life/rss/",
     "description": "Inkdrop開発、React Native、Electron、インディー開発に関する記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "catnose",
     "name": "catnose - しずかなインターネット",
     "url": "https://sizu.me/catnose/rss",
     "description": "しずかなインターネット開発者による日記、エッセイ、運営メモ",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "eff",
     "name": "EFF Updates",
     "url": "https://www.eff.org/rss/updates.xml",
     "description": "デジタル権利、プライバシー、言論の自由に関するニュース",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "openrightsgroup",
     "name": "Open Rights Group",
     "url": "https://www.openrightsgroup.org/feed/",
     "description": "英国のデジタル権、オンラインプライバシー、表現の自由、政府の監視に関する記事",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "accessnow",
     "name": "Access Now",
     "url": "https://www.accessnow.org/feed/",
     "description": "デジタル人権、インターネット遮断、通信の自由、データプライバシーに関する国際的な取り組み",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "dispatches",
     "name": "Dispatches",
     "url": "https://dispatches.substack.com/feed",
     "description": "Adrian Chenによる社会論、文化批評、テクノロジーレビューに関するニュースレター",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "ethanzuckerman",
     "name": "Ethan Zuckerman",
     "url": "https://ethanzuckerman.com/feed/",
     "description": "デジタル技術、メディア、民主主義、AI、気候変動に関する思想的議論",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "natematias",
     "name": "J. Nathan Matias",
     "url": "https://medium.com/feed/@natematias",
     "description": "AIの科学、デジタル技術、民主主義、環境問題、市民科学に関する記事",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "ooni",
     "name": "OONI Blog",
     "url": "https://ooni.org/blog/index.xml",
     "description": "インターネット検閲、ネットワーク干渉の測定と分析",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "craphound",
     "name": "Cory Doctorow's Craphound",
     "url": "https://craphound.com/feed/",
     "description": "テクノロジー、デジタル権利、著作権、SF作家の視点",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "citizenlab",
     "name": "Citizen Lab",
     "url": "https://citizenlab.ca/feed/",
     "description": "デジタルセキュリティ、人権、インターネット検閲の研究",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "pew-research",
     "name": "Pew Research Center",
     "url": "https://www.pewresearch.org/feed/",
     "description": "社会調査、世論、デモグラフィック、テクノロジー利用動向に関する記事",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "eurostat",
     "name": "Eurostat News",
     "url": "https://ec.europa.eu/eurostat/en/search?p_p_id=estatsearchportlet_WAR_estatsearchportlet&p_p_lifecycle=2&p_p_state=maximized&p_p_mode=view&p_p_resource_id=atom&_estatsearchportlet_WAR_estatsearchportlet_collection=CAT_EURNEW",
     "description": "欧州連合の統計、経済データ、社会指標に関するニュース",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "insight-zeynep",
     "name": "Insight by Zeynep",
     "url": "https://www.theinsight.org/feed",
     "description": "テクノロジー、社会、AIに関する深い洞察と分析",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "zephoria",
     "name": "danah boyd - apophenia",
     "url": "https://www.zephoria.org/thoughts/feed",
     "description": "ソーシャルメディア、プライバシー、若者とテクノロジーに関する研究",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "jigsaw",
     "name": "Jigsaw",
     "url": "https://medium.com/feed/jigsaw",
     "description": "Google傘下のインキュベーター、検閲対策、AI、オンライン安全性に関する記事",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "g0v",
     "name": "g0v.news",
     "url": "https://g0v.news/feed",
     "description": "台湾のシビックハック、オープンガバメント、市民参加に関する記事",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "humane-tech",
     "name": "Center for Humane Technology",
     "url": "https://centerforhumanetechnology.substack.com/feed",
     "description": "テクノロジーの人間性、デジタルウェルビーイング、倫理的デザインに関する記事",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "restofworld",
     "name": "Rest of World",
     "url": "https://restofworld.org/feed/latest",
     "description": "新興国のテクノロジーとカルチャーに関するニュース",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "wired",
     "name": "WIRED",
     "url": "https://www.wired.com/feed/rss",
     "description": "テクノロジー、科学、カルチャー、ビジネスに関するニュースと記事",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "theinitium",
     "name": "端传媒",
     "url": "https://theinitium.com/rss/",
     "description": "中華圏のニュース、深層報道、社会問題に関する記事",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "mayshi-rao",
     "name": "Mayshi Rao",
     "url": "https://mayshirao.com/feed/",
     "description": "ダンス研究、編集、文化に関する記事",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "designing",
     "name": "designing.jp",
     "url": "https://designing.jp/feed.xml",
     "description": "デザイン、UI/UX、クリエイティブに関する記事",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "yukai-engineering",
     "name": "ユカイ工学",
     "url": "https://note.com/ux_xu/rss",
     "description": "ロボティクス、IoT、プロダクト開発に関する記事",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "lleedd",
     "name": "山中俊治の「デザインの骨格」",
     "url": "https://lleedd.com/blog/feed/",
     "description": "プロダクトデザイン、デザイン思考、ものづくりに関する記事",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "oura",
     "name": "Oura Blog",
     "url": "https://ouraring.com/blog/feed/",
     "description": "ウェアラブル、睡眠トラッキング、ヘルステックに関する記事",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "vrchat",
     "name": "VRChat Blog",
     "url": "https://hello.vrchat.com/blog?format=rss",
     "description": "VR SNS、メタバース、クリエイターコンテスト、プラットフォーム安全性に関する記事",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "aespa",
     "name": "aespa",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC9GtSLeksfK4yuJ_g1lgQbg",
     "description": "K-POPグループaespaの公式YouTubeチャンネル",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "hatsuhoshi",
     "name": "初星学園",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC2dXx-3RXeeP8hA5AGt8vuw",
     "description": "初星学園の公式YouTubeチャンネル",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "sevish",
     "name": "Sevish",
     "url": "https://sevish.com/feed/",
     "description": "電子マイクロトーナル音楽、音楽ツール、チューニング技術に関する記事",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "lai",
     "name": "Lai's Blog",
     "url": "https://blog.lai.so/rss/",
     "description": "個人ブログ、技術、プログラミングに関する記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "azukiazusa",
     "name": "azukiazusa.dev",
     "url": "https://azukiazusa.dev/rss.xml",
     "description": "Web開発、フロントエンド、技術に関する記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "mizchi",
     "name": "mizchi on Zenn",
     "url": "https://zenn.dev/mizchi/feed",
     "description": "フロントエンド、TypeScript、Webツールチェーンに関する記事",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "jser",
     "name": "JSer.info",
     "url": "https://jser.info/rss/",
     "description": "JavaScriptの最新情報、ライブラリ、ツール、記事を毎週紹介",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "drizzle-orm",
     "name": "Drizzle ORM Releases",
     "url": "https://github.com/drizzle-team/drizzle-orm/releases.atom",
     "description": "TypeScript ORMのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "henkaku-center",
     "name": "変革センター",
     "url": "https://www.henkaku.center/ja/feed/feed.xml",
     "description": "千葉工業大学の変革センターによるデジタル社会、テクノロジー、イノベーションに関する記事",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "mit-media-lab",
     "name": "MIT Media Lab",
     "url": "https://www.media.mit.edu/feed.rss",
     "description": "MITメディアラボの研究、イノベーション、テクノロジーとデザインの融合に関する記事",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "moonbit",
     "name": "MoonBit",
     "url": "https://www.moonbitlang.com/blog/rss.xml",
     "description": "MoonBitプログラミング言語の開発、言語設計、WebAssemblyに関する記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "prototype-fund",
     "name": "Prototype Fund",
     "url": "https://www.prototypefund.de/en/feed.rss",
     "description": "ドイツのオープンソースプロジェクト支援プログラム、公共インフラ、シビックテックに関する記事",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "boomerang-effect",
     "name": "Digital Rights",
     "url": "https://boomerang-effect.espivblogs.net/feed/",
     "description": "デジタル権利、監視、インターネット検閲、人権保護に関する記事",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "berkman-klein",
     "name": "Berkman Klein Center",
     "url": "https://medium.com/feed/berkman-klein-center",
     "description": "ハーバード大学のインターネット・社会研究センター、デジタル権利、オープンインターネット、テクノロジーと社会に関する記事",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "barrett-lyon",
     "name": "Barrett Lyon",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCeLz-dzQd675Zd47a1xY1wA",
     "description": "The Opte Project創設者によるインターネット可視化、ネットワーク構造、新しいインターネットの原則に関する動画",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "bruno-latour",
     "name": "Bruno Latour",
     "url": "http://www.bruno-latour.fr/rss.xml",
     "description": "科学技術社会論、アクターネットワーク理論、ポストヒューマニズムに関する記事",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "anthropolojamz",
     "name": "AnthropoloJamz",
     "url": "https://anthropolojamz.wordpress.com/feed/",
     "description": "人類学、文化研究、社会理論に関する記事",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "icd-lab",
     "name": "ICD-lab",
     "url": "https://www.icd.cs.tut.ac.jp/index.php/feed/",
     "description": "豊橋技術科学大学の「弱いロボット」研究、人とロボットのインタラクション、HCIに関する記事",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "data-society",
     "name": "Data & Society",
     "url": "https://datasociety.net/feed/",
     "description": "データ、テクノロジー、社会の交差点に関する研究、AI倫理、アルゴリズムの公平性に関する記事",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   },
   {
     "id": "turingcomplete",
     "name": "Turing Complete FM",
     "url": "https://feeds.turingcomplete.fm/tcfm",
     "description": "コンピュータサイエンスとテクノロジーに関するポッドキャスト",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "misreading",
     "name": "misreading.chat",
     "url": "https://misreading.chat/category/episodes/feed/",
     "description": "コンピュータサイエンスの論文を読んで話をするポッドキャスト",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "fukabori",
     "name": "fukabori.fm",
     "url": "https://rss.art19.com/fukabori",
     "description": "技術・組織・マネジメントなどを深掘りして楽しむポッドキャスト",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "lexfridman",
     "name": "Lex Fridman Podcast",
     "url": "https://lexfridman.com/feed/podcast/",
     "description": "AI、科学、テクノロジー、哲学などについての長時間インタビューポッドキャスト",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "ai-shift",
     "name": "AI Shift Tech Blog",
     "url": "https://www.ai-shift.co.jp/techblog/feed",
     "description": "AIチャットボット、カスタマーサポート技術に関する記事",
-    "category": "Company Engineering"
+    "category": "Company Engineering",
+    "categorySlug": "company-engineering"
   },
   {
     "id": "kubo",
     "name": "Kubo (IPFS) Releases",
     "url": "https://github.com/ipfs/kubo/releases.atom",
     "description": "IPFS実装Kuboのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "yjs",
     "name": "Yjs Releases",
     "url": "https://github.com/yjs/yjs/releases.atom",
     "description": "CRDTベースのリアルタイム協調編集ライブラリYjsのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "transformers",
     "name": "Hugging Face Transformers Releases",
     "url": "https://github.com/huggingface/transformers/releases.atom",
     "description": "Transformersライブラリのリリース情報",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "llama-cpp",
     "name": "llama.cpp Releases",
     "url": "https://github.com/ggml-org/llama.cpp/releases.atom",
     "description": "C++によるLLM推論エンジンllama.cppのリリース情報",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "biome",
     "name": "Biome Releases",
     "url": "https://github.com/biomejs/biome/releases.atom",
     "description": "高速JavaScriptツールチェーンBiomeのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "tauri",
     "name": "Tauri Releases",
     "url": "https://github.com/tauri-apps/tauri/releases.atom",
     "description": "RustベースのデスクトップアプリフレームワークTauriのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "tokio",
     "name": "Tokio Releases",
     "url": "https://github.com/tokio-rs/tokio/releases.atom",
     "description": "Rust非同期ランタイムTokioのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "automerge",
     "name": "Automerge Releases",
     "url": "https://github.com/automerge/automerge/releases.atom",
     "description": "CRDTベースのデータ同期ライブラリAutomergeのリリース情報",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "mastra",
     "name": "Mastra Releases",
     "url": "https://github.com/mastra-ai/mastra/releases.atom",
     "description": "AIエージェント開発フレームワークMastraのリリース情報",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "strands-agents",
     "name": "Strands Agents SDK Python Releases",
     "url": "https://github.com/strands-agents/sdk-python/releases.atom",
     "description": "Strands AgentsのPython SDKリリース情報",
-    "category": "AI/ML"
+    "category": "AI/ML",
+    "categorySlug": "ai-ml"
   },
   {
     "id": "cover-corp-zenn",
     "name": "カバー株式会社 on Zenn",
     "url": "https://zenn.dev/p/cover_corp/feed",
     "description": "カバー株式会社の技術記事、VTuber技術、配信プラットフォームに関する記事",
-    "category": "Company Engineering"
+    "category": "Company Engineering",
+    "categorySlug": "company-engineering"
   },
   {
     "id": "astral",
     "name": "Astral Blog",
     "url": "https://astral.sh/blog/rss.xml",
     "description": "Ruff、uv、Python開発ツールに関する記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "minerva-scientia",
     "name": "minerva scientia",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UClsyp848PT_kJ0VSR0zvWFg",
     "description": "歴史言語学、着ぐるみ、アルゴリズム作曲、動画生成AIに関するYouTubeチャンネル",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "yukkuri-maccha",
     "name": "ゆっくりまっちゃ",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCQBxe2pLyaVGylZpck_WkOw",
     "description": "ゆっくり解説チャンネル",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "ngethoma",
     "name": "け゚とま-ngethoma",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCLreIXyMtLaFtVYvg2dCbLQ",
     "description": "言語学、数学、科学など需要のない動画を作るYouTubeチャンネル",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "yatteiki",
     "name": "yatteiki.fm",
     "url": "https://yatteiki.fm/feed.xml",
     "description": "技術、開発、日常などについて話すポッドキャスト",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "darknet-diaries",
     "name": "Darknet Diaries",
     "url": "https://podcast.darknetdiaries.com",
     "description": "ハッカー、データ侵害、サイバー犯罪に関するストーリーを語るポッドキャスト",
-    "category": "Security & Privacy"
+    "category": "Security & Privacy",
+    "categorySlug": "security-privacy"
   },
   {
     "id": "p-hone",
     "name": "p-hone.info",
     "url": "https://p-hone.info/index.xml",
     "description": "アニメ、イラスト、技術、インターネット文化に関する個人ブログ",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "yuki0311",
     "name": "yuki0311's blog",
     "url": "https://blog.yuki0311.com/feed/",
     "description": "インフラ、開発ツール、VRChat、AI活用に関する技術ブログ",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "jmuk",
     "name": "Jun Mukai's Blog",
     "url": "https://www.jmuk.org/blog/index.xml",
     "description": "ソフトウェアエンジニアリング、日本語入力、文化、言語に関する個人ブログ",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "tex2e",
     "name": "晴耕雨読",
     "url": "https://tex2e.github.io/blog/feed.xml",
     "description": "プログラミング全般、Python、Linux、Azure、SQL等の技術備忘録ブログ",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "bret-victor",
     "name": "Bret Victor",
     "url": "https://worrydream.com/feed.xml",
     "description": "インタラクティブメディア、人間中心設計、計算機科学とデザインの交点に関する活動",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "sunday-letters",
     "name": "Sunday Letters from Sam",
     "url": "https://sundaylettersfromsam.substack.com/feed",
     "description": "AI、組織論、システム思考、技術変革に関するニュースレター",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "feeling-of-computing",
     "name": "Feeling of Computing",
     "url": "https://www.omnycontent.com/d/playlist/c4157e60-c7f8-470d-b13f-a7b30040df73/564f493f-af32-4c48-862f-a7b300e4df49/ac317852-8807-44b8-8eff-a7b300e4df52/podcast.rss",
     "description": "プログラミング言語の哲学、デザイン、歴史、未来について議論するポッドキャスト",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "beepb00p",
     "name": "beepb00p",
     "url": "https://beepb00p.xyz/atom.xml",
     "description": "個人データ管理、知識管理、データ統合システム構築に関する技術ブログ",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "mozilla-hacks",
     "name": "Mozilla Hacks",
     "url": "https://hacks.mozilla.org/feed/",
     "description": "Web開発、ブラウザ技術、Firefox、Web標準、WebAssemblyに関する記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "lamplight",
     "name": "LΛMPLIGHT",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCtF6NLMHd0hHDmKeFcNYdmg",
     "description": "微分音音楽、言語創作（人工言語）、和音図・文法図による芸術表現",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "hojo-minori",
     "name": "豊穣ミノリ / Hojo Minori",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC5r80UZbwfM5bCgGM5soZkg",
     "description": "折り紙、数学、プログラミング、作曲、微分音音楽の生放送とゲーム実況",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "3blue1brown",
     "name": "3Blue1Brown",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw",
     "description": "数学、物理学、コンピュータサイエンスをアニメーションで視覚化し解説する教育チャンネル",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "ufolium",
     "name": "Ufolium",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCEmNPlkTWfM1zmLRjLW3CPQ",
     "description": "中高レベルで楽しめる数学の動画教材配信サービス",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "teireiya-girl",
     "name": "低レイヤーガール",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCMsstGhINXdpMqo9tsElCMQ",
     "description": "低レイヤープログラミング、OS開発、ペアプログラミング配信",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "kurenaif",
     "name": "kurenaif",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCM--uemqoP45daIZG2-VpOA",
     "description": "CTF、Vim、競技プログラミング、テトリスに関する動画",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "bappa-shota",
     "name": "Bappa Shota",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCcrpFRRYkH185Xb8D-JQT7Q",
     "description": "地球を旅し目の当たりにした未知の世界を共有する旅行チャンネル",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "ruhi-cenet",
     "name": "Ruhi Çenet",
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCWpk9PSGHoJW1hZT4egxTNQ",
     "description": "ユニークな場所を探索する独立系ドキュメンタリー映画製作者による旅行チャンネル",
-    "category": "Media & Culture"
+    "category": "Media & Culture",
+    "categorySlug": "media-culture"
   },
   {
     "id": "josephg",
     "name": "Seph",
     "url": "https://josephg.com/blog/rss/",
     "description": "CRDT、リアルタイム協調編集、分散システムに関する技術ブログ",
-    "category": "Personal Blog"
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog"
   },
   {
     "id": "figma-blog",
     "name": "Figma Blog",
     "url": "https://www.figma.com/blog/rss/",
     "description": "デザインツール、マルチプレイヤー技術、プロダクト開発に関する記事",
-    "category": "Developer Tools"
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools"
   },
   {
     "id": "safecast",
     "name": "Safecast",
     "url": "https://safecast.jp/feed/",
     "description": "放射線測定、環境モニタリング、オープンデータに関する市民科学プロジェクト",
-    "category": "Social Impact"
+    "category": "Social Impact",
+    "categorySlug": "social-impact"
   }
 ]

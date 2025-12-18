@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
-import { useFetcher } from "react-router";
+import { useFetcher, useSearchParams, Link } from "react-router";
 import { useInView } from "react-intersection-observer";
-import { count, eq, desc, gte } from "drizzle-orm";
+import { count, eq, desc } from "drizzle-orm";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
 import { CardGrid } from "~/components/feed";
-import { categories, type FetchRadarItemsResponse, type RadarItemWithCategory, type Period } from "~/data/types";
+import { categoryList, getCategoryBySlug, type FetchRadarItemsResponse, type RadarItemWithCategory, type Period } from "~/data/types";
 import { radarItems, sources } from "../../db/schema";
 
 export function meta({}: Route.MetaArgs) {
@@ -33,6 +33,7 @@ export async function loader({ context }: Route.LoaderArgs) {
         createdAt: radarItems.createdAt,
         updatedAt: radarItems.updatedAt,
         category: sources.category,
+        categorySlug: sources.categorySlug,
       })
       .from(radarItems)
       .innerJoin(sources, eq(radarItems.source, sources.id))
@@ -54,27 +55,21 @@ export async function loader({ context }: Route.LoaderArgs) {
   };
 }
 
-function CategoryFilter({
-  selectedCategory,
-  setSelectedCategory,
-}: {
-  selectedCategory: string;
-  setSelectedCategory: (category: string) => void;
-}) {
+function CategoryFilter({ selectedCategorySlug }: { selectedCategorySlug: string }) {
   return (
     <div className="flex gap-1.5 overflow-x-auto pb-1 mt-3">
-      {categories.map((cat) => (
-        <button
-          key={cat}
-          onClick={() => setSelectedCategory(cat)}
+      {categoryList.map((cat) => (
+        <Link
+          key={cat.slug}
+          to={cat.slug === "all" ? "/" : `/?category=${cat.slug}`}
           className={`px-2.5 py-1 text-xs rounded-full whitespace-nowrap transition-colors ${
-            selectedCategory === cat
+            selectedCategorySlug === cat.slug
               ? "bg-gray-800 text-white"
               : "bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-600"
           }`}
         >
-          {cat}
-        </button>
+          {cat.name}
+        </Link>
       ))}
     </div>
   );
@@ -82,10 +77,14 @@ function CategoryFilter({
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   const fetcher = useFetcher<FetchRadarItemsResponse>();
+  const [searchParams] = useSearchParams();
 
   const [selectedSource, setSelectedSource] = useState("all");
-  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedPeriod, setSelectedPeriod] = useState<Period>("All");
+
+  // URLからカテゴリーを取得
+  const categorySlug = searchParams.get("category") || "all";
+  const selectedCategory = getCategoryBySlug(categorySlug);
 
   // 状態管理を追加
   const [radarItems, setRadarItems] = useState<RadarItemWithCategory[]>(loaderData.radarItems);
@@ -128,7 +127,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
   const filteredItems = radarItems
     .filter((f) => selectedSource === "all" || f.source === selectedSource)
-    .filter((f) => selectedCategory === "All" || f.category === selectedCategory)
+    .filter((f) => selectedCategory.slug === "all" || f.categorySlug === selectedCategory.slug)
     .filter((f) => {
       if (selectedPeriod === "All") return true;
       const now = new Date();
@@ -154,10 +153,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       showSourceFilter={true}
       sources={loaderData.sources}
       headerContent={
-        <CategoryFilter
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
+        <CategoryFilter selectedCategorySlug={categorySlug} />
       }
     >
       <CardGrid items={filteredItems} />

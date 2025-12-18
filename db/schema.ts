@@ -5,7 +5,8 @@ export const sources = sqliteTable("sources", {
   name: text("name").notNull(),
   url: text("url").notNull(),
   description: text("description").notNull(),
-  category: text("category").notNull(), // "AI" | "Infrastructure" | "Framework" | "Language" | "Runtime" | "Platform"
+  category: text("category").notNull(),
+  categorySlug: text("category_slug").notNull(),
   createdAt: integer("created_at", { mode: "timestamp" }).notNull().$defaultFn(() => new Date()),
   updatedAt: integer("updated_at", { mode: "timestamp" }).notNull().$defaultFn(() => new Date()),
 });
