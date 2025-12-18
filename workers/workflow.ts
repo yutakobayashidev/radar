@@ -20,9 +20,9 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
       const sources = await db.query.sources.findMany();
       console.log(`📋 Found ${sources.length} sources to fetch`);
 
-      // 1か月前の日付を計算
-      const oneMonthAgo = new Date();
-      oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+      // 3日前の日付を計算
+      const threeDaysAgo = new Date();
+      threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
 
       const filtered: Array<{
         sourceId: string;
@@ -59,10 +59,10 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
             totalItems++;
             const url = item.link || "";
 
-            // 日付チェック: 1か月以内のアイテムのみ
+            // 日付チェック: 3日以内のアイテムのみ
             if (item.pubDate) {
               const itemDate = new Date(item.pubDate);
-              if (itemDate < oneMonthAgo) {
+              if (itemDate < threeDaysAgo) {
                 skippedOldItems++;
                 continue;
               }
