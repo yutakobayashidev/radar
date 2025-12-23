@@ -5,7 +5,8 @@
     "url": "https://openai.com/blog/rss.xml",
     "description": "AI研究、モデルリリース、安全性に関する取り組み",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "articles"
   },
   {
     "id": "huggingface",
@@ -13,7 +14,8 @@
     "url": "https://huggingface.co/blog/feed.xml",
     "description": "Transformers、Diffusers、機械学習モデルとデータセット",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "articles"
   },
   {
     "id": "deepmind",
@@ -21,7 +23,8 @@
     "url": "https://deepmind.com/blog/feed/basic/",
     "description": "DeepMindの最新AI研究、AlphaFold、強化学習",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "articles"
   },
   {
     "id": "google-ai",
@@ -29,7 +32,8 @@
     "url": "https://feeds.feedburner.com/blogspot/gJZg",
     "description": "Googleの最新AI研究、機械学習、TensorFlow",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "articles"
   },
   {
     "id": "google-testing",
@@ -37,7 +41,8 @@
     "url": "https://feeds.feedburner.com/blogspot/RLXA",
     "description": "Googleのテスト技術、ソフトウェア品質、コード品質、自動化に関する記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "simonwillison",
@@ -45,7 +50,8 @@
     "url": "https://simonwillison.net/atom/everything/",
     "description": "AI、LLM、データベース、Web開発に関する記事",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "articles"
   },
   {
     "id": "mcp",
@@ -53,7 +59,8 @@
     "url": "http://blog.modelcontextprotocol.io/index.xml",
     "description": "MCP、AI統合、コンテキストプロトコルに関する記事",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "articles"
   },
   {
     "id": "karpathy",
@@ -61,7 +68,8 @@
     "url": "https://karpathy.bearblog.dev/feed/",
     "description": "AI、機械学習、ニューラルネットワークに関する記事",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "articles"
   },
   {
     "id": "lilianweng",
@@ -69,7 +77,8 @@
     "url": "https://lilianweng.github.io/posts/index.xml",
     "description": "深層学習、強化学習、LLMに関する技術的な解説記事",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "articles"
   },
   {
     "id": "aaif",
@@ -77,7 +86,8 @@
     "url": "https://aaif.io/feed/",
     "description": "AIエージェント技術の標準化と相互運用性、Model Context Protocol、オープンソースAI",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "articles"
   },
   {
     "id": "pytorch",
@@ -85,7 +95,8 @@
     "url": "https://pytorch.org/feed/",
     "description": "PyTorchの最新情報、チュートリアル、リリースノート",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "react",
@@ -93,7 +104,8 @@
     "url": "https://react.dev/rss.xml",
     "description": "React公式ブログ、新機能、リリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "typescript",
@@ -101,7 +113,8 @@
     "url": "https://devblogs.microsoft.com/typescript/feed/",
     "description": "TypeScriptの新機能、リリース情報、言語設計に関する記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "nodejs",
@@ -109,7 +122,8 @@
     "url": "https://nodejs.org/en/feed/blog.xml",
     "description": "Node.jsの新機能、リリース情報、ランタイムに関する記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "bun",
@@ -117,7 +131,8 @@
     "url": "https://bun.com/rss.xml",
     "description": "高速JavaScriptランタイムBunの最新情報、パフォーマンス改善に関する記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "tailwindcss",
@@ -125,7 +140,8 @@
     "url": "https://tailwindcss.com/feeds/feed.xml",
     "description": "ユーティリティファーストCSS、デザインシステム、新機能に関する記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "vite",
@@ -133,7 +149,8 @@
     "url": "https://vite.dev/blog.rss",
     "description": "Viteの最新情報、パフォーマンス改善、エコシステムに関する記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "oxc",
@@ -141,7 +158,8 @@
     "url": "https://oxc.rs/feeds/blog-en.rss",
     "description": "Rustベースの高速JavaScriptツールチェーン開発",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "voidzero",
@@ -149,7 +167,8 @@
     "url": "https://voidzero.dev/feed.xml",
     "description": "次世代JavaScriptツールチェーン、Webインフラに関する記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "rust",
@@ -157,7 +176,8 @@
     "url": "https://blog.rust-lang.org/feed.xml",
     "description": "Rustの新機能、リリース情報、言語設計に関する記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "hono",
@@ -165,7 +185,8 @@
     "url": "https://github.com/honojs/hono/releases.atom",
     "description": "軽量高速Webフレームワーク Honoのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "mold",
@@ -173,7 +194,8 @@
     "url": "https://github.com/rui314/mold/releases.atom",
     "description": "高速リンカ moldのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "servo",
@@ -181,7 +203,8 @@
     "url": "https://servo.org/blog/feed.xml",
     "description": "Rust製ブラウザエンジン Servoの開発状況と技術記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "turborepo",
@@ -189,7 +212,8 @@
     "url": "https://github.com/vercel/turborepo/releases.atom",
     "description": "高性能ビルドシステム Turborepoのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "rustowl",
@@ -197,7 +221,8 @@
     "url": "https://github.com/cordx56/rustowl/releases.atom",
     "description": "Rustの所有権とライフタイムを可視化するツールのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "playwright",
@@ -205,7 +230,8 @@
     "url": "https://github.com/microsoft/playwright/releases.atom",
     "description": "ブラウザ自動化・E2Eテストフレームワーク Playwrightのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "nextjs",
@@ -213,7 +239,8 @@
     "url": "https://github.com/vercel/next.js/releases.atom",
     "description": "Reactフレームワーク Next.jsのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "rolldown",
@@ -221,7 +248,8 @@
     "url": "https://github.com/rolldown/rolldown/releases.atom",
     "description": "Rustベースの高速JavaScriptバンドラー Rolldownのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "w3c",
@@ -229,7 +257,8 @@
     "url": "https://www.w3.org/blog/feed/",
     "description": "Web標準、仕様策定、W3Cの活動に関する記事",
     "category": "Web Standards",
-    "categorySlug": "web-standards"
+    "categorySlug": "web-standards",
+    "kind": "articles"
   },
   {
     "id": "momdo",
@@ -237,7 +266,8 @@
     "url": "https://momdo.hatenablog.jp/feed",
     "description": "Web標準、HTML、アクセシビリティに関する記事",
     "category": "Web Standards",
-    "categorySlug": "web-standards"
+    "categorySlug": "web-standards",
+    "kind": "articles"
   },
   {
     "id": "jxck",
@@ -245,7 +275,8 @@
     "url": "https://blog.jxck.io/feeds/atom.xml",
     "description": "Web標準、HTTP、セキュリティ、パフォーマンスに関する記事",
     "category": "Web Standards",
-    "categorySlug": "web-standards"
+    "categorySlug": "web-standards",
+    "kind": "articles"
   },
   {
     "id": "mozaicfm",
@@ -253,7 +284,8 @@
     "url": "https://feed.mozaic.fm",
     "description": "Web技術、標準化、プラットフォームに関するポッドキャスト",
     "category": "Web Standards",
-    "categorySlug": "web-standards"
+    "categorySlug": "web-standards",
+    "kind": "podcast"
   },
   {
     "id": "rebuildfm",
@@ -261,7 +293,8 @@
     "url": "https://feeds.rebuild.fm/rebuildfm",
     "description": "Web開発、プログラミング、モバイル、ガジェットに関するテクノロジーポッドキャスト",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "podcast"
   },
   {
     "id": "deque",
@@ -269,7 +302,8 @@
     "url": "https://www.deque.com/feed/",
     "description": "Webアクセシビリティ、WCAG、インクルーシブデザインに関する記事",
     "category": "Web Standards",
-    "categorySlug": "web-standards"
+    "categorySlug": "web-standards",
+    "kind": "articles"
   },
   {
     "id": "accessible-games",
@@ -277,7 +311,8 @@
     "url": "https://accessiblegames.com/feed/",
     "description": "ゲームアクセシビリティの標準化、タグシステム、業界パートナーシップ",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "whatwg",
@@ -285,7 +320,8 @@
     "url": "https://blog.whatwg.org/feed",
     "description": "HTML Living Standard、DOM、Fetch、Web標準の策定に関する記事",
     "category": "Web Standards",
-    "categorySlug": "web-standards"
+    "categorySlug": "web-standards",
+    "kind": "articles"
   },
   {
     "id": "tokumaru",
@@ -293,7 +329,8 @@
     "url": "https://blog.tokumaru.org/feeds/posts/default",
     "description": "Webセキュリティ、脆弱性、セキュアコーディングに関する記事",
     "category": "Security & Privacy",
-    "categorySlug": "security-privacy"
+    "categorySlug": "security-privacy",
+    "kind": "articles"
   },
   {
     "id": "project-zero",
@@ -301,7 +338,8 @@
     "url": "https://googleprojectzero.blogspot.com/feeds/posts/default",
     "description": "Googleセキュリティ研究チームによるゼロデイ脆弱性の発見と分析",
     "category": "Security & Privacy",
-    "categorySlug": "security-privacy"
+    "categorySlug": "security-privacy",
+    "kind": "articles"
   },
   {
     "id": "schneier",
@@ -309,7 +347,8 @@
     "url": "https://www.schneier.com/feed/atom/",
     "description": "暗号、セキュリティ、プライバシー、リスク分析に関する記事",
     "category": "Security & Privacy",
-    "categorySlug": "security-privacy"
+    "categorySlug": "security-privacy",
+    "kind": "articles"
   },
   {
     "id": "signal",
@@ -317,7 +356,8 @@
     "url": "https://signal.org/blog/rss.xml",
     "description": "プライバシー、暗号化メッセージング、セキュリティに関する記事",
     "category": "Security & Privacy",
-    "categorySlug": "security-privacy"
+    "categorySlug": "security-privacy",
+    "kind": "articles"
   },
   {
     "id": "torproject",
@@ -325,7 +365,8 @@
     "url": "https://blog.torproject.org/feed.xml",
     "description": "匿名性、プライバシー保護、Torネットワークに関する記事",
     "category": "Security & Privacy",
-    "categorySlug": "security-privacy"
+    "categorySlug": "security-privacy",
+    "kind": "articles"
   },
   {
     "id": "simplex",
@@ -333,7 +374,8 @@
     "url": "https://simplex.chat/feed.rss",
     "description": "プライバシー重視メッセージング、分散型通信、E2E暗号化に関する記事",
     "category": "Security & Privacy",
-    "categorySlug": "security-privacy"
+    "categorySlug": "security-privacy",
+    "kind": "articles"
   },
   {
     "id": "shanematsuo",
@@ -342,7 +384,8 @@
     "description": "デジタルアイデンティティ、OAuth、セキュリティに関する記事",
     "category": "Digital Identity",
     "categorySlug": "digital-identity",
-    "paywall": true
+    "paywall": true,
+    "kind": "articles"
   },
   {
     "id": "sakimura",
@@ -350,7 +393,8 @@
     "url": "https://www.sakimura.org/feed/",
     "description": "アイデンティティ、セキュリティ、OAuth、OpenID Connectに関する記事",
     "category": "Digital Identity",
-    "categorySlug": "digital-identity"
+    "categorySlug": "digital-identity",
+    "kind": "articles"
   },
   {
     "id": "openid",
@@ -358,7 +402,8 @@
     "url": "https://openid.net/feed/",
     "description": "OpenID、デジタルアイデンティティ標準化に関する記事",
     "category": "Digital Identity",
-    "categorySlug": "digital-identity"
+    "categorySlug": "digital-identity",
+    "kind": "articles"
   },
   {
     "id": "inkandswitch",
@@ -366,7 +411,8 @@
     "url": "https://www.inkandswitch.com/index.xml",
     "description": "ローカルファーストソフトウェア、分散システム、CRDT、コラボレーションツールの研究",
     "category": "Digital Identity",
-    "categorySlug": "digital-identity"
+    "categorySlug": "digital-identity",
+    "kind": "articles"
   },
   {
     "id": "vitalik",
@@ -374,7 +420,8 @@
     "url": "https://vitalik.eth.limo/feed.xml",
     "description": "Ethereum、ブロックチェーン、暗号経済学、分散システムに関する記事",
     "category": "Digital Identity",
-    "categorySlug": "digital-identity"
+    "categorySlug": "digital-identity",
+    "kind": "articles"
   },
   {
     "id": "protocol-labs",
@@ -382,7 +429,8 @@
     "url": "https://protocol.ai/rss.xml",
     "description": "IPFS、Filecoin、分散Web技術に関する記事",
     "category": "Digital Identity",
-    "categorySlug": "digital-identity"
+    "categorySlug": "digital-identity",
+    "kind": "articles"
   },
   {
     "id": "ipfs",
@@ -390,7 +438,8 @@
     "url": "https://blog.ipfs.tech/index.xml",
     "description": "分散ファイルシステム、Web3、コンテンツアドレッシングに関する記事",
     "category": "Digital Identity",
-    "categorySlug": "digital-identity"
+    "categorySlug": "digital-identity",
+    "kind": "articles"
   },
   {
     "id": "ethereum",
@@ -398,7 +447,8 @@
     "url": "https://blog.ethereum.org/en/feed.xml",
     "description": "Ethereum、スマートコントラクト、ブロックチェーンに関する記事",
     "category": "Digital Identity",
-    "categorySlug": "digital-identity"
+    "categorySlug": "digital-identity",
+    "kind": "articles"
   },
   {
     "id": "bluesky",
@@ -406,7 +456,8 @@
     "url": "https://bsky.social/about/rss.xml",
     "description": "分散型SNS Bluesky、AT Protocol、ソーシャルネットワークに関する記事",
     "category": "Digital Identity",
-    "categorySlug": "digital-identity"
+    "categorySlug": "digital-identity",
+    "kind": "articles"
   },
   {
     "id": "mastodon",
@@ -414,7 +465,8 @@
     "url": "https://blog.joinmastodon.org/index.xml",
     "description": "分散型SNS Mastodon、ActivityPub、Fediverseに関する記事",
     "category": "Digital Identity",
-    "categorySlug": "digital-identity"
+    "categorySlug": "digital-identity",
+    "kind": "articles"
   },
   {
     "id": "fiatjaf",
@@ -422,7 +474,8 @@
     "url": "https://fiatjaf.com/-/rss",
     "description": "Nostr、分散型プロトコル、暗号通貨に関する記事",
     "category": "Digital Identity",
-    "categorySlug": "digital-identity"
+    "categorySlug": "digital-identity",
+    "kind": "articles"
   },
   {
     "id": "github-changelog",
@@ -430,7 +483,8 @@
     "url": "https://github.blog/changelog/feed/",
     "description": "GitHubの新機能、アップデート、変更履歴",
     "category": "Platform & Services",
-    "categorySlug": "platform-services"
+    "categorySlug": "platform-services",
+    "kind": "articles"
   },
   {
     "id": "vercel",
@@ -438,7 +492,8 @@
     "url": "https://vercel.com/atom",
     "description": "フロントエンド、Next.js、Webパフォーマンス、デプロイに関する記事",
     "category": "Platform & Services",
-    "categorySlug": "platform-services"
+    "categorySlug": "platform-services",
+    "kind": "articles"
   },
   {
     "id": "cloudflare",
@@ -446,7 +501,8 @@
     "url": "https://blog.cloudflare.com/rss",
     "description": "CDN、DNS、セキュリティ、エッジコンピューティングに関する記事",
     "category": "Platform & Services",
-    "categorySlug": "platform-services"
+    "categorySlug": "platform-services",
+    "kind": "articles"
   },
   {
     "id": "digital-gov",
@@ -454,7 +510,8 @@
     "url": "https://digital-gov.note.jp/rss",
     "description": "デジタル庁の取り組み、デジタル社会、行政DXに関する記事",
     "category": "Platform & Services",
-    "categorySlug": "platform-services"
+    "categorySlug": "platform-services",
+    "kind": "articles"
   },
   {
     "id": "meta-engineering",
@@ -462,7 +519,8 @@
     "url": "https://engineering.fb.com/feed/",
     "description": "Metaの研究、コンピュータビジョン",
     "category": "Company Engineering",
-    "categorySlug": "company-engineering"
+    "categorySlug": "company-engineering",
+    "kind": "articles"
   },
   {
     "id": "meituan",
@@ -470,7 +528,8 @@
     "url": "https://tech.meituan.com/feed/",
     "description": "Meituanのエンジニアリング、技術スタックに関する記事",
     "category": "Company Engineering",
-    "categorySlug": "company-engineering"
+    "categorySlug": "company-engineering",
+    "kind": "articles"
   },
   {
     "id": "mercari-engineering",
@@ -478,7 +537,8 @@
     "url": "https://engineering.mercari.com/blog/feed.xml",
     "description": "マイクロサービス、Go、モバイル開発、インフラに関する記事",
     "category": "Company Engineering",
-    "categorySlug": "company-engineering"
+    "categorySlug": "company-engineering",
+    "kind": "articles"
   },
   {
     "id": "lycorp-techblog",
@@ -486,7 +546,8 @@
     "url": "https://techblog.lycorp.co.jp/ja/feed/index.xml",
     "description": "メッセージング、検索、広告、インフラに関する技術記事",
     "category": "Company Engineering",
-    "categorySlug": "company-engineering"
+    "categorySlug": "company-engineering",
+    "kind": "articles"
   },
   {
     "id": "freee-developers",
@@ -494,7 +555,8 @@
     "url": "https://developers.freee.co.jp/feed",
     "description": "会計ソフトfreeeの開発、マイクロサービス、SaaSに関する技術記事",
     "category": "Company Engineering",
-    "categorySlug": "company-engineering"
+    "categorySlug": "company-engineering",
+    "kind": "articles"
   },
   {
     "id": "dwango-edu",
@@ -502,7 +564,8 @@
     "url": "https://blog.nnn.dev/feed",
     "description": "N高・S高のEdTech開発、項目反応理論、Web標準、教育プラットフォームに関する技術記事",
     "category": "Company Engineering",
-    "categorySlug": "company-engineering"
+    "categorySlug": "company-engineering",
+    "kind": "articles"
   },
   {
     "id": "yamdas",
@@ -510,7 +573,8 @@
     "url": "https://yamdas.hatenablog.com/feed",
     "description": "テクノロジー、翻訳、書評に関する記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "takanorip",
@@ -518,7 +582,8 @@
     "url": "https://blog.takanorip.com/feed.xml",
     "description": "フロントエンド開発、デザインシステム、Web技術に関する記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "sara-soueidan",
@@ -526,7 +591,8 @@
     "url": "https://www.sarasoueidan.com/blog/index.xml",
     "description": "フロントエンド開発、CSS、SVG、アクセシビリティに関する記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "wong-mjane",
@@ -534,7 +600,8 @@
     "url": "https://wongmjane.com/blog/feed",
     "description": "アプリリバースエンジニアリング、未公開機能の発見、テクノロジー分析",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "antfu",
@@ -542,7 +609,8 @@
     "url": "https://antfu.me/feed.xml",
     "description": "Vue.js、Vite、オープンソース開発に関する記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "kentcdodds",
@@ -550,7 +618,8 @@
     "url": "https://kentcdodds.com/blog/rss.xml",
     "description": "React、Testing、Web開発、教育に関する記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "overreacted",
@@ -558,7 +627,8 @@
     "url": "https://overreacted.io/rss.xml",
     "description": "Dan AbramovによるReact、JavaScript、プログラミングに関する記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "ruanyifeng",
@@ -566,7 +636,8 @@
     "url": "https://feeds.feedburner.com/ruanyifeng",
     "description": "技術、プログラミング、Web開発に関する中国語の記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "coolshell",
@@ -574,7 +645,8 @@
     "url": "https://coolshell.cn/feed",
     "description": "プログラミング、技術、ソフトウェア開発に関する中国語の記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "stephango",
@@ -582,7 +654,8 @@
     "url": "https://stephango.com/feed.xml",
     "description": "デジタル哲学、生産性、デザイン、テクノロジーに関するエッセイ（Obsidian CEO）",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "sh1ma",
@@ -590,7 +663,8 @@
     "url": "https://blog.sh1ma.dev/feed",
     "description": "インフラ、クラウド、IoT、電子工作に関する技術記事と日記",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "joi-ito",
@@ -598,7 +672,8 @@
     "url": "https://feeds.feedburner.com/joi-ito/weblog",
     "description": "テクノロジー、イノベーション、社会変革に関する記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "kevin-kelly",
@@ -606,7 +681,8 @@
     "url": "https://kk.org/feed/",
     "description": "テクノロジー、文化、未来予測に関する記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "photomatt",
@@ -614,7 +690,8 @@
     "url": "https://ma.tt/feed/",
     "description": "WordPress、オープンソース、テクノロジー、ビジネスに関する記事（WordPress創業者）",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "craftzdog",
@@ -622,7 +699,8 @@
     "url": "https://www.devas.life/rss/",
     "description": "Inkdrop開発、React Native、Electron、インディー開発に関する記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "catnose",
@@ -630,7 +708,8 @@
     "url": "https://sizu.me/catnose/rss",
     "description": "しずかなインターネット開発者による日記、エッセイ、運営メモ",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "eff",
@@ -638,7 +717,8 @@
     "url": "https://www.eff.org/rss/updates.xml",
     "description": "デジタル権利、プライバシー、言論の自由に関するニュース",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "openrightsgroup",
@@ -646,7 +726,8 @@
     "url": "https://www.openrightsgroup.org/feed/",
     "description": "英国のデジタル権、オンラインプライバシー、表現の自由、政府の監視に関する記事",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "accessnow",
@@ -654,7 +735,8 @@
     "url": "https://www.accessnow.org/feed/",
     "description": "デジタル人権、インターネット遮断、通信の自由、データプライバシーに関する国際的な取り組み",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "dispatches",
@@ -662,7 +744,8 @@
     "url": "https://dispatches.substack.com/feed",
     "description": "Adrian Chenによる社会論、文化批評、テクノロジーレビューに関するニュースレター",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "ethanzuckerman",
@@ -670,7 +753,8 @@
     "url": "https://ethanzuckerman.com/feed/",
     "description": "デジタル技術、メディア、民主主義、AI、気候変動に関する思想的議論",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "natematias",
@@ -679,7 +763,8 @@
     "description": "AIの科学、デジタル技術、民主主義、環境問題、市民科学に関する記事",
     "category": "Social Impact",
     "categorySlug": "social-impact",
-    "paywall": true
+    "paywall": true,
+    "kind": "articles"
   },
   {
     "id": "ooni",
@@ -687,7 +772,8 @@
     "url": "https://ooni.org/blog/index.xml",
     "description": "インターネット検閲、ネットワーク干渉の測定と分析",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "craphound",
@@ -695,7 +781,8 @@
     "url": "https://craphound.com/feed/",
     "description": "テクノロジー、デジタル権利、著作権、SF作家の視点",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "citizenlab",
@@ -703,7 +790,8 @@
     "url": "https://citizenlab.ca/feed/",
     "description": "デジタルセキュリティ、人権、インターネット検閲の研究",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "pew-research",
@@ -711,7 +799,8 @@
     "url": "https://www.pewresearch.org/feed/",
     "description": "社会調査、世論、デモグラフィック、テクノロジー利用動向に関する記事",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "eurostat",
@@ -719,7 +808,8 @@
     "url": "https://ec.europa.eu/eurostat/en/search?p_p_id=estatsearchportlet_WAR_estatsearchportlet&p_p_lifecycle=2&p_p_state=maximized&p_p_mode=view&p_p_resource_id=atom&_estatsearchportlet_WAR_estatsearchportlet_collection=CAT_EURNEW",
     "description": "欧州連合の統計、経済データ、社会指標に関するニュース",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "insight-zeynep",
@@ -727,7 +817,8 @@
     "url": "https://www.theinsight.org/feed",
     "description": "テクノロジー、社会、AIに関する深い洞察と分析",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "zephoria",
@@ -735,7 +826,8 @@
     "url": "https://www.zephoria.org/thoughts/feed",
     "description": "ソーシャルメディア、プライバシー、若者とテクノロジーに関する研究",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "jigsaw",
@@ -744,7 +836,8 @@
     "description": "Google傘下のインキュベーター、検閲対策、AI、オンライン安全性に関する記事",
     "category": "Social Impact",
     "categorySlug": "social-impact",
-    "paywall": true
+    "paywall": true,
+    "kind": "articles"
   },
   {
     "id": "g0v",
@@ -752,7 +845,8 @@
     "url": "https://g0v.news/feed",
     "description": "台湾のシビックハック、オープンガバメント、市民参加に関する記事",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "humane-tech",
@@ -760,7 +854,8 @@
     "url": "https://centerforhumanetechnology.substack.com/feed",
     "description": "テクノロジーの人間性、デジタルウェルビーイング、倫理的デザインに関する記事",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "restofworld",
@@ -768,7 +863,8 @@
     "url": "https://restofworld.org/feed/latest",
     "description": "新興国のテクノロジーとカルチャーに関するニュース",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "articles"
   },
   {
     "id": "wired",
@@ -777,7 +873,8 @@
     "description": "テクノロジー、科学、カルチャー、ビジネスに関するニュースと記事",
     "category": "Media & Culture",
     "categorySlug": "media-culture",
-    "paywall": true
+    "paywall": true,
+    "kind": "articles"
   },
   {
     "id": "theinitium",
@@ -786,7 +883,8 @@
     "description": "中華圏のニュース、深層報道、社会問題に関する記事",
     "category": "Media & Culture",
     "categorySlug": "media-culture",
-    "paywall": true
+    "paywall": true,
+    "kind": "articles"
   },
   {
     "id": "mayshi-rao",
@@ -794,7 +892,8 @@
     "url": "https://mayshirao.com/feed/",
     "description": "ダンス研究、編集、文化に関する記事",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "articles"
   },
   {
     "id": "designing",
@@ -802,7 +901,8 @@
     "url": "https://designing.jp/feed.xml",
     "description": "デザイン、UI/UX、クリエイティブに関する記事",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "articles"
   },
   {
     "id": "yukai-engineering",
@@ -810,7 +910,8 @@
     "url": "https://note.com/ux_xu/rss",
     "description": "ロボティクス、IoT、プロダクト開発に関する記事",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "articles"
   },
   {
     "id": "lleedd",
@@ -818,7 +919,8 @@
     "url": "https://lleedd.com/blog/feed/",
     "description": "プロダクトデザイン、デザイン思考、ものづくりに関する記事",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "articles"
   },
   {
     "id": "oura",
@@ -826,7 +928,8 @@
     "url": "https://ouraring.com/blog/feed/",
     "description": "ウェアラブル、睡眠トラッキング、ヘルステックに関する記事",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "articles"
   },
   {
     "id": "vrchat",
@@ -834,7 +937,8 @@
     "url": "https://hello.vrchat.com/blog?format=rss",
     "description": "VR SNS、メタバース、クリエイターコンテスト、プラットフォーム安全性に関する記事",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "articles"
   },
   {
     "id": "aespa",
@@ -842,7 +946,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC9GtSLeksfK4yuJ_g1lgQbg",
     "description": "K-POPグループaespaの公式YouTubeチャンネル",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "hatsuhoshi",
@@ -850,7 +955,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC2dXx-3RXeeP8hA5AGt8vuw",
     "description": "初星学園の公式YouTubeチャンネル",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "sevish",
@@ -858,7 +964,8 @@
     "url": "https://sevish.com/feed/",
     "description": "電子マイクロトーナル音楽、音楽ツール、チューニング技術に関する記事",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "articles"
   },
   {
     "id": "lai",
@@ -866,7 +973,8 @@
     "url": "https://blog.lai.so/rss/",
     "description": "個人ブログ、技術、プログラミングに関する記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "azukiazusa",
@@ -874,7 +982,8 @@
     "url": "https://azukiazusa.dev/rss.xml",
     "description": "Web開発、フロントエンド、技術に関する記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "mizchi",
@@ -882,7 +991,8 @@
     "url": "https://zenn.dev/mizchi/feed",
     "description": "フロントエンド、TypeScript、Webツールチェーンに関する記事",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "jser",
@@ -890,7 +1000,8 @@
     "url": "https://jser.info/rss/",
     "description": "JavaScriptの最新情報、ライブラリ、ツール、記事を毎週紹介",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "drizzle-orm",
@@ -898,7 +1009,8 @@
     "url": "https://github.com/drizzle-team/drizzle-orm/releases.atom",
     "description": "TypeScript ORMのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "henkaku-center",
@@ -906,7 +1018,8 @@
     "url": "https://www.henkaku.center/ja/feed/feed.xml",
     "description": "千葉工業大学の変革センターによるデジタル社会、テクノロジー、イノベーションに関する記事",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "articles"
   },
   {
     "id": "mit-media-lab",
@@ -914,7 +1027,8 @@
     "url": "https://www.media.mit.edu/feed.rss",
     "description": "MITメディアラボの研究、イノベーション、テクノロジーとデザインの融合に関する記事",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "articles"
   },
   {
     "id": "moonbit",
@@ -922,7 +1036,8 @@
     "url": "https://www.moonbitlang.com/blog/rss.xml",
     "description": "MoonBitプログラミング言語の開発、言語設計、WebAssemblyに関する記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "prototype-fund",
@@ -930,7 +1045,8 @@
     "url": "https://www.prototypefund.de/en/feed.rss",
     "description": "ドイツのオープンソースプロジェクト支援プログラム、公共インフラ、シビックテックに関する記事",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "boomerang-effect",
@@ -938,7 +1054,8 @@
     "url": "https://boomerang-effect.espivblogs.net/feed/",
     "description": "デジタル権利、監視、インターネット検閲、人権保護に関する記事",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "berkman-klein",
@@ -947,7 +1064,8 @@
     "description": "ハーバード大学のインターネット・社会研究センター、デジタル権利、オープンインターネット、テクノロジーと社会に関する記事",
     "category": "Social Impact",
     "categorySlug": "social-impact",
-    "paywall": true
+    "paywall": true,
+    "kind": "articles"
   },
   {
     "id": "barrett-lyon",
@@ -955,7 +1073,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCeLz-dzQd675Zd47a1xY1wA",
     "description": "The Opte Project創設者によるインターネット可視化、ネットワーク構造、新しいインターネットの原則に関する動画",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "bruno-latour",
@@ -963,7 +1082,8 @@
     "url": "http://www.bruno-latour.fr/rss.xml",
     "description": "科学技術社会論、アクターネットワーク理論、ポストヒューマニズムに関する記事",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "anthropolojamz",
@@ -971,7 +1091,8 @@
     "url": "https://anthropolojamz.wordpress.com/feed/",
     "description": "人類学、文化研究、社会理論に関する記事",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "icd-lab",
@@ -979,7 +1100,8 @@
     "url": "https://www.icd.cs.tut.ac.jp/index.php/feed/",
     "description": "豊橋技術科学大学の「弱いロボット」研究、人とロボットのインタラクション、HCIに関する記事",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "articles"
   },
   {
     "id": "data-society",
@@ -987,7 +1109,8 @@
     "url": "https://datasociety.net/feed/",
     "description": "データ、テクノロジー、社会の交差点に関する研究、AI倫理、アルゴリズムの公平性に関する記事",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   },
   {
     "id": "turingcomplete",
@@ -995,7 +1118,8 @@
     "url": "https://feeds.turingcomplete.fm/tcfm",
     "description": "コンピュータサイエンスとテクノロジーに関するポッドキャスト",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "podcast"
   },
   {
     "id": "misreading",
@@ -1003,7 +1127,8 @@
     "url": "https://misreading.chat/category/episodes/feed/",
     "description": "コンピュータサイエンスの論文を読んで話をするポッドキャスト",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "podcast"
   },
   {
     "id": "fukabori",
@@ -1011,7 +1136,8 @@
     "url": "https://rss.art19.com/fukabori",
     "description": "技術・組織・マネジメントなどを深掘りして楽しむポッドキャスト",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "podcast"
   },
   {
     "id": "lexfridman",
@@ -1019,7 +1145,8 @@
     "url": "https://lexfridman.com/feed/podcast/",
     "description": "AI、科学、テクノロジー、哲学などについての長時間インタビューポッドキャスト",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "podcast"
   },
   {
     "id": "ai-shift",
@@ -1027,7 +1154,8 @@
     "url": "https://www.ai-shift.co.jp/techblog/feed",
     "description": "AIチャットボット、カスタマーサポート技術に関する記事",
     "category": "Company Engineering",
-    "categorySlug": "company-engineering"
+    "categorySlug": "company-engineering",
+    "kind": "articles"
   },
   {
     "id": "kubo",
@@ -1035,7 +1163,8 @@
     "url": "https://github.com/ipfs/kubo/releases.atom",
     "description": "IPFS実装Kuboのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "yjs",
@@ -1043,7 +1172,8 @@
     "url": "https://github.com/yjs/yjs/releases.atom",
     "description": "CRDTベースのリアルタイム協調編集ライブラリYjsのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "transformers",
@@ -1051,7 +1181,8 @@
     "url": "https://github.com/huggingface/transformers/releases.atom",
     "description": "Transformersライブラリのリリース情報",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "releases"
   },
   {
     "id": "llama-cpp",
@@ -1059,7 +1190,8 @@
     "url": "https://github.com/ggml-org/llama.cpp/releases.atom",
     "description": "C++によるLLM推論エンジンllama.cppのリリース情報",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "releases"
   },
   {
     "id": "biome",
@@ -1067,7 +1199,8 @@
     "url": "https://github.com/biomejs/biome/releases.atom",
     "description": "高速JavaScriptツールチェーンBiomeのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "tauri",
@@ -1075,7 +1208,8 @@
     "url": "https://github.com/tauri-apps/tauri/releases.atom",
     "description": "RustベースのデスクトップアプリフレームワークTauriのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "tokio",
@@ -1083,7 +1217,8 @@
     "url": "https://github.com/tokio-rs/tokio/releases.atom",
     "description": "Rust非同期ランタイムTokioのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "automerge",
@@ -1091,7 +1226,8 @@
     "url": "https://github.com/automerge/automerge/releases.atom",
     "description": "CRDTベースのデータ同期ライブラリAutomergeのリリース情報",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   },
   {
     "id": "mastra",
@@ -1099,7 +1235,8 @@
     "url": "https://github.com/mastra-ai/mastra/releases.atom",
     "description": "AIエージェント開発フレームワークMastraのリリース情報",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "releases"
   },
   {
     "id": "strands-agents",
@@ -1107,7 +1244,8 @@
     "url": "https://github.com/strands-agents/sdk-python/releases.atom",
     "description": "Strands AgentsのPython SDKリリース情報",
     "category": "AI/ML",
-    "categorySlug": "ai-ml"
+    "categorySlug": "ai-ml",
+    "kind": "releases"
   },
   {
     "id": "cover-corp-zenn",
@@ -1115,7 +1253,8 @@
     "url": "https://zenn.dev/p/cover_corp/feed",
     "description": "カバー株式会社の技術記事、VTuber技術、配信プラットフォームに関する記事",
     "category": "Company Engineering",
-    "categorySlug": "company-engineering"
+    "categorySlug": "company-engineering",
+    "kind": "articles"
   },
   {
     "id": "astral",
@@ -1123,7 +1262,8 @@
     "url": "https://astral.sh/blog/rss.xml",
     "description": "Ruff、uv、Python開発ツールに関する記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "minerva-scientia",
@@ -1131,7 +1271,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UClsyp848PT_kJ0VSR0zvWFg",
     "description": "歴史言語学、着ぐるみ、アルゴリズム作曲、動画生成AIに関するYouTubeチャンネル",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "yukkuri-maccha",
@@ -1139,7 +1280,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCQBxe2pLyaVGylZpck_WkOw",
     "description": "ゆっくり解説チャンネル",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "ngethoma",
@@ -1147,7 +1289,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCLreIXyMtLaFtVYvg2dCbLQ",
     "description": "言語学、数学、科学など需要のない動画を作るYouTubeチャンネル",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "yatteiki",
@@ -1155,7 +1298,8 @@
     "url": "https://yatteiki.fm/feed.xml",
     "description": "技術、開発、日常などについて話すポッドキャスト",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "podcast"
   },
   {
     "id": "darknet-diaries",
@@ -1163,7 +1307,8 @@
     "url": "https://podcast.darknetdiaries.com",
     "description": "ハッカー、データ侵害、サイバー犯罪に関するストーリーを語るポッドキャスト",
     "category": "Security & Privacy",
-    "categorySlug": "security-privacy"
+    "categorySlug": "security-privacy",
+    "kind": "podcast"
   },
   {
     "id": "p-hone",
@@ -1171,7 +1316,8 @@
     "url": "https://p-hone.info/index.xml",
     "description": "アニメ、イラスト、技術、インターネット文化に関する個人ブログ",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "yuki0311",
@@ -1179,7 +1325,8 @@
     "url": "https://blog.yuki0311.com/feed/",
     "description": "インフラ、開発ツール、VRChat、AI活用に関する技術ブログ",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "jmuk",
@@ -1187,7 +1334,8 @@
     "url": "https://www.jmuk.org/blog/index.xml",
     "description": "ソフトウェアエンジニアリング、日本語入力、文化、言語に関する個人ブログ",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "tex2e",
@@ -1195,7 +1343,8 @@
     "url": "https://tex2e.github.io/blog/feed.xml",
     "description": "プログラミング全般、Python、Linux、Azure、SQL等の技術備忘録ブログ",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "bret-victor",
@@ -1203,7 +1352,8 @@
     "url": "https://worrydream.com/feed.xml",
     "description": "インタラクティブメディア、人間中心設計、計算機科学とデザインの交点に関する活動",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "sunday-letters",
@@ -1211,7 +1361,8 @@
     "url": "https://sundaylettersfromsam.substack.com/feed",
     "description": "AI、組織論、システム思考、技術変革に関するニュースレター",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "feeling-of-computing",
@@ -1219,7 +1370,8 @@
     "url": "https://www.omnycontent.com/d/playlist/c4157e60-c7f8-470d-b13f-a7b30040df73/564f493f-af32-4c48-862f-a7b300e4df49/ac317852-8807-44b8-8eff-a7b300e4df52/podcast.rss",
     "description": "プログラミング言語の哲学、デザイン、歴史、未来について議論するポッドキャスト",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "podcast"
   },
   {
     "id": "beepb00p",
@@ -1227,7 +1379,8 @@
     "url": "https://beepb00p.xyz/atom.xml",
     "description": "個人データ管理、知識管理、データ統合システム構築に関する技術ブログ",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "mozilla-hacks",
@@ -1235,7 +1388,8 @@
     "url": "https://hacks.mozilla.org/feed/",
     "description": "Web開発、ブラウザ技術、Firefox、Web標準、WebAssemblyに関する記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "lamplight",
@@ -1243,7 +1397,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCtF6NLMHd0hHDmKeFcNYdmg",
     "description": "微分音音楽、言語創作（人工言語）、和音図・文法図による芸術表現",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "hojo-minori",
@@ -1251,7 +1406,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC5r80UZbwfM5bCgGM5soZkg",
     "description": "折り紙、数学、プログラミング、作曲、微分音音楽の生放送とゲーム実況",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "3blue1brown",
@@ -1259,7 +1415,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw",
     "description": "数学、物理学、コンピュータサイエンスをアニメーションで視覚化し解説する教育チャンネル",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "ufolium",
@@ -1267,7 +1424,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCEmNPlkTWfM1zmLRjLW3CPQ",
     "description": "中高レベルで楽しめる数学の動画教材配信サービス",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "teireiya-girl",
@@ -1275,7 +1433,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCMsstGhINXdpMqo9tsElCMQ",
     "description": "低レイヤープログラミング、OS開発、ペアプログラミング配信",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "kurenaif",
@@ -1283,7 +1442,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCM--uemqoP45daIZG2-VpOA",
     "description": "CTF、Vim、競技プログラミング、テトリスに関する動画",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "bappa-shota",
@@ -1291,7 +1451,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCcrpFRRYkH185Xb8D-JQT7Q",
     "description": "地球を旅し目の当たりにした未知の世界を共有する旅行チャンネル",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "ruhi-cenet",
@@ -1299,7 +1460,8 @@
     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCWpk9PSGHoJW1hZT4egxTNQ",
     "description": "ユニークな場所を探索する独立系ドキュメンタリー映画製作者による旅行チャンネル",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "kind": "video"
   },
   {
     "id": "josephg",
@@ -1307,7 +1469,8 @@
     "url": "https://josephg.com/blog/rss/",
     "description": "CRDT、リアルタイム協調編集、分散システムに関する技術ブログ",
     "category": "Personal Blog",
-    "categorySlug": "personal-blog"
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   },
   {
     "id": "figma-blog",
@@ -1315,7 +1478,8 @@
     "url": "https://www.figma.com/blog/rss/",
     "description": "デザインツール、マルチプレイヤー技術、プロダクト開発に関する記事",
     "category": "Developer Tools",
-    "categorySlug": "developer-tools"
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   },
   {
     "id": "safecast",
@@ -1323,6 +1487,7 @@
     "url": "https://safecast.jp/feed/",
     "description": "放射線測定、環境モニタリング、オープンデータに関する市民科学プロジェクト",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "kind": "articles"
   }
 ]
