@@ -341,7 +341,8 @@
     "url": "https://shanematsuo.medium.com/feed",
     "description": "デジタルアイデンティティ、OAuth、セキュリティに関する記事",
     "category": "Digital Identity",
-    "categorySlug": "digital-identity"
+    "categorySlug": "digital-identity",
+    "paywall": true
   },
   {
     "id": "sakimura",
@@ -677,7 +678,8 @@
     "url": "https://medium.com/feed/@natematias",
     "description": "AIの科学、デジタル技術、民主主義、環境問題、市民科学に関する記事",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "paywall": true
   },
   {
     "id": "ooni",
@@ -741,7 +743,8 @@
     "url": "https://medium.com/feed/jigsaw",
     "description": "Google傘下のインキュベーター、検閲対策、AI、オンライン安全性に関する記事",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "paywall": true
   },
   {
     "id": "g0v",
@@ -773,7 +776,8 @@
     "url": "https://www.wired.com/feed/rss",
     "description": "テクノロジー、科学、カルチャー、ビジネスに関するニュースと記事",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "paywall": true
   },
   {
     "id": "theinitium",
@@ -781,7 +785,8 @@
     "url": "https://theinitium.com/rss/",
     "description": "中華圏のニュース、深層報道、社会問題に関する記事",
     "category": "Media & Culture",
-    "categorySlug": "media-culture"
+    "categorySlug": "media-culture",
+    "paywall": true
   },
   {
     "id": "mayshi-rao",
@@ -941,7 +946,8 @@
     "url": "https://medium.com/feed/berkman-klein-center",
     "description": "ハーバード大学のインターネット・社会研究センター、デジタル権利、オープンインターネット、テクノロジーと社会に関する記事",
     "category": "Social Impact",
-    "categorySlug": "social-impact"
+    "categorySlug": "social-impact",
+    "paywall": true
   },
   {
     "id": "barrett-lyon",
