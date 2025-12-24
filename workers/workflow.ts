@@ -3,6 +3,7 @@ import { drizzle } from "drizzle-orm/d1";
 import { parseFeed } from "htmlparser2";
 import { eq } from "drizzle-orm";
 import * as schema from "../db/schema";
+import { postToMastodon, formatFeedItemForMastodon } from "./mastodon";
 
 export class MyWorkflow extends WorkflowEntrypoint<Env> {
   override async run(_event: WorkflowEvent<Params>, step: WorkflowStep) {
@@ -173,6 +174,41 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
       return { saved: processedItems.length };
     });
 
-    return `Workflow completed: ${processedItems.length} items saved`;
+    // Step 5: Mastodon投稿
+    await step.do("Post new items to Mastodon", async () => {
+      console.log(`🐘 Step 5: Posting ${processedItems.length} items to Mastodon...`);
+
+      let successCount = 0;
+      let failureCount = 0;
+
+      for (const item of processedItems) {
+        try {
+          // Format the post
+          const status = formatFeedItemForMastodon(item.title, item.url);
+
+          // Post to Mastodon
+          const result = await postToMastodon(this.env, {
+            status,
+            visibility: 'public',
+          });
+
+          if (result.success) {
+            console.log(`✅ Posted to Mastodon: ${item.title} (ID: ${result.id})`);
+            successCount++;
+          } else {
+            console.error(`❌ Failed to post: ${item.title} - ${result.error}`);
+            failureCount++;
+          }
+        } catch (error) {
+          console.error(`❌ Error posting to Mastodon:`, error);
+          failureCount++;
+        }
+      }
+
+      console.log(`✅ Step 5 complete: ${successCount} posted, ${failureCount} failed`);
+      return { posted: successCount, failed: failureCount };
+    });
+
+    return `Workflow completed: ${processedItems.length} items saved and posted to Mastodon`;
   }
 }
