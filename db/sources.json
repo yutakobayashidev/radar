@@ -1489,5 +1489,41 @@
     "category": "Social Impact",
     "categorySlug": "social-impact",
     "kind": "articles"
+  },
+  {
+    "id": "anthropic-youtube",
+    "name": "Anthropic",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCrDwWp7EBBv4NwvScIpBDOA",
+    "description": "AI safety and research company. Talk to Claude AI assistant. Building systems people can rely on.",
+    "category": "AI/ML",
+    "categorySlug": "ai-ml",
+    "kind": "video"
+  },
+  {
+    "id": "openai-youtube",
+    "name": "OpenAI",
+    "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCXZCJLdBC09xxGZ6gcdrc6A",
+    "description": "OpenAI's mission is to ensure that artificial general intelligence benefits all of humanity.",
+    "category": "AI/ML",
+    "categorySlug": "ai-ml",
+    "kind": "video"
+  },
+  {
+    "id": "oss4fun",
+    "name": "趣味でOSSをやっている者だ",
+    "url": "https://oss4.fun/feed.xml",
+    "description": "OSS作家の @songmu がゲストを交えながら趣味や仕事についての雑談を不定期にお届けするポッドキャスト番組",
+    "category": "Media & Culture",
+    "categorySlug": "media-culture",
+    "kind": "podcast"
+  },
+  {
+    "id": "sovereign-tech",
+    "name": "Sovereign Tech Agency",
+    "url": "https://www.sovereign.tech/feed.rss",
+    "description": "Supporting public digital infrastructure through funding and expertise",
+    "category": "Social Impact",
+    "categorySlug": "social-impact",
+    "kind": "articles"
   }
 ]
