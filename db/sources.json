@@ -1525,5 +1525,23 @@
     "category": "Social Impact",
     "categorySlug": "social-impact",
     "kind": "articles"
+  },
+  {
+    "id": "daiyuu-nobori",
+    "name": "登大遊の個人日記",
+    "url": "https://softether.hatenadiary.org/rss",
+    "description": "SoftEther VPN開発者による技術論、VPN Gate、ネットワーク技術、法律分析に関する個人ブログ",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
+  },
+  {
+    "id": "bunnie",
+    "name": "bunnie's blog",
+    "url": "https://www.bunniestudios.com/blog/feed/",
+    "description": "ハードウェアハッキング、オープンハードウェア、電子工作、リバースエンジニアリングに関する記事",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   }
 ]
