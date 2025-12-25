@@ -178,10 +178,15 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
     await step.do("Post new items to Mastodon", async () => {
       console.log(`🐘 Step 5: Posting ${processedItems.length} items to Mastodon...`);
 
+      // 古いものから先に投稿するため、timestampで昇順ソート
+      const sortedItems = [...processedItems].sort((a, b) =>
+        a.timestamp.getTime() - b.timestamp.getTime()
+      );
+
       let successCount = 0;
       let failureCount = 0;
 
-      for (const item of processedItems) {
+      for (const item of sortedItems) {
         try {
           // Format the post
           const status = formatFeedItemForMastodon(item.title, item.url);
