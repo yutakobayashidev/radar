@@ -1552,5 +1552,14 @@
     "category": "Media & Culture",
     "categorySlug": "media-culture",
     "kind": "video"
+  },
+  {
+    "id": "no-lol",
+    "name": "no.lol",
+    "url": "https://www.no.lol/rss.xml",
+    "description": "Lauren Tanによるソフトウェアエンジニアリング、TypeScript、キャリア開発に関する個人ブログ",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   }
 ]
