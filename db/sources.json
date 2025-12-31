@@ -1579,5 +1579,14 @@
     "category": "Personal Blog",
     "categorySlug": "personal-blog",
     "kind": "articles"
+  },
+  {
+    "id": "rniwa",
+    "name": "R. Niwa",
+    "url": "https://rniwa.com/feed/feed.xml",
+    "description": "WebKit開発者による技術ブログ、JavaScriptCore、カスタム要素、Shadow DOM API",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   }
 ]

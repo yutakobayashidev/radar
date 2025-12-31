@@ -39,7 +39,9 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
       for (const source of sources) {
         try {
           console.log(`📥 Fetching: ${source.name} (${source.url})`);
-          const response = await fetch(source.url);
+          // vitalik.ca を vitalik.eth.limo に置換
+          const fetchUrl = source.url.replace(/vitalik\.ca/g, 'vitalik.eth.limo');
+          const response = await fetch(fetchUrl);
           if (!response.ok) {
             console.error(`❌ Failed to fetch ${source.url}: ${response.status}`);
             continue;
