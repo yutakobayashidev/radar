@@ -1588,5 +1588,14 @@
     "category": "Personal Blog",
     "categorySlug": "personal-blog",
     "kind": "articles"
+  },
+  {
+    "id": "nixos",
+    "name": "NixOS News",
+    "url": "https://nixos.org/blog/feed.xml",
+    "description": "純粋関数型Linuxディストリビューション NixOSの公式ブログ、リリース情報、コミュニティ活動",
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools",
+    "kind": "articles"
   }
 ]
