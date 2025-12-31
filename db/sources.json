@@ -1561,5 +1561,23 @@
     "category": "Personal Blog",
     "categorySlug": "personal-blog",
     "kind": "articles"
+  },
+  {
+    "id": "takagi-hiromitsu",
+    "name": "高木浩光の日記",
+    "url": "http://takagi-hiromitsu.jp/diary/index.rdf",
+    "description": "個人情報保護、プライバシー、セキュリティ、法制度に関する記事",
+    "category": "Security & Privacy",
+    "categorySlug": "security-privacy",
+    "kind": "articles"
+  },
+  {
+    "id": "kaz-ataka",
+    "name": "ニューロサイエンスとマーケティングの間",
+    "url": "https://kaz-ataka.hatenablog.com/rss",
+    "description": "安宅和人による神経科学、AI、社会、未来に関する考察",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   }
 ]
