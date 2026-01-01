@@ -1597,5 +1597,23 @@
     "category": "Developer Tools",
     "categorySlug": "developer-tools",
     "kind": "articles"
+  },
+  {
+    "id": "hyper-text",
+    "name": "WWW WATCH",
+    "url": "https://hyper-text.org/feed/blog.xml",
+    "description": "Webデザイン、アクセシビリティ、HTML/CSS/JavaScript、Web技術に関する20年の歴史を持つブログ",
+    "category": "Web Standards",
+    "categorySlug": "web-standards",
+    "kind": "articles"
+  },
+  {
+    "id": "whyyoutouzhele",
+    "name": "李老师不是你老师",
+    "url": "https://nitter.privacyredirect.com/whyyoutouzhele/rss",
+    "description": "中国の社会問題、検閲、人権に関する情報発信アカウント (Teacher Li Is Not Your Teacher)",
+    "category": "Social Impact",
+    "categorySlug": "social-impact",
+    "kind": "articles"
   }
 ]
