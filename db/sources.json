@@ -1633,5 +1633,14 @@
     "category": "Platform & Services",
     "categorySlug": "platform-services",
     "kind": "articles"
+  },
+  {
+    "id": "security-no-are",
+    "name": "#セキュリティのアレ",
+    "url": "https://www.tsujileaks.com?feed=rss2",
+    "description": "辻伸弘氏によるセキュリティポッドキャスト、週間セキュリティニュース、脅威分析、業界動向",
+    "category": "Security & Privacy",
+    "categorySlug": "security-privacy",
+    "kind": "podcast"
   }
 ]
