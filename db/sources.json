@@ -1615,5 +1615,14 @@
     "category": "Social Impact",
     "categorySlug": "social-impact",
     "kind": "articles"
+  },
+  {
+    "id": "martinfowler",
+    "name": "Martin Fowler",
+    "url": "https://martinfowler.com/feed.atom",
+    "description": "ソフトウェア設計、リファクタリング、アジャイル開発、マイクロサービスに関する記事",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   }
 ]
