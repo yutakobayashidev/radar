@@ -1651,5 +1651,14 @@
     "category": "Digital Identity",
     "categorySlug": "digital-identity",
     "kind": "releases"
+  },
+  {
+    "id": "guitarrapc",
+    "name": "tech.guitarrapc.com",
+    "url": "https://tech.guitarrapc.com/rss",
+    "description": "GitHub Actions、クラウドインフラ、AI活用、OSS開発に関する実践的な技術記事",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   }
 ]
