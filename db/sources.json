@@ -1660,5 +1660,14 @@
     "category": "Personal Blog",
     "categorySlug": "personal-blog",
     "kind": "articles"
+  },
+  {
+    "id": "testcontainers-node",
+    "name": "Testcontainers for Node.js Releases",
+    "url": "https://github.com/testcontainers/testcontainers-node/releases.atom",
+    "description": "Node.js用Dockerコンテナテストライブラリのリリース情報",
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools",
+    "kind": "releases"
   }
 ]
