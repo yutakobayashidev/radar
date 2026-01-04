@@ -1642,5 +1642,14 @@
     "category": "Security & Privacy",
     "categorySlug": "security-privacy",
     "kind": "podcast"
+  },
+  {
+    "id": "ory-hydra",
+    "name": "Ory Hydra Releases",
+    "url": "https://github.com/ory/hydra/releases.atom",
+    "description": "OAuth 2.0・OpenID Connectサーバー Ory Hydraのリリース情報",
+    "category": "Digital Identity",
+    "categorySlug": "digital-identity",
+    "kind": "releases"
   }
 ]
