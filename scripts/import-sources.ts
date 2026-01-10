@@ -1,6 +1,7 @@
-import { readFileSync } from "fs";
+import { readFileSync, writeFileSync, unlinkSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import { tmpdir } from "os";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -52,21 +53,29 @@ ON CONFLICT(id) DO UPDATE SET
   updated_at = excluded.updated_at;
   `.trim();
 
+  // Write SQL to a temporary file to avoid command line length limits
+  const tmpFile = join(tmpdir(), `import-sources-${Date.now()}.sql`);
+
   try {
+    writeFileSync(tmpFile, insertSQL, "utf-8");
     console.log("🚀 Importing sources...");
-    const output = execSync(
-      `npx wrangler d1 execute radar ${mode} --command "${insertSQL.replace(/"/g, '\\"')}"`,
-      {
-        encoding: "utf-8",
-        stdio: "pipe",
-      }
-    );
+    const output = execSync(`npx wrangler d1 execute radar ${mode} --file="${tmpFile}"`, {
+      encoding: "utf-8",
+      stdio: "pipe",
+    });
     console.log(output);
     console.log("✅ Sources imported successfully!");
   } catch (error: any) {
     console.error("❌ Failed to import sources:");
     console.error(error.stderr || error.message);
     process.exit(1);
+  } finally {
+    // Clean up temporary file
+    try {
+      unlinkSync(tmpFile);
+    } catch {
+      // Ignore cleanup errors
+    }
   }
 }
 
