@@ -1669,5 +1669,14 @@
     "category": "Developer Tools",
     "categorySlug": "developer-tools",
     "kind": "releases"
+  },
+  {
+    "id": "moguravr",
+    "name": "Mogura VR",
+    "url": "https://www.moguravr.com/feed/",
+    "description": "VR・AR・MR・メタバースに関する最新ニュース、デバイス、コンテンツ情報",
+    "category": "Media & Culture",
+    "categorySlug": "media-culture",
+    "kind": "articles"
   }
 ]
