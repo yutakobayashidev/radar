@@ -5,6 +5,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "feed-app",
+	"account_id": "8b50ea3379fb9efb39ecef76cfcaa04a",
 	"compatibility_date": "2025-04-04",
 	"main": "./workers/app.ts",
 	"observability": {
