@@ -1687,5 +1687,14 @@
     "category": "Personal Blog",
     "categorySlug": "personal-blog",
     "kind": "articles"
+  },
+  {
+    "id": "ghidra",
+    "name": "Ghidra Releases",
+    "url": "https://github.com/NationalSecurityAgency/ghidra/releases.atom",
+    "description": "NSA開発のリバースエンジニアリングツールGhidraのリリース情報",
+    "category": "Security & Privacy",
+    "categorySlug": "security-privacy",
+    "kind": "releases"
   }
 ]
