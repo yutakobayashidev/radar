@@ -1669,5 +1669,23 @@
     "category": "Developer Tools",
     "categorySlug": "developer-tools",
     "kind": "releases"
+  },
+  {
+    "id": "lambdacalc",
+    "name": "Lambdaカクテル",
+    "url": "https://blog.3qe.us/feed",
+    "description": "京都在住Webエンジニアによる技術日記、Scala、プライバシー、開発環境に関する記事",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
+  },
+  {
+    "id": "steipete",
+    "name": "Peter Steinberger",
+    "url": "https://steipete.me/rss.xml",
+    "description": "AI駆動開発、Swift、macOS開発に関する記事",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   }
 ]
