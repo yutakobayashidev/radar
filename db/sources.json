@@ -1696,5 +1696,68 @@
     "category": "Security & Privacy",
     "categorySlug": "security-privacy",
     "kind": "releases"
+  },
+  {
+    "id": "tanukiponkich",
+    "name": "tanu",
+    "url": "https://note.com/tanukiponkich/rss",
+    "description": "プログラミング、AI、人生哲学、キャリアに関する個人ブログ",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
+  },
+  {
+    "id": "ochyai",
+    "name": "落合陽一",
+    "url": "https://note.com/ochyai/rss",
+    "description": "メディアアーティスト、筑波大准教授による技術、芸術、思想、研究に関する記事",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
+  },
+  {
+    "id": "nyalra",
+    "name": "nyalra",
+    "url": "https://note.com/nyalra2/rss",
+    "description": "アニメ制作、映画鑑賞、ゲーム開発、日常の思考に関する日記",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
+  },
+  {
+    "id": "ymrl",
+    "name": "層の狭間で",
+    "url": "https://ymrl-dev.hateblo.jp/feed",
+    "description": "UIデザインとソフトウェアエンジニアリングの交差点についての考察",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
+  },
+  {
+    "id": "vmfunc",
+    "name": "vmfunc.re",
+    "url": "https://vmfunc.re/rss.xml",
+    "description": "セキュリティ研究、暗号化、認証技術、AI安全性に関する脆弱性分析",
+    "category": "Security & Privacy",
+    "categorySlug": "security-privacy",
+    "kind": "articles"
+  },
+  {
+    "id": "nullptrs",
+    "name": "nullpt.rs",
+    "url": "https://nullpt.rs/feed.rss",
+    "description": "ボット対策、リバースエンジニアリング、難読化解析に関する技術ブログ",
+    "category": "Security & Privacy",
+    "categorySlug": "security-privacy",
+    "kind": "articles"
+  },
+  {
+    "id": "wirelesswire",
+    "name": "WirelessWire & Schrödinger's",
+    "url": "https://wirelesswire.jp/feed/",
+    "description": "技術革新、AI、科学技術と社会、イノベーションに関する知的メディア",
+    "category": "Media & Culture",
+    "categorySlug": "media-culture",
+    "kind": "articles"
   }
 ]
