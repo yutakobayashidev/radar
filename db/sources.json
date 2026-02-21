@@ -1768,5 +1768,14 @@
     "category": "Personal Blog",
     "categorySlug": "personal-blog",
     "kind": "articles"
+  },
+  {
+    "id": "nyosegawa",
+    "name": "逆瀬川ちゃんのブログ",
+    "url": "https://nyosegawa.github.io/feed.xml",
+    "description": "AI、コーディングエージェント、MCP、プロンプトインジェクション防御に関する技術記事",
+    "category": "AI/ML",
+    "categorySlug": "ai-ml",
+    "kind": "articles"
   }
 ]
