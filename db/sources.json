@@ -1759,5 +1759,14 @@
     "category": "Media & Culture",
     "categorySlug": "media-culture",
     "kind": "articles"
+  },
+  {
+    "id": "andrewstiefel",
+    "name": "Andrew Stiefel",
+    "url": "https://andrewstiefel.com/feed.xml",
+    "description": "テクノロジー、ライティング、プライバシー、プロダクトデザインに関するデジタルガーデン",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   }
 ]
