@@ -1777,5 +1777,14 @@
     "category": "AI/ML",
     "categorySlug": "ai-ml",
     "kind": "articles"
+  },
+  {
+    "id": "kyre",
+    "name": "能無いモノローグ",
+    "url": "https://kyre.hatenablog.jp/rss",
+    "description": "高専生によるLLM、MCP、LaTeX、編入試験体験記などの技術・日常ブログ",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
   }
 ]
