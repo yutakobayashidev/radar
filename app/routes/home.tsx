@@ -168,7 +168,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         </div>
       )}
 
-      {hasMore && (
+      {hasMore && filteredItems.length > 0 && (
         <div ref={observerRef} className="p-2.5 text-center">
           {isLoading && (
             <div className="flex justify-center items-center">
