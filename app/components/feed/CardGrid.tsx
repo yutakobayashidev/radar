@@ -1,9 +1,48 @@
+import type { ReactNode } from "react";
 import type { RadarItemWithCategory, TweetMetadata } from "~/data/types";
 import { getDomainFromUrl, formatRelativeTime } from "~/data/types";
 import { Favicon, CategoryBadge } from "~/components/ui";
 
 interface CardGridProps {
   items: RadarItemWithCategory[];
+}
+
+const URL_REGEX = /(?:https?:\/\/|(?<![/@\w])(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:com|org|net|io|dev|co|jp|me|app|xyz|info|edu|gov)(?:\/[^\s)]*)?)/gi;
+
+function LinkifiedText({ text, className }: { text: string; className?: string }) {
+  const parts: ReactNode[] = [];
+  let lastIndex = 0;
+
+  for (const match of text.matchAll(URL_REGEX)) {
+    const url = match[0];
+    const index = match.index;
+
+    if (index > lastIndex) {
+      parts.push(text.slice(lastIndex, index));
+    }
+
+    const href = url.startsWith("http") ? url : `https://${url}`;
+    parts.push(
+      <a
+        key={index}
+        href={href}
+        onClick={(e) => e.stopPropagation()}
+        className="text-sky-600 hover:underline"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {url}
+      </a>
+    );
+
+    lastIndex = index + url.length;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+
+  return <span className={className}>{parts}</span>;
 }
 
 function ArticleCard({ item }: { item: RadarItemWithCategory }) {
@@ -46,10 +85,7 @@ function TweetCard({ item }: { item: RadarItemWithCategory }) {
   const meta = item.metadata as TweetMetadata | null;
 
   return (
-    <a
-      href={item.url}
-      className="group block bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-gray-300 p-3"
-    >
+    <div className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:border-gray-300 p-3">
       <div className="flex items-start gap-2.5">
         {meta?.icon ? (
           <img
@@ -67,14 +103,14 @@ function TweetCard({ item }: { item: RadarItemWithCategory }) {
             <span className="flex-shrink-0">{formatRelativeTime(item.timestamp)}</span>
           </div>
           <p className="text-sm text-gray-700 mt-1 whitespace-pre-line line-clamp-4">
-            {item.summary}
+            <LinkifiedText text={item.summary} />
           </p>
           <div className="mt-2">
             <CategoryBadge category={item.category} />
           </div>
         </div>
       </div>
-    </a>
+    </div>
   );
 }
 
@@ -116,7 +152,7 @@ export function TweetTimeline({ items }: CardGridProps) {
                   <span className="text-gray-400">{formatRelativeTime(item.timestamp)}</span>
                 </div>
                 <p className="text-[15px] text-gray-900 mt-0.5 whitespace-pre-line leading-relaxed">
-                  {item.summary}
+                  <LinkifiedText text={item.summary} />
                 </p>
               </div>
             </div>
