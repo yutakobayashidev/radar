@@ -5,7 +5,8 @@ import { count, eq, desc, and, type SQL } from "drizzle-orm";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
 import { CardGrid } from "~/components/feed";
-import { categoryList, type FetchRadarItemsResponse, type RadarItemWithCategory, type Period, type Kind } from "~/data/types";
+import { Favicon } from "~/components/ui";
+import { categoryList, getDomainFromUrl, type FetchRadarItemsResponse, type RadarItemWithCategory, type Period, type Kind } from "~/data/types";
 import { radarItems, sources } from "../../db/schema";
 
 export function meta({}: Route.MetaArgs) {
@@ -104,6 +105,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   const [page, setPage] = useState(loaderData.currentPage);
   const [hasMore, setHasMore] = useState(loaderData.hasMore);
   const [isLoading, setIsLoading] = useState(false);
+  const [totalCount, setTotalCount] = useState(0);
   const isResetRef = useRef(false);
 
   // loaderData が変わったら同期（カテゴリーナビゲーション時）
@@ -174,6 +176,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         setItems((prev) => [...prev, ...data.radarItems]);
       }
       setHasMore(data.hasMore);
+      setTotalCount(data.totalCount);
       setIsLoading(false);
     }
   }, [fetcher.data]);
@@ -205,6 +208,10 @@ export default function Home({ loaderData }: Route.ComponentProps) {
     return true;
   });
 
+  const selectedSourceData = selectedSource !== "all"
+    ? loaderData.sources.find((s) => s.id === selectedSource)
+    : undefined;
+
   return (
     <AppLayout
       title="Radar"
@@ -217,7 +224,15 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       showSourceFilter={true}
       sources={loaderData.sources}
       headerContent={
-        <CategoryFilter selectedCategorySlug={categorySlug} />
+        selectedSourceData ? (
+          <div className="flex items-center gap-2.5 mt-3">
+            <Favicon domain={getDomainFromUrl(selectedSourceData.url)} size={20} />
+            <span className="text-sm font-medium text-gray-900">{selectedSourceData.name}</span>
+            <span className="text-xs text-gray-400">{totalCount} articles</span>
+          </div>
+        ) : (
+          <CategoryFilter selectedCategorySlug={categorySlug} />
+        )
       }
     >
       <CardGrid items={filteredItems} />
