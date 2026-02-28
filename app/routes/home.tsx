@@ -22,10 +22,18 @@ const ITEMS_PER_PAGE = 20;
 export async function loader({ request, context }: Route.LoaderArgs) {
   const url = new URL(request.url);
   const categoryParam = url.searchParams.get("category");
+  const kindParam = url.searchParams.get("kind");
+  const sourceParam = url.searchParams.get("source");
 
   const conditions: SQL[] = [];
+  if (kindParam && kindParam !== "all") {
+    conditions.push(eq(sources.kind, kindParam));
+  }
   if (categoryParam && categoryParam !== "all") {
     conditions.push(eq(sources.categorySlug, categoryParam));
+  }
+  if (sourceParam && sourceParam !== "all") {
+    conditions.push(eq(radarItems.source, sourceParam));
   }
   const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
 
