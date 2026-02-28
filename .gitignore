@@ -18,3 +18,8 @@ worker-configuration.d.ts
 !.env.example
 
 .direnv/
+
+# Bridge
+bridge/config.json
+bridge/tweets.jsonl
+bridge/.xnotif-state.json

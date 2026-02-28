@@ -1,12 +1,13 @@
 import { createClient } from "xnotif";
 import { appendFileSync } from "node:fs";
-import { cookies, TWEETS_FILE } from "./config.js";
-import { loadState, saveState } from "./state.js";
+import { loadConfig, saveConfig, TWEETS_FILE } from "./config.js";
 import { sendWithRetry } from "./webhook.js";
 
+const config = loadConfig();
+
 const client = createClient({
-  cookies,
-  state: loadState(),
+  cookies: config.cookies,
+  state: config.state,
 });
 
 client.on("notification", async (n) => {
@@ -17,8 +18,8 @@ client.on("notification", async (n) => {
 });
 
 client.on("connected", (state) => {
-  console.log("[connected] Saving state...");
-  saveState(state);
+  console.log("[connected] Saving config...");
+  saveConfig({ ...config, state });
 });
 
 client.on("error", (e) => {
