@@ -16,13 +16,18 @@ interface XnotifNotification {
   };
 }
 
-function extractHandle(uri: string): string {
+function extractTweetAuthor(uri: string): string {
   const match = uri.match(/^\/?@?([^/]+)\/status\//);
   return match ? match[1].toLowerCase() : "unknown";
 }
 
 function extractTweetId(tag: string): string {
   return tag.replace(/^tweet-/, "").replace(/^self_thread-/, "");
+}
+
+// n.title（通知元=フォロー中ユーザーの表示名）からsource IDを生成
+function toSourceId(displayName: string): string {
+  return `twitter-${displayName}`;
 }
 
 export async function action({ request, context }: Route.ActionArgs) {
@@ -37,7 +42,7 @@ export async function action({ request, context }: Route.ActionArgs) {
   for (const n of notifications) {
     if (n.data?.type !== "tweet" && n.data?.type !== "self_thread") continue;
 
-    const handle = extractHandle(n.data.uri);
+    const tweetAuthor = extractTweetAuthor(n.data.uri);
     const tweetId = extractTweetId(n.tag);
     const tweetUrl = `https://x.com${n.data.uri.startsWith("/") ? "" : "/"}${n.data.uri}`;
 
@@ -50,8 +55,9 @@ export async function action({ request, context }: Route.ActionArgs) {
       continue;
     }
 
-    // 動的source作成
-    const sourceId = `twitter-${handle}`;
+    // sourceはフォロー中ユーザー（通知元）に紐づける
+    const displayName = n.title;
+    const sourceId = toSourceId(displayName);
     const source = await db.query.sources.findFirst({
       where: eq(schema.sources.id, sourceId),
     });
@@ -59,9 +65,9 @@ export async function action({ request, context }: Route.ActionArgs) {
     if (!source) {
       await db.insert(schema.sources).values({
         id: sourceId,
-        name: `@${handle}`,
-        url: `https://x.com/${handle}`,
-        description: `Tweets from @${handle}`,
+        name: displayName,
+        url: "https://x.com",
+        description: `Tweets from ${displayName}`,
         category: "Twitter",
         categorySlug: "twitter",
         kind: "twitter",
@@ -69,16 +75,16 @@ export async function action({ request, context }: Route.ActionArgs) {
     }
 
     await db.insert(schema.radarItems).values({
-      title: `@${handle}`,
+      title: displayName,
       source: sourceId,
-      sourceName: `@${handle}`,
+      sourceName: displayName,
       summary: n.data.body || n.body,
       image: null,
       url: tweetUrl,
       type: "tweet",
       metadata: {
         icon: n.icon,
-        handle,
+        handle: tweetAuthor,
         tweetId,
       },
       timestamp: new Date(Number(n.timestamp)),
