@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       xnotif:
-        specifier: latest
-        version: 0.1.0
+        specifier: 0.2.0-beta.1
+        version: 0.2.0-beta.1
     devDependencies:
       tsx:
         specifier: ^4.0.0
@@ -241,9 +241,9 @@ packages:
   x-client-transaction-id-generater@0.0.7:
     resolution: {integrity: sha512-lLIozd8PLITaCwVGvlaOcCczkI/Q/C2zeu69DrBUpIj9rI/Gb0nsxk+f9jS0sexo3frsouxc0JeEw9Bv3C9lxw==}
 
-  xnotif@0.1.0:
-    resolution: {integrity: sha512-qb2gXJIwqrreKEE8IC5ACvjZ8yduIErtRzk33+Ye8mtIofv7Ul7gZszPa3rXjYCYAFZP5Ipt/IJV+qyiGz3NSA==}
-    engines: {bun: '>=1.0.0'}
+  xnotif@0.2.0-beta.1:
+    resolution: {integrity: sha512-sD66+96WfjGFFxqhqKKZWrAeksh+hEeQgZQb1VqI2qYvctwtlq+1CLWqOVeYztCBwqjXpOzfaHhZB15dQEE8KQ==}
+    engines: {node: '>=22.0.0'}
 
 snapshots:
 
@@ -424,7 +424,7 @@ snapshots:
     dependencies:
       node-html-parser: 7.0.2
 
-  xnotif@0.1.0:
+  xnotif@0.2.0-beta.1:
     dependencies:
       twitter-openapi-typescript: 0.0.55
       twitter-openapi-typescript-generated: 0.0.38

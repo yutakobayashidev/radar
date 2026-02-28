@@ -6,10 +6,10 @@
     "node": ">=22"
   },
   "scripts": {
-    "start": "tsx index.ts"
+    "start": "node --env-file=.env --import=tsx index.ts"
   },
   "dependencies": {
-    "xnotif": "latest"
+    "xnotif": "0.2.0-beta.1"
   },
   "devDependencies": {
     "tsx": "^4.0.0"
