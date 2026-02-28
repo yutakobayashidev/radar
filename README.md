@@ -61,14 +61,51 @@ pnpm import-sources:remote   # remote
 
 The `bridge/` directory contains a Node.js script that connects to Twitter via xnotif and forwards notifications to the webhook.
 
+Requires Node.js >= 22.
+
+### 1. Create a Cloudflare Access Service Token
+
+1. Go to [Cloudflare Zero Trust Dashboard](https://one.dash.cloudflare.com/)
+2. Navigate to **Access → Service Auth → Service Tokens**
+3. Click **Create Service Token** and give it a name (e.g. `radar-bridge`)
+4. Copy the **Client ID** and **Client Secret** — the secret is only shown once
+
+### 2. Protect the webhook endpoint
+
+1. In the Zero Trust Dashboard, go to **Access → Applications → Add an application**
+2. Select **Self-hosted**
+3. Set **Application domain** to `radar.yutakobayashi.com` and **Path** to `api/webhook-xnotif`
+4. Add a policy with **Action**: Service Auth, **Include**: the service token created above
+
+### 3. Run the bridge
+
 ```bash
 cd bridge
 pnpm install
-cp .env.example .env  # fill in credentials
-pnpm start
+cp .env.example .env
 ```
 
-Requires Node.js >= 22.
+Fill in `.env` with the service token credentials:
+
+```
+CF_ACCESS_CLIENT_ID=<your-client-id>.access
+CF_ACCESS_CLIENT_SECRET=<your-client-secret>
+```
+
+Create `config.json` with your Twitter cookies and xnotif client state:
+
+```json
+{
+  "cookies": { "auth_token": "...", "ct0": "..." },
+  "state": {}
+}
+```
+
+Start the bridge:
+
+```bash
+pnpm start
+```
 
 ## Deploy
 
