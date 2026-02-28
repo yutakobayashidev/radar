@@ -65,7 +65,6 @@ export function AppLayout({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </button>
-              <h2 className="text-base font-medium text-gray-900">{title}</h2>
             </div>
             {headerContent}
           </div>

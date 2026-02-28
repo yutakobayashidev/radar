@@ -93,13 +93,21 @@ function CategoryFilter({ selectedCategorySlug }: { selectedCategorySlug: string
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   const fetcher = useFetcher<FetchRadarItemsResponse>();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [selectedSource, setSelectedSource] = useState("all");
   const [selectedPeriod, setSelectedPeriod] = useState<Period>("All");
   const [selectedKind, setSelectedKind] = useState<Kind>("all");
 
   const categorySlug = searchParams.get("category") || "all";
+
+  const handleSourceChange = useCallback((source: string) => {
+    if (source !== "all") {
+      setSelectedKind("all");
+      setSearchParams({}, { replace: true });
+    }
+    setSelectedSource(source);
+  }, [setSearchParams]);
 
   const [items, setItems] = useState<RadarItemWithCategory[]>(loaderData.radarItems);
   const [page, setPage] = useState(loaderData.currentPage);
@@ -216,7 +224,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
     <AppLayout
       title="Radar"
       selectedSource={selectedSource}
-      setSelectedSource={setSelectedSource}
+      setSelectedSource={handleSourceChange}
       selectedPeriod={selectedPeriod}
       setSelectedPeriod={setSelectedPeriod}
       selectedKind={selectedKind}
