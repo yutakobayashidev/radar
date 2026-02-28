@@ -45,9 +45,9 @@ curl "http://localhost:8787/__scheduled?cron=0+*+*+*+*"
 ### Migrations
 
 ```bash
-npx drizzle-kit generate
-npx wrangler d1 migrations apply radar --local
-npx wrangler d1 migrations apply radar --remote
+pnpm drizzle-kit generate
+pnpm wrangler d1 migrations apply radar --local
+pnpm wrangler d1 migrations apply radar --remote
 ```
 
 ### Import sources
@@ -63,9 +63,9 @@ The `bridge/` directory contains a Node.js script that connects to Twitter via x
 
 ```bash
 cd bridge
-npm install
+pnpm install
 cp .env.example .env  # fill in credentials
-npm start
+pnpm start
 ```
 
 Requires Node.js >= 22.
