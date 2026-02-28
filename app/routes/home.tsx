@@ -282,7 +282,9 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       }
     >
       {selectedKind === "twitter" ? (
-        <TweetTimeline items={filteredItems} />
+        <div className="-m-4">
+          <TweetTimeline items={filteredItems} />
+        </div>
       ) : (
         <CardGrid items={filteredItems} />
       )}
