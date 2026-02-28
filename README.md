@@ -57,9 +57,9 @@ pnpm import-sources          # local
 pnpm import-sources:remote   # remote
 ```
 
-## Bridge (xnotif)
+## Bridge ([xnotif](https://github.com/yutakobayashidev/xnotif))
 
-The `bridge/` directory contains a Node.js script that connects to Twitter via xnotif and forwards notifications to the webhook.
+The `bridge/` directory contains a Node.js script that connects to Twitter via [xnotif](https://github.com/yutakobayashidev/xnotif) and forwards notifications to the webhook.
 
 Requires Node.js >= 22.
 
