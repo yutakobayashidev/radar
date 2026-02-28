@@ -12,7 +12,10 @@ export async function sendWithRetry(
         headers: webhookHeaders,
         body: JSON.stringify({ notifications: [notification] }),
       });
-      if (res.ok) return;
+      if (res.ok) {
+        console.log(`Webhook sent: ${notification.title} - ${notification.body?.substring(0, 50)}`);
+        return;
+      }
       console.error(
         `Webhook failed (${res.status}), retry ${i + 1}/${maxRetries}`,
       );
