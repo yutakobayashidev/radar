@@ -94,28 +94,28 @@ export function CardGrid({ items }: CardGridProps) {
 
 export function TweetTimeline({ items }: CardGridProps) {
   return (
-    <div className="max-w-xl mx-auto divide-y divide-gray-100">
+    <div className="max-w-2xl">
       {items.map((item) => {
         const meta = item.metadata as TweetMetadata | null;
         return (
-          <div key={item.id} className="py-3 px-1">
-            <div className="flex items-start gap-2.5">
+          <div key={item.id} className="bg-white px-4 py-3 border-b border-gray-200">
+            <div className="flex items-start gap-3">
               {meta?.icon ? (
                 <img
                   src={meta.icon}
                   alt=""
-                  className="w-9 h-9 rounded-full flex-shrink-0"
+                  className="w-10 h-10 rounded-full flex-shrink-0"
                 />
               ) : (
-                <div className="w-9 h-9 rounded-full bg-sky-100 flex-shrink-0" />
+                <div className="w-10 h-10 rounded-full bg-sky-100 flex-shrink-0" />
               )}
               <div className="min-w-0 flex-1">
-                <div className="flex items-center gap-1.5 text-xs text-gray-400">
-                  <span className="font-medium text-gray-900">{item.sourceName}</span>
-                  <span>·</span>
-                  <span className="flex-shrink-0">{formatRelativeTime(item.timestamp)}</span>
+                <div className="flex items-center gap-1.5 text-sm">
+                  <span className="font-bold text-gray-900">{item.sourceName}</span>
+                  <span className="text-gray-400">·</span>
+                  <span className="text-gray-400">{formatRelativeTime(item.timestamp)}</span>
                 </div>
-                <p className="text-sm text-gray-700 mt-1 whitespace-pre-line">
+                <p className="text-[15px] text-gray-900 mt-0.5 whitespace-pre-line leading-relaxed">
                   {item.summary}
                 </p>
               </div>
