@@ -91,3 +91,38 @@ export function CardGrid({ items }: CardGridProps) {
     </div>
   );
 }
+
+export function TweetTimeline({ items }: CardGridProps) {
+  return (
+    <div className="max-w-xl mx-auto divide-y divide-gray-100">
+      {items.map((item) => {
+        const meta = item.metadata as TweetMetadata | null;
+        return (
+          <div key={item.id} className="py-3 px-1">
+            <div className="flex items-start gap-2.5">
+              {meta?.icon ? (
+                <img
+                  src={meta.icon}
+                  alt=""
+                  className="w-9 h-9 rounded-full flex-shrink-0"
+                />
+              ) : (
+                <div className="w-9 h-9 rounded-full bg-sky-100 flex-shrink-0" />
+              )}
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-1.5 text-xs text-gray-400">
+                  <span className="font-medium text-gray-900">{item.sourceName}</span>
+                  <span>·</span>
+                  <span className="flex-shrink-0">{formatRelativeTime(item.timestamp)}</span>
+                </div>
+                <p className="text-sm text-gray-700 mt-1 whitespace-pre-line">
+                  {item.summary}
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}

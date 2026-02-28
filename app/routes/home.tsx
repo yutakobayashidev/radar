@@ -5,7 +5,7 @@ import { useQueryStates, parseAsString } from "nuqs";
 import { count, eq, desc, and, type SQL } from "drizzle-orm";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
-import { CardGrid } from "~/components/feed";
+import { CardGrid, TweetTimeline } from "~/components/feed";
 import { Favicon } from "~/components/ui";
 import { categoryList, getDomainFromUrl, type FetchRadarItemsResponse, type RadarItemWithCategory, type Period, type Kind } from "~/data/types";
 import { radarItems, sources } from "../../db/schema";
@@ -262,7 +262,11 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         )
       }
     >
-      <CardGrid items={filteredItems} />
+      {selectedKind === "twitter" ? (
+        <TweetTimeline items={filteredItems} />
+      ) : (
+        <CardGrid items={filteredItems} />
+      )}
       {filteredItems.length === 0 && (
         <div className="text-center py-12 text-gray-500">
           該当する記事がありません
