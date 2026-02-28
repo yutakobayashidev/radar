@@ -20,6 +20,8 @@ export const radarItems = sqliteTable("radar_items", {
   summary: text("summary").notNull(),
   image: text("image"), // OGP画像が取得できない場合は空文字列またはnull
   url: text("url").notNull(),
+  type: text("type").notNull().default("article"), // "article" | "tweet"
+  metadata: text("metadata", { mode: "json" }).$type<Record<string, unknown> | null>(),
   timestamp: integer("timestamp", { mode: "timestamp" }).notNull(), // UNIX timestamp
   createdAt: integer("created_at", { mode: "timestamp" }).notNull().$defaultFn(() => new Date()),
   updatedAt: integer("updated_at", { mode: "timestamp" }).notNull().$defaultFn(() => new Date()),

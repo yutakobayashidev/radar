@@ -170,6 +170,7 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
           summary: item.summary,
           image: item.image,
           url: item.url,
+          type: "article",
           timestamp: item.timestamp,
         });
       }

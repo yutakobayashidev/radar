@@ -40,6 +40,8 @@ export async function loader({ request, context }: Route.LoaderArgs) {
         summary: radarItemsTable.summary,
         image: radarItemsTable.image,
         url: radarItemsTable.url,
+        type: radarItemsTable.type,
+        metadata: radarItemsTable.metadata,
         timestamp: radarItemsTable.timestamp,
         createdAt: radarItemsTable.createdAt,
         updatedAt: radarItemsTable.updatedAt,

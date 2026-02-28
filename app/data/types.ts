@@ -9,6 +9,14 @@ export interface Source {
   updatedAt: Date;
 }
 
+export type ItemType = "article" | "tweet";
+
+export interface TweetMetadata {
+  icon: string;
+  handle: string;
+  tweetId: string;
+}
+
 export interface RadarItem {
   id: number;
   title: string;
@@ -17,6 +25,8 @@ export interface RadarItem {
   summary: string;
   image: string | null;
   url: string;
+  type: ItemType;
+  metadata: Record<string, unknown> | null;
   timestamp: Date;
   createdAt: Date;
   updatedAt: Date;
@@ -34,6 +44,7 @@ export const categoryList = [
   { name: "Personal Blog", slug: "personal-blog", color: "bg-pink-100 text-pink-700" },
   { name: "Social Impact", slug: "social-impact", color: "bg-yellow-100 text-yellow-700" },
   { name: "Media & Culture", slug: "media-culture", color: "bg-teal-100 text-teal-700" },
+  { name: "Twitter", slug: "twitter", color: "bg-sky-100 text-sky-700" },
 ] as const;
 
 export type CategoryInfo = typeof categoryList[number];
