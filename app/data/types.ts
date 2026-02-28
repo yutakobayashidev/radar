@@ -54,7 +54,18 @@ export type Period = typeof periods[number];
 export interface RadarItemWithCategory extends RadarItem {
   category: string;
   categorySlug: string;
+  kind: string;
 }
+
+export const kindList = [
+  { name: "All", slug: "all" },
+  { name: "Articles", slug: "articles" },
+  { name: "Releases", slug: "releases" },
+  { name: "Video", slug: "video" },
+  { name: "Podcast", slug: "podcast" },
+] as const;
+
+export type Kind = typeof kindList[number]["slug"];
 
 export interface FetchRadarItemsResponse {
   radarItems: RadarItemWithCategory[];

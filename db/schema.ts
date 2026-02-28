@@ -7,6 +7,7 @@ export const sources = sqliteTable("sources", {
   description: text("description").notNull(),
   category: text("category").notNull(),
   categorySlug: text("category_slug").notNull(),
+  kind: text("kind").notNull().default("articles"),
   createdAt: integer("created_at", { mode: "timestamp" }).notNull().$defaultFn(() => new Date()),
   updatedAt: integer("updated_at", { mode: "timestamp" }).notNull().$defaultFn(() => new Date()),
 });

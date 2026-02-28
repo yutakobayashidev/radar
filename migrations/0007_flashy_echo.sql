@@ -1,0 +1,1 @@
+ALTER TABLE `sources` ADD `kind` text DEFAULT 'articles' NOT NULL;

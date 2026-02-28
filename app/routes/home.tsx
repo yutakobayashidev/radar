@@ -5,7 +5,7 @@ import { count, eq, desc } from "drizzle-orm";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
 import { CardGrid } from "~/components/feed";
-import { categoryList, getCategoryBySlug, type FetchRadarItemsResponse, type RadarItemWithCategory, type Period } from "~/data/types";
+import { categoryList, getCategoryBySlug, type FetchRadarItemsResponse, type RadarItemWithCategory, type Period, type Kind } from "~/data/types";
 import { radarItems, sources } from "../../db/schema";
 
 export function meta({}: Route.MetaArgs) {
@@ -34,6 +34,7 @@ export async function loader({ context }: Route.LoaderArgs) {
         updatedAt: radarItems.updatedAt,
         category: sources.category,
         categorySlug: sources.categorySlug,
+        kind: sources.kind,
       })
       .from(radarItems)
       .innerJoin(sources, eq(radarItems.source, sources.id))
@@ -81,6 +82,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
 
   const [selectedSource, setSelectedSource] = useState("all");
   const [selectedPeriod, setSelectedPeriod] = useState<Period>("All");
+  const [selectedKind, setSelectedKind] = useState<Kind>("all");
 
   // URLからカテゴリーを取得
   const categorySlug = searchParams.get("category") || "all";
@@ -128,6 +130,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   const filteredItems = radarItems
     .filter((f) => selectedSource === "all" || f.source === selectedSource)
     .filter((f) => selectedCategory.slug === "all" || f.categorySlug === selectedCategory.slug)
+    .filter((f) => selectedKind === "all" || f.kind === selectedKind)
     .filter((f) => {
       if (selectedPeriod === "All") return true;
       const now = new Date();
@@ -150,6 +153,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       setSelectedSource={setSelectedSource}
       selectedPeriod={selectedPeriod}
       setSelectedPeriod={setSelectedPeriod}
+      selectedKind={selectedKind}
+      setSelectedKind={setSelectedKind}
       showSourceFilter={true}
       sources={loaderData.sources}
       headerContent={

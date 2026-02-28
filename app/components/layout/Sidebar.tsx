@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router";
 import { Favicon } from "~/components/ui";
-import type { Source, Period } from "~/data/types";
-import { getDomainFromUrl, periods } from "~/data/types";
+import type { Source, Period, Kind } from "~/data/types";
+import { getDomainFromUrl, periods, kindList } from "~/data/types";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -10,6 +10,8 @@ interface SidebarProps {
   setSelectedSource?: (source: string) => void;
   selectedPeriod?: Period;
   setSelectedPeriod?: (period: Period) => void;
+  selectedKind?: Kind;
+  setSelectedKind?: (kind: Kind) => void;
   showSourceFilter?: boolean;
   sources?: Source[];
 }
@@ -21,6 +23,8 @@ export function Sidebar({
   setSelectedSource,
   selectedPeriod = "All",
   setSelectedPeriod,
+  selectedKind = "all",
+  setSelectedKind,
   showSourceFilter = false,
   sources = [],
 }: SidebarProps) {
@@ -101,6 +105,33 @@ export function Sidebar({
               </li>
             </ul>
           </div>
+
+          {showSourceFilter && setSelectedKind && (
+            <div className="mb-4">
+              <h2 className="text-xs font-medium text-gray-400 uppercase tracking-wider px-2 mb-1">
+                Type
+              </h2>
+              <ul className="space-y-0.5">
+                {kindList.map((kind) => (
+                  <li key={kind.slug}>
+                    <button
+                      onClick={() => {
+                        setSelectedKind(kind.slug);
+                        setSidebarOpen(false);
+                      }}
+                      className={`w-full flex items-center gap-2 px-2 py-1.5 rounded-md text-sm transition-colors ${
+                        selectedKind === kind.slug
+                          ? "bg-gray-100 text-gray-900 font-medium"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                      }`}
+                    >
+                      <span className="flex-1 text-left">{kind.name}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {showSourceFilter && setSelectedPeriod && (
             <div className="mb-4">

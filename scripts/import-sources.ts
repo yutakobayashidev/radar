@@ -12,6 +12,7 @@ interface Source {
   description: string;
   category: string;
   categorySlug: string;
+  kind: string;
 }
 
 function escapeSQLString(str: string): string {
@@ -37,11 +38,11 @@ async function importSources(local: boolean = true) {
   // Insert or update sources from JSON
   const now = Date.now();
   const values = sources.map((source) => {
-    return `('${escapeSQLString(source.id)}', '${escapeSQLString(source.name)}', '${escapeSQLString(source.url)}', '${escapeSQLString(source.description)}', '${escapeSQLString(source.category)}', '${escapeSQLString(source.categorySlug)}', ${now}, ${now})`;
+    return `('${escapeSQLString(source.id)}', '${escapeSQLString(source.name)}', '${escapeSQLString(source.url)}', '${escapeSQLString(source.description)}', '${escapeSQLString(source.category)}', '${escapeSQLString(source.categorySlug)}', '${escapeSQLString(source.kind || "articles")}', ${now}, ${now})`;
   });
 
   const insertSQL = `
-INSERT INTO sources (id, name, url, description, category, category_slug, created_at, updated_at)
+INSERT INTO sources (id, name, url, description, category, category_slug, kind, created_at, updated_at)
 VALUES ${values.join(",\n")}
 ON CONFLICT(id) DO UPDATE SET
   name = excluded.name,
@@ -49,6 +50,7 @@ ON CONFLICT(id) DO UPDATE SET
   description = excluded.description,
   category = excluded.category,
   category_slug = excluded.category_slug,
+  kind = excluded.kind,
   updated_at = excluded.updated_at;
   `.trim();
 

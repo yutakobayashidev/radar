@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Sidebar } from "./Sidebar";
-import type { Source, Period } from "~/data/types";
+import type { Source, Period, Kind } from "~/data/types";
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -10,6 +10,8 @@ interface AppLayoutProps {
   setSelectedSource?: (source: string) => void;
   selectedPeriod?: Period;
   setSelectedPeriod?: (period: Period) => void;
+  selectedKind?: Kind;
+  setSelectedKind?: (kind: Kind) => void;
   showSourceFilter?: boolean;
   sources?: Source[];
 }
@@ -22,6 +24,8 @@ export function AppLayout({
   setSelectedSource,
   selectedPeriod = "All",
   setSelectedPeriod,
+  selectedKind = "all",
+  setSelectedKind,
   showSourceFilter = false,
   sources,
 }: AppLayoutProps) {
@@ -43,6 +47,8 @@ export function AppLayout({
         setSelectedSource={setSelectedSource}
         selectedPeriod={selectedPeriod}
         setSelectedPeriod={setSelectedPeriod}
+        selectedKind={selectedKind}
+        setSelectedKind={setSelectedKind}
         showSourceFilter={showSourceFilter}
         sources={sources}
       />
