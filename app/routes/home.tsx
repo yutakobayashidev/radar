@@ -7,7 +7,7 @@ import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
 import { CardGrid, TweetTimeline } from "~/components/feed";
 import { Favicon } from "~/components/ui";
-import { categoryList, getDomainFromUrl, type FetchRadarItemsResponse, type RadarItemWithCategory, type Period, type Kind } from "~/data/types";
+import { categoryList, getDomainFromUrl, type FetchRadarItemsResponse, type Period, type Kind } from "~/data/types";
 import { radarItems, sources } from "../../db/schema";
 
 export function meta({}: Route.MetaArgs) {
@@ -37,7 +37,7 @@ export async function loader({ request, context }: Route.LoaderArgs) {
   }
   const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
 
-  const [totalCountResult, items, sourcesData] = await Promise.all([
+  const [totalCountResult, items, sourcesData, sourceCountRows] = await Promise.all([
     context.db
       .select({ count: count() })
       .from(radarItems)
@@ -69,14 +69,22 @@ export async function loader({ request, context }: Route.LoaderArgs) {
     context.db.query.sources.findMany({
       orderBy: (sources, { asc }) => [asc(sources.name)],
     }),
+    context.db
+      .select({ source: radarItems.source, count: count() })
+      .from(radarItems)
+      .groupBy(radarItems.source),
   ]);
 
   const totalCount = totalCountResult[0]?.count ?? 0;
   const hasMore = items.length < totalCount;
+  const sourceArticleCounts = Object.fromEntries(
+    sourceCountRows.map((row) => [row.source, row.count]),
+  );
 
   return {
     radarItems: items,
     sources: sourcesData,
+    sourceArticleCounts,
     hasMore,
     currentPage: 1,
   };
@@ -156,11 +164,12 @@ export default function Home({ loaderData }: Route.ComponentProps) {
     void setQuery({ category, source: "all" });
   }, [setQuery]);
 
-  const [items, setItems] = useState<RadarItemWithCategory[]>(loaderData.radarItems);
+  const [items, setItems] = useState<FetchRadarItemsResponse["radarItems"]>(
+    loaderData.radarItems as FetchRadarItemsResponse["radarItems"],
+  );
   const [page, setPage] = useState(loaderData.currentPage);
   const [hasMore, setHasMore] = useState(loaderData.hasMore);
   const [isLoading, setIsLoading] = useState(false);
-  const [totalCount, setTotalCount] = useState(0);
   const isResetRef = useRef(false);
 
   const isFirstRender = useRef(true);
@@ -211,7 +220,6 @@ export default function Home({ loaderData }: Route.ComponentProps) {
         setItems((prev) => [...prev, ...data.radarItems]);
       }
       setHasMore(data.hasMore);
-      setTotalCount(data.totalCount);
       setIsLoading(false);
     }
   }, [fetcher.data]);
@@ -246,6 +254,9 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   const selectedSourceData = selectedSource !== "all"
     ? loaderData.sources.find((s) => s.id === selectedSource)
     : undefined;
+  const selectedSourceCount = selectedSourceData
+    ? loaderData.sourceArticleCounts[selectedSourceData.id] ?? 0
+    : 0;
 
   return (
     <AppLayout
@@ -263,7 +274,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           <div className="flex items-center gap-2.5 mt-3">
             <Favicon domain={getDomainFromUrl(selectedSourceData.url)} size={20} />
             <span className="text-sm font-medium text-gray-900">{selectedSourceData.name}</span>
-            <span className="text-xs text-gray-400">{totalCount} articles</span>
+            <span className="text-xs text-gray-400">{selectedSourceCount} articles</span>
           </div>
         ) : (
           <CategoryFilter selectedCategorySlug={categorySlug} onSelect={handleCategoryChange} />
