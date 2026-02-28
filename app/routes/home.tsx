@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useFetcher, useSearchParams, Link } from "react-router";
+import { useFetcher } from "react-router";
 import { useInView } from "react-intersection-observer";
+import { useQueryStates, parseAsString } from "nuqs";
 import { count, eq, desc, and, type SQL } from "drizzle-orm";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
@@ -71,13 +72,19 @@ export async function loader({ request, context }: Route.LoaderArgs) {
   };
 }
 
-function CategoryFilter({ selectedCategorySlug }: { selectedCategorySlug: string }) {
+function CategoryFilter({
+  selectedCategorySlug,
+  onSelect,
+}: {
+  selectedCategorySlug: string;
+  onSelect: (slug: string) => void;
+}) {
   return (
     <div className="flex gap-1.5 overflow-x-auto pb-1 mt-3">
       {categoryList.map((cat) => (
-        <Link
+        <button
           key={cat.slug}
-          to={cat.slug === "all" ? "/" : `/?category=${cat.slug}`}
+          onClick={() => onSelect(cat.slug)}
           className={`px-2.5 py-1 text-xs rounded-full whitespace-nowrap transition-colors ${
             selectedCategorySlug === cat.slug
               ? "bg-gray-800 text-white"
@@ -85,29 +92,59 @@ function CategoryFilter({ selectedCategorySlug }: { selectedCategorySlug: string
           }`}
         >
           {cat.name}
-        </Link>
+        </button>
       ))}
     </div>
   );
 }
 
+function normalizePeriod(value: string): Period {
+  return value === "Today" || value === "Month" || value === "All" ? value : "All";
+}
+
+function normalizeKind(value: string): Kind {
+  return ["all", "articles", "releases", "video", "podcast", "twitter"].includes(value)
+    ? (value as Kind)
+    : "all";
+}
+
 export default function Home({ loaderData }: Route.ComponentProps) {
   const fetcher = useFetcher<FetchRadarItemsResponse>();
-  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [selectedSource, setSelectedSource] = useState("all");
-  const [selectedPeriod, setSelectedPeriod] = useState<Period>("All");
-  const [selectedKind, setSelectedKind] = useState<Kind>("all");
+  const [query, setQuery] = useQueryStates(
+    {
+      category: parseAsString.withDefault("all"),
+      source: parseAsString.withDefault("all"),
+      period: parseAsString.withDefault("All"),
+      kind: parseAsString.withDefault("all"),
+    },
+    { history: "replace" },
+  );
 
-  const categorySlug = searchParams.get("category") || "all";
+  const categorySlug = query.category;
+  const selectedSource = query.source;
+  const selectedPeriod = normalizePeriod(query.period);
+  const selectedKind = normalizeKind(query.kind);
+
+  const setSelectedKind = useCallback((kind: Kind) => {
+    void setQuery({ kind });
+  }, [setQuery]);
+
+  const setSelectedPeriod = useCallback((period: Period) => {
+    void setQuery({ period });
+  }, [setQuery]);
 
   const handleSourceChange = useCallback((source: string) => {
     if (source !== "all") {
-      setSelectedKind("all");
-      setSearchParams({}, { replace: true });
+      void setQuery({ source, kind: "all", category: "all" });
+      return;
     }
-    setSelectedSource(source);
-  }, [setSearchParams]);
+    void setQuery({ source });
+  }, [setQuery]);
+
+  const handleCategoryChange = useCallback((category: string) => {
+    void setQuery({ category, source: "all" });
+  }, [setQuery]);
 
   const [items, setItems] = useState<RadarItemWithCategory[]>(loaderData.radarItems);
   const [page, setPage] = useState(loaderData.currentPage);
@@ -116,47 +153,27 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   const [totalCount, setTotalCount] = useState(0);
   const isResetRef = useRef(false);
 
-  // loaderData が変わったら同期（カテゴリーナビゲーション時）
-  useEffect(() => {
-    if (selectedKind === "all" && selectedSource === "all") {
-      setItems(loaderData.radarItems);
-      setPage(loaderData.currentPage);
-      setHasMore(loaderData.hasMore);
-      setIsLoading(false);
-    } else {
-      setItems([]);
-      setPage(1);
-      setHasMore(true);
-      setIsLoading(true);
-      isResetRef.current = true;
-      const params = new URLSearchParams({ page: "1" });
-      if (selectedKind !== "all") params.set("kind", selectedKind);
-      if (categorySlug !== "all") params.set("category", categorySlug);
-      if (selectedSource !== "all") params.set("source", selectedSource);
-      fetcher.load(`/api/radar-items?${params.toString()}`);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loaderData]);
-
-  // kind/source フィルタ変更時、サーバーから再取得
   const isFirstRender = useRef(true);
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     }
+
     setItems([]);
     setPage(1);
     setHasMore(true);
     setIsLoading(true);
     isResetRef.current = true;
+
     const params = new URLSearchParams({ page: "1" });
     if (selectedKind !== "all") params.set("kind", selectedKind);
     if (categorySlug !== "all") params.set("category", categorySlug);
     if (selectedSource !== "all") params.set("source", selectedSource);
+
     fetcher.load(`/api/radar-items?${params.toString()}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedKind, selectedSource]);
+  }, [selectedKind, selectedSource, categorySlug]);
 
   // 無限スクロール: 次ページ読み込み
   const loadMore = useCallback(() => {
@@ -239,7 +256,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
             <span className="text-xs text-gray-400">{totalCount} articles</span>
           </div>
         ) : (
-          <CategoryFilter selectedCategorySlug={categorySlug} />
+          <CategoryFilter selectedCategorySlug={categorySlug} onSelect={handleCategoryChange} />
         )
       }
     >
