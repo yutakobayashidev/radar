@@ -1,7 +1,8 @@
+import type { TwitterNotification } from "xnotif";
 import { WEBHOOK_URL, webhookHeaders } from "./config.js";
 
 export async function sendWithRetry(
-  notification: unknown,
+  notification: TwitterNotification,
   maxRetries = 3,
 ): Promise<void> {
   for (let i = 0; i <= maxRetries; i++) {
