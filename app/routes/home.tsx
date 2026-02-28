@@ -1,11 +1,11 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useFetcher, useSearchParams, Link } from "react-router";
 import { useInView } from "react-intersection-observer";
-import { count, eq, desc } from "drizzle-orm";
+import { count, eq, desc, and, type SQL } from "drizzle-orm";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
 import { CardGrid } from "~/components/feed";
-import { categoryList, getCategoryBySlug, type FetchRadarItemsResponse, type RadarItemWithCategory, type Period, type Kind } from "~/data/types";
+import { categoryList, type FetchRadarItemsResponse, type RadarItemWithCategory, type Period, type Kind } from "~/data/types";
 import { radarItems, sources } from "../../db/schema";
 
 export function meta({}: Route.MetaArgs) {
@@ -17,9 +17,22 @@ export function meta({}: Route.MetaArgs) {
 
 const ITEMS_PER_PAGE = 20;
 
-export async function loader({ context }: Route.LoaderArgs) {
+export async function loader({ request, context }: Route.LoaderArgs) {
+  const url = new URL(request.url);
+  const categoryParam = url.searchParams.get("category");
+
+  const conditions: SQL[] = [];
+  if (categoryParam && categoryParam !== "all") {
+    conditions.push(eq(sources.categorySlug, categoryParam));
+  }
+  const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
+
   const [totalCountResult, items, sourcesData] = await Promise.all([
-    context.db.select({ count: count() }).from(radarItems),
+    context.db
+      .select({ count: count() })
+      .from(radarItems)
+      .innerJoin(sources, eq(radarItems.source, sources.id))
+      .where(whereClause),
     context.db
       .select({
         id: radarItems.id,
@@ -38,6 +51,7 @@ export async function loader({ context }: Route.LoaderArgs) {
       })
       .from(radarItems)
       .innerJoin(sources, eq(radarItems.source, sources.id))
+      .where(whereClause)
       .orderBy(desc(radarItems.timestamp))
       .limit(ITEMS_PER_PAGE),
     context.db.query.sources.findMany({
@@ -84,67 +98,112 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   const [selectedPeriod, setSelectedPeriod] = useState<Period>("All");
   const [selectedKind, setSelectedKind] = useState<Kind>("all");
 
-  // URLからカテゴリーを取得
   const categorySlug = searchParams.get("category") || "all";
-  const selectedCategory = getCategoryBySlug(categorySlug);
 
-  // 状態管理を追加
-  const [radarItems, setRadarItems] = useState<RadarItemWithCategory[]>(loaderData.radarItems);
+  const [items, setItems] = useState<RadarItemWithCategory[]>(loaderData.radarItems);
   const [page, setPage] = useState(loaderData.currentPage);
   const [hasMore, setHasMore] = useState(loaderData.hasMore);
   const [isLoading, setIsLoading] = useState(false);
+  const isResetRef = useRef(false);
 
-  // 新しいページのデータ取得
+  // loaderData が変わったら同期（カテゴリーナビゲーション時）
+  useEffect(() => {
+    if (selectedKind === "all" && selectedSource === "all") {
+      setItems(loaderData.radarItems);
+      setPage(loaderData.currentPage);
+      setHasMore(loaderData.hasMore);
+      setIsLoading(false);
+    } else {
+      setItems([]);
+      setPage(1);
+      setHasMore(true);
+      setIsLoading(true);
+      isResetRef.current = true;
+      const params = new URLSearchParams({ page: "1" });
+      if (selectedKind !== "all") params.set("kind", selectedKind);
+      if (categorySlug !== "all") params.set("category", categorySlug);
+      if (selectedSource !== "all") params.set("source", selectedSource);
+      fetcher.load(`/api/radar-items?${params.toString()}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loaderData]);
+
+  // kind/source フィルタ変更時、サーバーから再取得
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    setItems([]);
+    setPage(1);
+    setHasMore(true);
+    setIsLoading(true);
+    isResetRef.current = true;
+    const params = new URLSearchParams({ page: "1" });
+    if (selectedKind !== "all") params.set("kind", selectedKind);
+    if (categorySlug !== "all") params.set("category", categorySlug);
+    if (selectedSource !== "all") params.set("source", selectedSource);
+    fetcher.load(`/api/radar-items?${params.toString()}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedKind, selectedSource]);
+
+  // 無限スクロール: 次ページ読み込み
   const loadMore = useCallback(() => {
     if (hasMore && fetcher.state === "idle" && !isLoading) {
       const nextPage = page + 1;
       setPage(nextPage);
       setIsLoading(true);
-      fetcher.load(`/api/radar-items?page=${nextPage}`);
+      isResetRef.current = false;
+      const params = new URLSearchParams({ page: String(nextPage) });
+      if (selectedKind !== "all") params.set("kind", selectedKind);
+      if (categorySlug !== "all") params.set("category", categorySlug);
+      if (selectedSource !== "all") params.set("source", selectedSource);
+      fetcher.load(`/api/radar-items?${params.toString()}`);
     }
-  }, [hasMore, page, fetcher, isLoading]);
+  }, [hasMore, page, fetcher, isLoading, selectedKind, categorySlug, selectedSource]);
 
-  // fetcher からデータが返ってきたら統合する
+  // fetcher レスポンス処理
   useEffect(() => {
     const data = fetcher.data;
     if (data?.radarItems) {
-      setRadarItems((prev) => [...prev, ...data.radarItems]);
+      if (isResetRef.current) {
+        setItems(data.radarItems);
+        isResetRef.current = false;
+      } else {
+        setItems((prev) => [...prev, ...data.radarItems]);
+      }
       setHasMore(data.hasMore);
       setIsLoading(false);
     }
   }, [fetcher.data]);
 
-  // Intersection Observer のセットアップ
   const { ref: observerRef, inView } = useInView({
     threshold: 0,
     rootMargin: "100px",
   });
 
-  // Intersection Observer がトリガーされたら読み込み
   useEffect(() => {
     if (inView && hasMore && fetcher.state === "idle" && !isLoading) {
       loadMore();
     }
   }, [inView, hasMore, fetcher.state, loadMore, isLoading]);
 
-  const filteredItems = radarItems
-    .filter((f) => selectedSource === "all" || f.source === selectedSource)
-    .filter((f) => selectedCategory.slug === "all" || f.categorySlug === selectedCategory.slug)
-    .filter((f) => selectedKind === "all" || f.kind === selectedKind)
-    .filter((f) => {
-      if (selectedPeriod === "All") return true;
-      const now = new Date();
-      const itemDate = new Date(f.timestamp);
-      if (selectedPeriod === "Today") {
-        return itemDate.toDateString() === now.toDateString();
-      }
-      if (selectedPeriod === "Month") {
-        const oneMonthAgo = new Date();
-        oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
-        return itemDate >= oneMonthAgo;
-      }
-      return true;
-    });
+  // period のみクライアントサイドフィルタ
+  const filteredItems = items.filter((f) => {
+    if (selectedPeriod === "All") return true;
+    const now = new Date();
+    const itemDate = new Date(f.timestamp);
+    if (selectedPeriod === "Today") {
+      return itemDate.toDateString() === now.toDateString();
+    }
+    if (selectedPeriod === "Month") {
+      const oneMonthAgo = new Date();
+      oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+      return itemDate >= oneMonthAgo;
+    }
+    return true;
+  });
 
   return (
     <AppLayout
