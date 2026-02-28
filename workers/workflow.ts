@@ -1,7 +1,7 @@
 import { WorkflowEntrypoint, type WorkflowStep, type WorkflowEvent } from 'cloudflare:workers';
 import { drizzle } from "drizzle-orm/d1";
 import { parseFeed } from "htmlparser2";
-import { eq } from "drizzle-orm";
+import { eq, ne } from "drizzle-orm";
 import * as schema from "../db/schema";
 import { postToMastodon, formatFeedItemForMastodon } from "./mastodon";
 
@@ -18,7 +18,9 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
       }
     }, async () => {
       console.log("📡 Step 1: Fetching RSS feeds from all sources...");
-      const sources = await db.query.sources.findMany();
+      const sources = await db.query.sources.findMany({
+        where: ne(schema.sources.kind, "twitter"),
+      });
       console.log(`📋 Found ${sources.length} sources to fetch`);
 
       // 3日前の日付を計算

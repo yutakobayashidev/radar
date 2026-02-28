@@ -5,4 +5,5 @@ export default [
   route("sources", "routes/sources.tsx"),
   route("api/radar-items", "routes/api/radar-items.ts"),
   route("api/sources.json", "routes/api/sources.ts"),
+  route("api/webhook-xnotif", "routes/api/webhook-xnotif.ts"),
 ] satisfies RouteConfig;

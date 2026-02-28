@@ -1,0 +1,17 @@
+{
+  "name": "xnotif-bridge",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "tsx index.ts"
+  },
+  "dependencies": {
+    "xnotif": "latest"
+  },
+  "devDependencies": {
+    "tsx": "^4.0.0"
+  }
+}

@@ -63,6 +63,7 @@ export const kindList = [
   { name: "Releases", slug: "releases" },
   { name: "Video", slug: "video" },
   { name: "Podcast", slug: "podcast" },
+  { name: "Twitter", slug: "twitter" },
 ] as const;
 
 export type Kind = typeof kindList[number]["slug"];
