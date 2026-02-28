@@ -134,7 +134,7 @@ export function TweetTimeline({ items }: CardGridProps) {
       {items.map((item) => {
         const meta = item.metadata as TweetMetadata | null;
         return (
-          <div key={item.id} className="bg-white px-4 py-3 border-b border-gray-200">
+          <div key={item.id} className="bg-white px-4 py-5 border-b border-gray-200">
             <div className="flex items-start gap-3">
               {meta?.icon ? (
                 <img
