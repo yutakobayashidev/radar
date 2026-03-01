@@ -1,6 +1,7 @@
 import type { Route } from "./+types/webhook-xnotif";
 import { eq } from "drizzle-orm";
 import * as schema from "../../../db/schema";
+import { sendToDiscord, type TweetNotification } from "../../../workers/discord";
 
 interface XnotifNotification {
   title: string;
@@ -36,6 +37,8 @@ export async function action({ request, context }: Route.ActionArgs) {
   };
 
   const db = context.db;
+  const discordWebhookUrl = context.cloudflare.env.DISCORD_WEBHOOK_URL;
+  const discordQueue: TweetNotification[] = [];
   let inserted = 0;
   let skipped = 0;
 
@@ -74,11 +77,14 @@ export async function action({ request, context }: Route.ActionArgs) {
       });
     }
 
+    const tweetBody = n.data.body || n.body;
+    const tweetTimestamp = new Date(Number(n.timestamp));
+
     await db.insert(schema.radarItems).values({
       title: displayName,
       source: sourceId,
       sourceName: displayName,
-      summary: n.data.body || n.body,
+      summary: tweetBody,
       image: null,
       url: tweetUrl,
       type: "tweet",
@@ -87,13 +93,31 @@ export async function action({ request, context }: Route.ActionArgs) {
         handle: tweetAuthor,
         tweetId,
       },
-      timestamp: new Date(Number(n.timestamp)),
+      timestamp: tweetTimestamp,
     });
     inserted++;
+
+    discordQueue.push({
+      displayName,
+      handle: tweetAuthor,
+      body: tweetBody,
+      url: tweetUrl,
+      icon: n.icon,
+      timestamp: tweetTimestamp,
+    });
   }
 
   console.log(
     `Webhook: ${inserted} inserted, ${skipped} skipped, ${notifications.length} total`,
   );
+
+  if (discordWebhookUrl && discordQueue.length > 0) {
+    context.cloudflare.ctx.waitUntil(
+      Promise.all(
+        discordQueue.map((tweet) => sendToDiscord(discordWebhookUrl, tweet)),
+      ),
+    );
+  }
+
   return Response.json({ ok: true, inserted, skipped });
 }
