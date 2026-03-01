@@ -202,9 +202,8 @@ function DeckColumn({
 
   return (
     <div className="flex flex-col h-full w-96 flex-shrink-0 bg-white overflow-hidden">
-      <div className="px-3 py-2 border-b border-gray-200 flex items-center gap-2 bg-white text-gray-900">
+      <div className="px-3 py-2 border-b border-gray-200 bg-white text-gray-900">
         <span className="text-sm font-semibold">{cat.name}</span>
-        <span className="text-xs opacity-60">{filteredItems.length}</span>
       </div>
 
       <div className="flex-1 overflow-y-auto">
