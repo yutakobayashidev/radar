@@ -86,6 +86,13 @@ export interface FetchRadarItemsResponse {
   totalCount: number;
 }
 
+export interface DeckColumnData {
+  items: RadarItemWithCategory[];
+  hasMore: boolean;
+}
+
+export type DeckData = Record<string, DeckColumnData>;
+
 // URLからドメインを抽出するユーティリティ関数
 export function getDomainFromUrl(url: string): string {
   try {

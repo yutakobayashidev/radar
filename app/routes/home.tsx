@@ -5,9 +5,9 @@ import { useQueryStates, parseAsString } from "nuqs";
 import { count, eq, desc, and, type SQL } from "drizzle-orm";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
-import { CardGrid, TweetTimeline } from "~/components/feed";
+import { CardGrid, TweetTimeline, DeckView } from "~/components/feed";
 import { Favicon } from "~/components/ui";
-import { categoryList, getDomainFromUrl, type FetchRadarItemsResponse, type Period, type Kind } from "~/data/types";
+import { categoryList, getDomainFromUrl, type FetchRadarItemsResponse, type RadarItemWithCategory, type DeckData, type Period, type Kind } from "~/data/types";
 import { radarItems, sources } from "../../db/schema";
 
 export function meta({}: Route.MetaArgs) {
@@ -18,6 +18,25 @@ export function meta({}: Route.MetaArgs) {
 }
 
 const ITEMS_PER_PAGE = 20;
+const DECK_ITEMS_PER_COLUMN = 10;
+
+const itemSelectFields = {
+  id: radarItems.id,
+  title: radarItems.title,
+  source: radarItems.source,
+  sourceName: radarItems.sourceName,
+  summary: radarItems.summary,
+  image: radarItems.image,
+  url: radarItems.url,
+  type: radarItems.type,
+  metadata: radarItems.metadata,
+  timestamp: radarItems.timestamp,
+  createdAt: radarItems.createdAt,
+  updatedAt: radarItems.updatedAt,
+  category: sources.category,
+  categorySlug: sources.categorySlug,
+  kind: sources.kind,
+};
 
 export async function loader({ request, context }: Route.LoaderArgs) {
   const url = new URL(request.url);
@@ -25,6 +44,64 @@ export async function loader({ request, context }: Route.LoaderArgs) {
   const kindParam = url.searchParams.get("kind");
   const sourceParam = url.searchParams.get("source");
 
+  const isDeckMode =
+    (!categoryParam || categoryParam === "all") &&
+    (!sourceParam || sourceParam === "all") &&
+    (!kindParam || kindParam === "all");
+
+  const [sourcesData, sourceCountRows] = await Promise.all([
+    context.db.query.sources.findMany({
+      orderBy: (sources, { asc }) => [asc(sources.name)],
+    }),
+    context.db
+      .select({ source: radarItems.source, count: count() })
+      .from(radarItems)
+      .groupBy(radarItems.source),
+  ]);
+
+  const sourceArticleCounts = Object.fromEntries(
+    sourceCountRows.map((row) => [row.source, row.count]),
+  );
+
+  if (isDeckMode) {
+    const activeCats = categoryList.filter((c) => c.slug !== "all");
+
+    const categoryResults = await Promise.all(
+      activeCats.map((cat) => {
+        const conditions = [
+          eq(sources.categorySlug, cat.slug),
+        ];
+        return context.db
+          .select(itemSelectFields)
+          .from(radarItems)
+          .innerJoin(sources, eq(radarItems.source, sources.id))
+          .where(and(...conditions))
+          .orderBy(desc(radarItems.timestamp))
+          .limit(DECK_ITEMS_PER_COLUMN + 1);
+      }),
+    );
+
+    const deckData: DeckData = {};
+    activeCats.forEach((cat, i) => {
+      const rows = categoryResults[i];
+      const hasMore = rows.length > DECK_ITEMS_PER_COLUMN;
+      deckData[cat.slug] = {
+        items: hasMore ? rows.slice(0, DECK_ITEMS_PER_COLUMN) : rows,
+        hasMore,
+      };
+    });
+
+    return {
+      deckData,
+      sources: sourcesData,
+      sourceArticleCounts,
+      radarItems: [] as RadarItemWithCategory[],
+      hasMore: false,
+      currentPage: 1,
+    };
+  }
+
+  // Non-deck mode: existing behavior
   const conditions: SQL[] = [];
   if (kindParam && kindParam !== "all") {
     conditions.push(eq(sources.kind, kindParam));
@@ -37,51 +114,26 @@ export async function loader({ request, context }: Route.LoaderArgs) {
   }
   const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
 
-  const [totalCountResult, items, sourcesData, sourceCountRows] = await Promise.all([
+  const [totalCountResult, items] = await Promise.all([
     context.db
       .select({ count: count() })
       .from(radarItems)
       .innerJoin(sources, eq(radarItems.source, sources.id))
       .where(whereClause),
     context.db
-      .select({
-        id: radarItems.id,
-        title: radarItems.title,
-        source: radarItems.source,
-        sourceName: radarItems.sourceName,
-        summary: radarItems.summary,
-        image: radarItems.image,
-        url: radarItems.url,
-        type: radarItems.type,
-        metadata: radarItems.metadata,
-        timestamp: radarItems.timestamp,
-        createdAt: radarItems.createdAt,
-        updatedAt: radarItems.updatedAt,
-        category: sources.category,
-        categorySlug: sources.categorySlug,
-        kind: sources.kind,
-      })
+      .select(itemSelectFields)
       .from(radarItems)
       .innerJoin(sources, eq(radarItems.source, sources.id))
       .where(whereClause)
       .orderBy(desc(radarItems.timestamp))
       .limit(ITEMS_PER_PAGE),
-    context.db.query.sources.findMany({
-      orderBy: (sources, { asc }) => [asc(sources.name)],
-    }),
-    context.db
-      .select({ source: radarItems.source, count: count() })
-      .from(radarItems)
-      .groupBy(radarItems.source),
   ]);
 
   const totalCount = totalCountResult[0]?.count ?? 0;
   const hasMore = items.length < totalCount;
-  const sourceArticleCounts = Object.fromEntries(
-    sourceCountRows.map((row) => [row.source, row.count]),
-  );
 
   return {
+    deckData: null as DeckData | null,
     radarItems: items,
     sources: sourcesData,
     sourceArticleCounts,
@@ -144,6 +196,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
   const selectedPeriod = normalizePeriod(query.period);
   const selectedKind = normalizeKind(query.kind);
 
+  const isDeckMode = categorySlug === "all" && selectedSource === "all" && selectedKind === "all";
+
   const setSelectedKind = useCallback((kind: Kind) => {
     void setQuery({ kind });
   }, [setQuery]);
@@ -164,6 +218,7 @@ export default function Home({ loaderData }: Route.ComponentProps) {
     void setQuery({ category, source: "all" });
   }, [setQuery]);
 
+  // --- Non-deck mode state ---
   const [items, setItems] = useState<FetchRadarItemsResponse["radarItems"]>(
     loaderData.radarItems as FetchRadarItemsResponse["radarItems"],
   );
@@ -178,6 +233,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       isFirstRender.current = false;
       return;
     }
+
+    if (isDeckMode) return;
 
     setItems([]);
     setPage(1);
@@ -269,39 +326,52 @@ export default function Home({ loaderData }: Route.ComponentProps) {
       setSelectedKind={setSelectedKind}
       showSourceFilter={true}
       sources={loaderData.sources}
+      isDeckMode={isDeckMode}
       headerContent={
-        selectedSourceData ? (
-          <div className="flex items-center gap-2.5 mt-3">
-            <Favicon domain={getDomainFromUrl(selectedSourceData.url)} size={20} />
-            <span className="text-sm font-medium text-gray-900">{selectedSourceData.name}</span>
-            <span className="text-xs text-gray-400">{selectedSourceCount} articles</span>
-          </div>
-        ) : (
-          <CategoryFilter selectedCategorySlug={categorySlug} onSelect={handleCategoryChange} />
+        isDeckMode ? undefined : (
+          selectedSourceData ? (
+            <div className="flex items-center gap-2.5">
+              <Favicon domain={getDomainFromUrl(selectedSourceData.url)} size={20} />
+              <span className="text-sm font-medium text-gray-900">{selectedSourceData.name}</span>
+              <span className="text-xs text-gray-400">{selectedSourceCount} articles</span>
+            </div>
+          ) : (
+            <CategoryFilter selectedCategorySlug={categorySlug} onSelect={handleCategoryChange} />
+          )
         )
       }
     >
-      {selectedKind === "twitter" ? (
-        <div className="-m-4">
-          <TweetTimeline items={filteredItems} />
-        </div>
+      {isDeckMode && loaderData.deckData ? (
+        <DeckView
+          deckData={loaderData.deckData}
+          selectedKind={selectedKind}
+          selectedPeriod={selectedPeriod}
+        />
       ) : (
-        <CardGrid items={filteredItems} />
-      )}
-      {filteredItems.length === 0 && (
-        <div className="text-center py-12 text-gray-500">
-          該当する記事がありません
-        </div>
-      )}
-
-      {hasMore && filteredItems.length > 0 && (
-        <div ref={observerRef} className="p-2.5 text-center">
-          {isLoading && (
-            <div className="flex justify-center items-center">
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900"></div>
+        <>
+          {selectedKind === "twitter" ? (
+            <div className="-m-4">
+              <TweetTimeline items={filteredItems} />
+            </div>
+          ) : (
+            <CardGrid items={filteredItems} />
+          )}
+          {filteredItems.length === 0 && (
+            <div className="text-center py-12 text-gray-500">
+              該当する記事がありません
             </div>
           )}
-        </div>
+
+          {hasMore && filteredItems.length > 0 && (
+            <div ref={observerRef} className="p-2.5 text-center">
+              {isLoading && (
+                <div className="flex justify-center items-center">
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900"></div>
+                </div>
+              )}
+            </div>
+          )}
+        </>
       )}
     </AppLayout>
   );
