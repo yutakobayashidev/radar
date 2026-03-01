@@ -35,7 +35,7 @@ export async function sendToDiscord(
 					icon_url: tweet.icon,
 					url: `https://x.com/${tweet.handle}`,
 				},
-				description: tweet.body,
+				description: `${tweet.body}\n\n${tweet.url}`,
 				url: tweet.url,
 				color: 0x1d9bf0, // X brand blue
 				timestamp: tweet.timestamp.toISOString(),
