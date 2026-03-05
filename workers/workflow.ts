@@ -132,8 +132,9 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
           console.error(`⚠️  Failed to fetch OGP for ${item.url}:`, error);
         }
 
-        // pubDateはUnix ms (number) — nullなら現在時刻
-        const timestamp = item.pubDate ?? Date.now();
+        // pubDateはUnix ms (number) — nullなら現在時刻、未来日付は現在時刻にキャップ
+        const now = Date.now();
+        const timestamp = Math.min(item.pubDate ?? now, now);
 
         results.push({
           sourceId: item.sourceId,
