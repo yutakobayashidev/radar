@@ -1786,5 +1786,41 @@
     "category": "Personal Blog",
     "categorySlug": "personal-blog",
     "kind": "articles"
+  },
+  {
+    "id": "fxdx",
+    "name": "Firefox Developer Experience",
+    "url": "https://fxdx.dev/feed/",
+    "description": "FirefoxのWebDriver BiDi、DevTools、Web互換性に関する開発者向け情報",
+    "category": "Developer Tools",
+    "categorySlug": "developer-tools",
+    "kind": "articles"
+  },
+  {
+    "id": "blog-dry",
+    "name": "Don't Repeat Yourself",
+    "url": "https://blog-dry.com/feed",
+    "description": "Rust、Kotlin、ソフトウェアアーキテクチャ、DDD、エディタ設定など実践的な技術情報",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
+  },
+  {
+    "id": "naoya",
+    "name": "naoya",
+    "url": "https://sizu.me/naoya/rss",
+    "description": "ソフトウェア開発、エンジニアリング、人生哲学に関する考察",
+    "category": "Personal Blog",
+    "categorySlug": "personal-blog",
+    "kind": "articles"
+  },
+  {
+    "id": "accessible-usable",
+    "name": "Accessible & Usable",
+    "url": "https://accessible-usable.net/feed",
+    "description": "Webアクセシビリティとユーザビリティに関する実践的なガイダンス、WCAG解説、支援技術の活用法",
+    "category": "Web Standards",
+    "categorySlug": "web-standards",
+    "kind": "articles"
   }
 ]

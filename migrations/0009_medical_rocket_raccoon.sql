@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `radar_items_url_unique` ON `radar_items` (`url`);

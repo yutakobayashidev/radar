@@ -33,7 +33,7 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
         title: string;
         url: string;
         description: string;
-        pubDate: string | null;
+        pubDate: number | null; // Unix ms — number は直列化で安全
       }> = [];
       let totalItems = 0;
       let skippedOldItems = 0;
@@ -64,10 +64,13 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
             totalItems++;
             const url = item.link || "";
 
+            // pubDateのバリデーション (Invalid Date対策)
+            const pubDateObj = item.pubDate ? new Date(item.pubDate) : null;
+            const pubDateMs = pubDateObj && !isNaN(pubDateObj.getTime()) ? pubDateObj.getTime() : null;
+
             // 日付チェック: 3日以内のアイテムのみ
-            if (item.pubDate) {
-              const itemDate = new Date(item.pubDate);
-              if (itemDate < threeDaysAgo) {
+            if (pubDateMs) {
+              if (pubDateMs < threeDaysAgo.getTime()) {
                 skippedOldItems++;
                 continue;
               }
@@ -80,13 +83,14 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
 
             if (!existing && url) {
               // 必要最小限のデータのみを保存（descriptionは短縮）
+              // pubDateはUnix ms (number) で保存 — Workflow step間の直列化で安全
               filtered.push({
                 sourceId: source.id,
                 sourceName: source.name,
                 title: item.title || "Untitled",
                 url,
                 description: (item.description || "").substring(0, 300), // 300文字に制限
-                pubDate: item.pubDate ? String(item.pubDate) : null,
+                pubDate: pubDateMs,
               });
               newCount++;
             }
@@ -128,15 +132,15 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
           console.error(`⚠️  Failed to fetch OGP for ${item.url}:`, error);
         }
 
-        // pubDate または updated を使用
-        const timestamp = item.pubDate ? new Date(item.pubDate) : new Date();
+        // pubDateはUnix ms (number) — nullなら現在時刻
+        const timestamp = item.pubDate ?? Date.now();
 
         results.push({
           sourceId: item.sourceId,
           sourceName: item.sourceName,
           title: item.title,
           url: item.url,
-          timestamp,
+          timestamp, // number (Unix ms) — Workflow step間の直列化で安全
           image,
           summary,
         });
@@ -162,21 +166,31 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
     // Step 4: D1保存
     await step.do("Save to D1 database", async () => {
       console.log(`💾 Step 4: Saving ${processedItems.length} items to database...`);
+      let savedCount = 0;
+      let skippedCount = 0;
+
       for (const item of processedItems) {
-        await db.insert(schema.radarItems).values({
-          title: item.title,
-          source: item.sourceId,
-          sourceName: item.sourceName,
-          summary: item.summary,
-          image: item.image,
-          url: item.url,
-          type: "article",
-          timestamp: item.timestamp,
-        });
+        try {
+          await db.insert(schema.radarItems).values({
+            title: item.title,
+            source: item.sourceId,
+            sourceName: item.sourceName,
+            summary: item.summary,
+            image: item.image,
+            url: item.url,
+            type: "article",
+            timestamp: new Date(item.timestamp), // number → Date に変換
+          }).onConflictDoNothing();
+          savedCount++;
+        } catch (error) {
+          // 個別のINSERT失敗でステップ全体を止めない
+          console.error(`⚠️ Failed to insert ${item.url}:`, error);
+          skippedCount++;
+        }
       }
 
-      console.log(`✅ Step 4 complete: ${processedItems.length} items saved`);
-      return { saved: processedItems.length };
+      console.log(`✅ Step 4 complete: ${savedCount} saved, ${skippedCount} skipped`);
+      return { saved: savedCount, skipped: skippedCount };
     });
 
     // Step 5: Mastodon投稿
@@ -184,8 +198,9 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
       console.log(`🐘 Step 5: Posting ${processedItems.length} items to Mastodon...`);
 
       // 古いものから先に投稿するため、timestampで昇順ソート
+      // timestamp は number (Unix ms) なので直接比較可能
       const sortedItems = [...processedItems].sort((a, b) =>
-        a.timestamp.getTime() - b.timestamp.getTime()
+        a.timestamp - b.timestamp
       );
 
       let successCount = 0;
