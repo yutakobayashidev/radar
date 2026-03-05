@@ -43,7 +43,7 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
           console.log(`📥 Fetching: ${source.name} (${source.url})`);
           // vitalik.ca を vitalik.eth.limo に置換
           const fetchUrl = source.url.replace(/vitalik\.ca/g, 'vitalik.eth.limo');
-          const response = await fetch(fetchUrl);
+          const response = await fetch(fetchUrl, { signal: AbortSignal.timeout(10_000) });
           if (!response.ok) {
             console.error(`❌ Failed to fetch ${source.url}: ${response.status}`);
             continue;
@@ -119,7 +119,7 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
         let summary = item.description;
 
         try {
-          const response = await fetch(item.url);
+          const response = await fetch(item.url, { signal: AbortSignal.timeout(10_000) });
           if (response.ok) {
             const html = await response.text();
             const ogImageMatch = html.match(/<meta property="og:image" content="([^"]+)"/);
