@@ -5,7 +5,8 @@ import { useQueryStates, parseAsString } from "nuqs";
 import { count, eq, desc, and, type SQL } from "drizzle-orm";
 import type { Route } from "./+types/home";
 import { AppLayout } from "~/components/layout";
-import { CardGrid, TweetTimeline, DeckView } from "~/components/feed";
+import { CardGrid, TweetTimeline, DeckView, NostrNoteCard } from "~/components/feed";
+import { useNostrCategoryNotes } from "~/hooks/useNostrCategoryNotes";
 import { Favicon } from "~/components/ui";
 import { categoryList, getDomainFromUrl, type FetchRadarItemsResponse, type RadarItemWithCategory, type DeckData, type Period, type Kind } from "~/data/types";
 import { radarItems, sources } from "../../db/schema";
@@ -180,6 +181,7 @@ function normalizeKind(value: string): Kind {
 
 export default function Home({ loaderData }: Route.ComponentProps) {
   const fetcher = useFetcher<FetchRadarItemsResponse>();
+  const { categoryNotes: nostrCategoryNotes, profiles: nostrProfiles } = useNostrCategoryNotes();
 
   const [query, setQuery] = useQueryStates(
     {
@@ -346,6 +348,8 @@ export default function Home({ loaderData }: Route.ComponentProps) {
           deckData={loaderData.deckData}
           selectedKind={selectedKind}
           selectedPeriod={selectedPeriod}
+          nostrCategoryNotes={nostrCategoryNotes}
+          nostrProfiles={nostrProfiles}
         />
       ) : (
         <>
@@ -371,6 +375,27 @@ export default function Home({ loaderData }: Route.ComponentProps) {
               )}
             </div>
           )}
+
+          {categorySlug !== "all" && (() => {
+            const nostrNotes = nostrCategoryNotes.get(categorySlug);
+            if (!nostrNotes?.length) return null;
+            return (
+              <div className="mt-6">
+                <div className="px-1 py-2 mb-2">
+                  <span className="text-sm font-medium text-purple-600">From Nostr</span>
+                </div>
+                <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+                  {nostrNotes.map((note) => (
+                    <NostrNoteCard
+                      key={note.id}
+                      note={note}
+                      profile={nostrProfiles.get(note.pubkey)}
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
         </>
       )}
     </AppLayout>

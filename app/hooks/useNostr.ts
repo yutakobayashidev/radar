@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { NOSTR_RELAYS, OWNER_NPUB } from "~/data/nostr-config";
+import { categoryList } from "~/data/types";
 
 export interface NostrNote {
   id: string;
@@ -72,6 +73,7 @@ export function useNostr() {
   const [notifications, setNotifications] = useState<NostrNotification[]>([]);
   const [reactions, setReactions] = useState<NostrReaction[]>([]);
   const [noteStats, setNoteStats] = useState<Map<string, NoteStats>>(new Map());
+  const [categoryLists, setCategoryLists] = useState<Map<string, string[]>>(new Map());
   const [profiles, setProfiles] = useState<Map<string, NostrProfile>>(
     new Map(),
   );
@@ -191,6 +193,32 @@ export function useNostr() {
       });
 
       if (disposed) return;
+
+      // Fetch NIP-51 Lists (kind:30000) for category tagging
+      const validSlugs = new Set(categoryList.filter((c) => c.slug !== "all").map((c) => c.slug));
+      await new Promise<void>((resolve) => {
+        const timeout = setTimeout(() => resolve(), 10_000);
+        const listReq = createRxBackwardReq();
+        const lists = new Map<string, string[]>();
+        rxNostr.use(listReq).pipe(uniq()).subscribe({
+          next: (packet) => {
+            const dTag = packet.event.tags.find((t: string[]) => t[0] === "d")?.[1];
+            if (!dTag || !validSlugs.has(dTag)) return;
+            const pubkeys = packet.event.tags
+              .filter((t: string[]) => t[0] === "p" && t[1])
+              .map((t: string[]) => t[1]);
+            lists.set(dTag, pubkeys);
+          },
+          complete: () => {
+            clearTimeout(timeout);
+            resolve();
+          },
+        });
+        listReq.emit([{ kinds: [30000], authors: [hex] }]);
+        listReq.over();
+      });
+      if (disposed) return;
+      setCategoryLists(lists);
 
       const authors = [hex, ...followPubkeys];
       setFollows(followPubkeys);
@@ -377,6 +405,48 @@ export function useNostr() {
     }
   }, [isOwner]);
 
+  const updateCategoryList = useCallback(async (slug: string, pubkeys: string[]) => {
+    if (!window.nostr || !rxNostrRef.current || !isOwner) {
+      throw new Error("Cannot update list: not logged in as owner");
+    }
+    const unsignedEvent = {
+      kind: 30000,
+      content: "",
+      tags: [
+        ["d", slug],
+        ...pubkeys.map((pk) => ["p", pk]),
+      ],
+      created_at: Math.floor(Date.now() / 1000),
+    };
+    const signedEvent = await window.nostr.signEvent(unsignedEvent);
+    rxNostrRef.current.send(signedEvent);
+    setCategoryLists((prev) => {
+      const next = new Map(prev);
+      next.set(slug, pubkeys);
+      return next;
+    });
+  }, [isOwner]);
+
+  const addToCategory = useCallback(async (slug: string, pubkey: string) => {
+    const current = categoryLists.get(slug) ?? [];
+    if (current.includes(pubkey)) return;
+    await updateCategoryList(slug, [...current, pubkey]);
+  }, [categoryLists, updateCategoryList]);
+
+  const removeFromCategory = useCallback(async (slug: string, pubkey: string) => {
+    const current = categoryLists.get(slug) ?? [];
+    if (!current.includes(pubkey)) return;
+    await updateCategoryList(slug, current.filter((pk) => pk !== pubkey));
+  }, [categoryLists, updateCategoryList]);
+
+  const getUserCategories = useCallback((pubkey: string): string[] => {
+    const result: string[] = [];
+    for (const [slug, pubkeys] of categoryLists) {
+      if (pubkeys.includes(pubkey)) result.push(slug);
+    }
+    return result;
+  }, [categoryLists]);
+
   const [hasExtension, setHasExtension] = useState(false);
   useEffect(() => {
     setHasExtension(!!window.nostr);
@@ -400,8 +470,12 @@ export function useNostr() {
     isOwner,
     isPublishing,
     hasExtension,
+    categoryLists,
     login,
     logout,
     publish,
+    addToCategory,
+    removeFromCategory,
+    getUserCategories,
   };
 }

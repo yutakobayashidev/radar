@@ -16,6 +16,8 @@ import {
   categoryList,
 } from "~/data/types";
 import { Favicon } from "~/components/ui";
+import { NostrNoteCard } from "./NostrTimeline";
+import type { NostrNote, NostrProfile } from "~/hooks/useNostr";
 
 const URL_REGEX =
   /(?:https?:\/\/|(?<![/@\w])(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:com|org|net|io|dev|co|jp|me|app|xyz|info|edu|gov)(?:\/[^\s)]*)?)/gi;
@@ -132,12 +134,16 @@ function DeckColumn({
   initialHasMore,
   selectedKind,
   selectedPeriod,
+  nostrNotes,
+  nostrProfiles,
 }: {
   categorySlug: string;
   initialItems: RadarItemWithCategory[];
   initialHasMore: boolean;
   selectedKind: Kind;
   selectedPeriod: Period;
+  nostrNotes?: NostrNote[];
+  nostrProfiles?: Map<string, NostrProfile>;
 }) {
   const cat = getCategoryBySlug(categorySlug);
   const fetcher = useFetcher<FetchRadarItemsResponse>();
@@ -222,6 +228,21 @@ function DeckColumn({
             )}
           </div>
         )}
+
+        {nostrNotes && nostrNotes.length > 0 && (
+          <>
+            <div className="px-3 py-2 bg-purple-50 border-y border-purple-100">
+              <span className="text-xs font-medium text-purple-600">From Nostr</span>
+            </div>
+            {nostrNotes.map((note) => (
+              <NostrNoteCard
+                key={note.id}
+                note={note}
+                profile={nostrProfiles?.get(note.pubkey)}
+              />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
@@ -231,14 +252,18 @@ interface DeckViewProps {
   deckData: DeckData;
   selectedKind: Kind;
   selectedPeriod: Period;
+  nostrCategoryNotes?: Map<string, NostrNote[]>;
+  nostrProfiles?: Map<string, NostrProfile>;
 }
 
-export function DeckView({ deckData, selectedKind, selectedPeriod }: DeckViewProps) {
+export function DeckView({ deckData, selectedKind, selectedPeriod, nostrCategoryNotes, nostrProfiles }: DeckViewProps) {
   const activeCategories = categoryList
     .filter((cat) => cat.slug !== "all")
     .filter((cat) => {
       const col = deckData[cat.slug];
-      return col && col.items.length > 0;
+      const hasD1Items = col && col.items.length > 0;
+      const hasNostrNotes = nostrCategoryNotes?.get(cat.slug)?.length ?? 0 > 0;
+      return hasD1Items || hasNostrNotes;
     });
 
   if (activeCategories.length === 0) {
@@ -252,7 +277,7 @@ export function DeckView({ deckData, selectedKind, selectedPeriod }: DeckViewPro
   return (
     <div className="flex gap-px h-full overflow-x-auto snap-x snap-mandatory bg-gray-200">
       {activeCategories.map((cat) => {
-        const col = deckData[cat.slug]!;
+        const col = deckData[cat.slug] ?? { items: [], hasMore: false };
         return (
           <DeckColumn
             key={cat.slug}
@@ -261,6 +286,8 @@ export function DeckView({ deckData, selectedKind, selectedPeriod }: DeckViewPro
             initialHasMore={col.hasMore}
             selectedKind={selectedKind}
             selectedPeriod={selectedPeriod}
+            nostrNotes={nostrCategoryNotes?.get(cat.slug)}
+            nostrProfiles={nostrProfiles}
           />
         );
       })}
