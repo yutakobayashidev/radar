@@ -21,6 +21,24 @@ export interface NoteStats {
   reposts: number;
 }
 
+export interface NostrNotification {
+  id: string;
+  kind: number;
+  pubkey: string;
+  content: string;
+  created_at: number;
+  tags: string[][];
+  targetNoteId?: string;
+}
+
+export interface NostrReaction {
+  id: string;
+  pubkey: string;
+  content: string;
+  created_at: number;
+  targetNoteId: string;
+}
+
 declare global {
   interface Window {
     nostr?: {
@@ -51,6 +69,8 @@ export function useNostr() {
   const [follows, setFollows] = useState<string[]>([]);
   const [notes, setNotes] = useState<NostrNote[]>([]);
   const [globalNotes, setGlobalNotes] = useState<NostrNote[]>([]);
+  const [notifications, setNotifications] = useState<NostrNotification[]>([]);
+  const [reactions, setReactions] = useState<NostrReaction[]>([]);
   const [noteStats, setNoteStats] = useState<Map<string, NoteStats>>(new Map());
   const [profiles, setProfiles] = useState<Map<string, NostrProfile>>(
     new Map(),
@@ -244,6 +264,69 @@ export function useNostr() {
       const globalLiveReq = createRxForwardReq();
       rxNostr.use(globalLiveReq).pipe(uniq()).subscribe(handleGlobalNote);
       globalLiveReq.emit([{ kinds: [1] }]);
+
+      // Notifications: mentions (kind:1 with p-tag) + reactions/reposts to owner's notes
+      const addNotification = (ev: { id: string; kind: number; pubkey: string; content: string; created_at: number; tags: string[][] }) => {
+        const targetNoteId = ev.tags.find((t) => t[0] === "e")?.[1];
+        setNotifications((prev) => {
+          if (prev.some((n) => n.id === ev.id)) return prev;
+          const next = [{ ...ev, targetNoteId }, ...prev];
+          next.sort((a, b) => b.created_at - a.created_at);
+          return next.slice(0, MAX_NOTES);
+        });
+        ensureProfile(ev.pubkey);
+      };
+
+      const handleNotification = (packet: { event: { id: string; kind: number; pubkey: string; content: string; created_at: number; tags: string[][] } }) => {
+        if (packet.event.pubkey === hex) return; // skip own actions
+        addNotification(packet.event);
+      };
+
+      // Mentions: kind:1 where owner is p-tagged
+      const mentionPastReq = createRxBackwardReq();
+      rxNostr.use(mentionPastReq).pipe(uniq()).subscribe(handleNotification);
+      mentionPastReq.emit([{ kinds: [1], "#p": [hex], limit: 30 }]);
+      mentionPastReq.over();
+
+      const mentionLiveReq = createRxForwardReq();
+      rxNostr.use(mentionLiveReq).pipe(uniq()).subscribe(handleNotification);
+      mentionLiveReq.emit([{ kinds: [1], "#p": [hex] }]);
+
+      // Reactions/reposts directed at owner (kind:7, kind:6)
+      const notifReactionPastReq = createRxBackwardReq();
+      rxNostr.use(notifReactionPastReq).pipe(uniq()).subscribe(handleNotification);
+      notifReactionPastReq.emit([{ kinds: [7, 6], "#p": [hex], limit: 50 }]);
+      notifReactionPastReq.over();
+
+      const notifReactionLiveReq = createRxForwardReq();
+      rxNostr.use(notifReactionLiveReq).pipe(uniq()).subscribe(handleNotification);
+      notifReactionLiveReq.emit([{ kinds: [7, 6], "#p": [hex] }]);
+
+      // Reactions deck: all kind:7 events on followed TL
+      const addReaction = (ev: { id: string; pubkey: string; content: string; created_at: number; tags: string[][] }) => {
+        const targetNoteId = ev.tags.find((t) => t[0] === "e")?.[1];
+        if (!targetNoteId) return;
+        setReactions((prev) => {
+          if (prev.some((r) => r.id === ev.id)) return prev;
+          const next = [{ id: ev.id, pubkey: ev.pubkey, content: ev.content, created_at: ev.created_at, targetNoteId }, ...prev];
+          next.sort((a, b) => b.created_at - a.created_at);
+          return next.slice(0, MAX_NOTES);
+        });
+        ensureProfile(ev.pubkey);
+      };
+
+      const handleReactionEvent = (packet: { event: { id: string; pubkey: string; content: string; created_at: number; tags: string[][] } }) => {
+        addReaction(packet.event);
+      };
+
+      const reactionDeckPastReq = createRxBackwardReq();
+      rxNostr.use(reactionDeckPastReq).pipe(uniq()).subscribe(handleReactionEvent);
+      reactionDeckPastReq.emit([{ kinds: [7], "#p": authors, limit: 50 }]);
+      reactionDeckPastReq.over();
+
+      const reactionDeckLiveReq = createRxForwardReq();
+      rxNostr.use(reactionDeckLiveReq).pipe(uniq()).subscribe(handleReactionEvent);
+      reactionDeckLiveReq.emit([{ kinds: [7], "#p": authors }]);
     })();
 
     return () => {
@@ -305,6 +388,8 @@ export function useNostr() {
     follows,
     notes,
     globalNotes,
+    notifications,
+    reactions,
     myNotes,
     timelineNotes,
     taggedNotes,

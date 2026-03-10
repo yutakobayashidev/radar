@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AppLayout } from "~/components/layout";
-import { NostrDeckColumn } from "~/components/feed";
+import { NostrDeckColumn, NostrNotificationColumn, NostrReactionColumn } from "~/components/feed";
 import { useNostr } from "~/hooks/useNostr";
 import type { Route } from "./+types/nostr";
 
@@ -58,6 +58,8 @@ export default function Nostr() {
     timelineNotes,
     taggedNotes,
     globalNotes,
+    notifications,
+    reactions,
     noteStats,
     profiles,
     isConnected,
@@ -170,6 +172,16 @@ export default function Nostr() {
             notes={taggedNotes}
             profiles={profiles}
             noteStats={noteStats}
+          />
+          <NostrNotificationColumn
+            title="Notifications"
+            notifications={notifications}
+            profiles={profiles}
+          />
+          <NostrReactionColumn
+            title="Reactions"
+            reactions={reactions}
+            profiles={profiles}
           />
           <NostrDeckColumn
             title="Global"
