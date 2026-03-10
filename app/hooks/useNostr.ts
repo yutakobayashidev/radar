@@ -57,7 +57,9 @@ export function useNostr() {
   );
   const [isConnected, setIsConnected] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isPublishing, setIsPublishing] = useState(false);
   const disposeFnRef = useRef<(() => void) | null>(null);
+  const rxNostrRef = useRef<{ send: (event: unknown) => unknown } | null>(null);
 
   const login = useCallback(async () => {
     if (!window.nostr) {
@@ -105,7 +107,11 @@ export function useNostr() {
 
       const rxNostr = createRxNostr({ verifier });
       rxNostr.setDefaultRelays(NOSTR_RELAYS);
-      disposeFnRef.current = () => rxNostr.dispose();
+      rxNostrRef.current = rxNostr;
+      disposeFnRef.current = () => {
+        rxNostr.dispose();
+        rxNostrRef.current = null;
+      };
 
       // Shared profile handler
       const handleProfile = (packet: { event: { pubkey: string; content: string } }) => {
@@ -264,6 +270,30 @@ export function useNostr() {
     [notes],
   );
 
+  const isOwner = !!(signerPubkey && ownerHex && signerPubkey === ownerHex);
+
+  const publish = useCallback(async (content: string) => {
+    if (!window.nostr || !rxNostrRef.current || !isOwner) {
+      throw new Error("Cannot publish: not logged in as owner");
+    }
+    setIsPublishing(true);
+    try {
+      const unsignedEvent = {
+        kind: 1,
+        content,
+        tags: [] as string[][],
+        created_at: Math.floor(Date.now() / 1000),
+      };
+      const signedEvent = await window.nostr.signEvent(unsignedEvent);
+      rxNostrRef.current.send(signedEvent);
+      // Optimistically add to local notes
+      const ev = signedEvent as { id: string; pubkey: string; content: string; created_at: number; tags: string[][] };
+      setNotes((prev) => addNote(prev, ev));
+    } finally {
+      setIsPublishing(false);
+    }
+  }, [isOwner]);
+
   const [hasExtension, setHasExtension] = useState(false);
   useEffect(() => {
     setHasExtension(!!window.nostr);
@@ -282,8 +312,11 @@ export function useNostr() {
     profiles,
     isConnected,
     isLoggingIn,
+    isOwner,
+    isPublishing,
     hasExtension,
     login,
     logout,
+    publish,
   };
 }

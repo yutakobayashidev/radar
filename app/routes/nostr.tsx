@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AppLayout } from "~/components/layout";
 import { NostrDeckColumn } from "~/components/feed";
 import { useNostr } from "~/hooks/useNostr";
@@ -8,6 +9,45 @@ export function meta({}: Route.MetaArgs) {
     { title: "Nostr - Radar" },
     { name: "description", content: "Nostr feed" },
   ];
+}
+
+function ComposeForm({
+  onPublish,
+  isPublishing,
+}: {
+  onPublish: (content: string) => Promise<void>;
+  isPublishing: boolean;
+}) {
+  const [content, setContent] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const text = content.trim();
+    if (!text) return;
+    await onPublish(text);
+    setContent("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="px-3 py-2 border-b border-gray-200">
+      <textarea
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        placeholder="What's on your mind?"
+        rows={3}
+        className="w-full text-sm text-gray-800 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 resize-none focus:outline-none focus:border-purple-300 focus:ring-1 focus:ring-purple-300"
+      />
+      <div className="flex justify-end mt-1.5">
+        <button
+          type="submit"
+          disabled={isPublishing || !content.trim()}
+          className="px-3 py-1 text-xs font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        >
+          {isPublishing ? "Posting..." : "Post"}
+        </button>
+      </div>
+    </form>
+  );
 }
 
 export default function Nostr() {
@@ -22,9 +62,12 @@ export default function Nostr() {
     profiles,
     isConnected,
     isLoggingIn,
+    isOwner,
+    isPublishing,
     hasExtension,
     login,
     logout,
+    publish,
   } = useNostr();
 
   const ownerProfile = ownerHex ? profiles.get(ownerHex) : undefined;
@@ -106,7 +149,15 @@ export default function Nostr() {
             title="My Notes"
             notes={myNotes}
             profiles={profiles}
-            headerContent={myNotesHeader}
+            noteStats={noteStats}
+            headerContent={
+              <>
+                {myNotesHeader}
+                {isOwner && (
+                  <ComposeForm onPublish={publish} isPublishing={isPublishing} />
+                )}
+              </>
+            }
           />
           <NostrDeckColumn
             title="Timeline"
