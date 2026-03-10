@@ -174,7 +174,10 @@ export function useNostr() {
     };
   }, [pubkey]);
 
-  const hasExtension = typeof window !== "undefined" && !!window.nostr;
+  const [hasExtension, setHasExtension] = useState(false);
+  useEffect(() => {
+    setHasExtension(!!window.nostr);
+  }, []);
 
   return {
     pubkey,
