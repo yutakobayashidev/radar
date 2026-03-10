@@ -72,11 +72,16 @@ function FeedCard({ item }: { item: RadarItemWithCategory }) {
     >
       <div className="flex items-start gap-2.5">
         {isTweet && meta?.icon ? (
-          <img
-            src={meta.icon}
-            alt=""
-            className="w-8 h-8 rounded-full flex-shrink-0 mt-0.5"
-          />
+          <div className="relative flex-shrink-0 mt-0.5">
+            <img
+              src={meta.icon}
+              alt=""
+              className="w-8 h-8 rounded-full"
+            />
+            <svg className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 text-black bg-white rounded-full p-[1px]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </div>
         ) : (
           <div className="w-8 h-8 rounded-full bg-gray-100 flex-shrink-0 mt-0.5 flex items-center justify-center">
             <Favicon domain={domain} size={18} />
