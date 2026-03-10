@@ -75,8 +75,11 @@ export function useNostr() {
     let disposed = false;
 
     (async () => {
-      const { createRxNostr, createRxForwardReq, createRxOneshotReq } =
-        await import("rx-nostr");
+      const {
+        createRxNostr,
+        createRxForwardReq,
+        createRxBackwardReq,
+      } = await import("rx-nostr");
       const { verifier } = await import("rx-nostr-crypto");
 
       if (disposed) return;
@@ -85,66 +88,56 @@ export function useNostr() {
       rxNostr.setDefaultRelays(NOSTR_RELAYS);
       disposeFnRef.current = () => rxNostr.dispose();
 
-      // Fetch contact list (kind:3)
-      const contactReq = createRxOneshotReq({
-        filters: [{ kinds: [3], authors: [pubkey], limit: 1 }],
-      });
-
+      // Fetch contact list (kind:3) with timeout
       const followPubkeys: string[] = [];
 
       await new Promise<void>((resolve) => {
+        const timeout = setTimeout(() => resolve(), 10_000);
+        const contactReq = createRxBackwardReq();
         rxNostr.use(contactReq).subscribe({
           next: (packet) => {
-            const tags = packet.event.tags;
-            for (const tag of tags) {
+            for (const tag of packet.event.tags) {
               if (tag[0] === "p" && tag[1]) {
                 followPubkeys.push(tag[1]);
               }
             }
           },
-          complete: () => resolve(),
+          complete: () => {
+            clearTimeout(timeout);
+            resolve();
+          },
         });
+        contactReq.emit([{ kinds: [3], authors: [pubkey], limit: 1 }]);
+        contactReq.over();
       });
 
       if (disposed) return;
 
-      // Include self in timeline
       const authors = [pubkey, ...followPubkeys];
       setFollows(followPubkeys);
       setIsConnected(true);
 
       if (authors.length === 0) return;
 
-      // Fetch notes (kind:1)
-      const notesReq = createRxForwardReq();
-      rxNostr.use(notesReq).subscribe((packet) => {
-        const ev = packet.event;
-        setNotes((prev) => {
-          if (prev.some((n) => n.id === ev.id)) return prev;
-          const next = [
-            {
-              id: ev.id,
-              pubkey: ev.pubkey,
-              content: ev.content,
-              created_at: ev.created_at,
-            },
-            ...prev,
-          ];
-          next.sort((a, b) => b.created_at - a.created_at);
-          return next.slice(0, MAX_NOTES);
-        });
-      });
-      notesReq.emit([{ kinds: [1], authors, limit: 50 }]);
+      // Fetch past notes (kind:1) via backward req
+      const pastNotesReq = createRxBackwardReq();
+      rxNostr.use(pastNotesReq).subscribe(handleNote);
+      pastNotesReq.emit([{ kinds: [1], authors, limit: 50 }]);
+      pastNotesReq.over();
+
+      // Subscribe to new notes in real-time
+      const liveNotesReq = createRxForwardReq();
+      rxNostr.use(liveNotesReq).subscribe(handleNote);
+      liveNotesReq.emit([{ kinds: [1], authors }]);
 
       // Fetch profiles (kind:0)
-      const profileReq = createRxForwardReq();
+      const profileReq = createRxBackwardReq();
       rxNostr.use(profileReq).subscribe((packet) => {
-        const ev = packet.event;
         try {
-          const profile = JSON.parse(ev.content) as NostrProfile;
+          const profile = JSON.parse(packet.event.content) as NostrProfile;
           setProfiles((prev) => {
             const next = new Map(prev);
-            next.set(ev.pubkey, profile);
+            next.set(packet.event.pubkey, profile);
             return next;
           });
         } catch {
@@ -152,7 +145,26 @@ export function useNostr() {
         }
       });
       profileReq.emit([{ kinds: [0], authors }]);
+      profileReq.over();
     })();
+
+    function handleNote(packet: { event: { id: string; pubkey: string; content: string; created_at: number } }) {
+      const ev = packet.event;
+      setNotes((prev) => {
+        if (prev.some((n) => n.id === ev.id)) return prev;
+        const next = [
+          {
+            id: ev.id,
+            pubkey: ev.pubkey,
+            content: ev.content,
+            created_at: ev.created_at,
+          },
+          ...prev,
+        ];
+        next.sort((a, b) => b.created_at - a.created_at);
+        return next.slice(0, MAX_NOTES);
+      });
+    }
 
     return () => {
       disposed = true;
