@@ -196,10 +196,10 @@ export function useNostr() {
 
       // Fetch NIP-51 Lists (kind:30000) for category tagging
       const validSlugs = new Set(categoryList.filter((c) => c.slug !== "all").map((c) => c.slug));
+      const lists = new Map<string, string[]>();
       await new Promise<void>((resolve) => {
         const timeout = setTimeout(() => resolve(), 10_000);
         const listReq = createRxBackwardReq();
-        const lists = new Map<string, string[]>();
         rxNostr.use(listReq).pipe(uniq()).subscribe({
           next: (packet) => {
             const dTag = packet.event.tags.find((t: string[]) => t[0] === "d")?.[1];
