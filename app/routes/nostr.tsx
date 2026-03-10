@@ -18,6 +18,7 @@ export default function Nostr() {
     timelineNotes,
     taggedNotes,
     globalNotes,
+    noteStats,
     profiles,
     isConnected,
     isLoggingIn,
@@ -111,16 +112,19 @@ export default function Nostr() {
             title="Timeline"
             notes={timelineNotes}
             profiles={profiles}
+            noteStats={noteStats}
           />
           <NostrDeckColumn
             title="Tagged"
             notes={taggedNotes}
             profiles={profiles}
+            noteStats={noteStats}
           />
           <NostrDeckColumn
             title="Global"
             notes={globalNotes}
             profiles={profiles}
+            noteStats={noteStats}
           />
         </div>
       )}

@@ -1,14 +1,15 @@
 import type { ReactNode } from "react";
 import { formatRelativeTime } from "~/data/types";
 import { LinkifiedText } from "./CardGrid";
-import type { NostrNote, NostrProfile } from "~/hooks/useNostr";
+import type { NostrNote, NostrProfile, NoteStats } from "~/hooks/useNostr";
 
 interface NostrNoteCardProps {
   note: NostrNote;
   profile?: NostrProfile;
+  stats?: NoteStats;
 }
 
-export function NostrNoteCard({ note, profile }: NostrNoteCardProps) {
+export function NostrNoteCard({ note, profile, stats }: NostrNoteCardProps) {
   const displayName =
     profile?.display_name || profile?.name || note.pubkey.slice(0, 8);
   const timestamp = new Date(note.created_at * 1000);
@@ -51,6 +52,26 @@ export function NostrNoteCard({ note, profile }: NostrNoteCardProps) {
               ))}
             </div>
           )}
+          {stats && (stats.reactions > 0 || stats.reposts > 0) && (
+            <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
+              {stats.reposts > 0 && (
+                <span className="flex items-center gap-1">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  {stats.reposts}
+                </span>
+              )}
+              {stats.reactions > 0 && (
+                <span className="flex items-center gap-1">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                  {stats.reactions}
+                </span>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -60,9 +81,10 @@ export function NostrNoteCard({ note, profile }: NostrNoteCardProps) {
 interface NostrTimelineProps {
   notes: NostrNote[];
   profiles: Map<string, NostrProfile>;
+  noteStats?: Map<string, NoteStats>;
 }
 
-export function NostrTimeline({ notes, profiles }: NostrTimelineProps) {
+export function NostrTimeline({ notes, profiles, noteStats }: NostrTimelineProps) {
   return (
     <div>
       {notes.map((note) => (
@@ -70,6 +92,7 @@ export function NostrTimeline({ notes, profiles }: NostrTimelineProps) {
           key={note.id}
           note={note}
           profile={profiles.get(note.pubkey)}
+          stats={noteStats?.get(note.id)}
         />
       ))}
     </div>
@@ -80,10 +103,11 @@ interface NostrDeckColumnProps {
   title: string;
   notes: NostrNote[];
   profiles: Map<string, NostrProfile>;
+  noteStats?: Map<string, NoteStats>;
   headerContent?: ReactNode;
 }
 
-export function NostrDeckColumn({ title, notes, profiles, headerContent }: NostrDeckColumnProps) {
+export function NostrDeckColumn({ title, notes, profiles, noteStats, headerContent }: NostrDeckColumnProps) {
   return (
     <div className="flex flex-col h-full w-96 flex-shrink-0 bg-white overflow-hidden">
       <div className="px-3 py-2 border-b border-gray-200 bg-white text-gray-900">
@@ -101,6 +125,7 @@ export function NostrDeckColumn({ title, notes, profiles, headerContent }: Nostr
               key={note.id}
               note={note}
               profile={profiles.get(note.pubkey)}
+              stats={noteStats?.get(note.id)}
             />
           ))
         )}

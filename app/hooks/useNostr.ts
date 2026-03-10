@@ -16,6 +16,11 @@ export interface NostrProfile {
   about?: string;
 }
 
+export interface NoteStats {
+  reactions: number;
+  reposts: number;
+}
+
 declare global {
   interface Window {
     nostr?: {
@@ -46,6 +51,7 @@ export function useNostr() {
   const [follows, setFollows] = useState<string[]>([]);
   const [notes, setNotes] = useState<NostrNote[]>([]);
   const [globalNotes, setGlobalNotes] = useState<NostrNote[]>([]);
+  const [noteStats, setNoteStats] = useState<Map<string, NoteStats>>(new Map());
   const [profiles, setProfiles] = useState<Map<string, NostrProfile>>(
     new Map(),
   );
@@ -85,9 +91,12 @@ export function useNostr() {
         createRxNostr,
         createRxForwardReq,
         createRxBackwardReq,
+        batch,
+        uniq,
       } = await import("rx-nostr");
       const { verifier } = await import("rx-nostr-crypto");
       const { nip19 } = await import("nostr-tools");
+      const { bufferWhen, interval } = await import("rxjs");
 
       if (disposed) return;
 
@@ -98,18 +107,38 @@ export function useNostr() {
       rxNostr.setDefaultRelays(NOSTR_RELAYS);
       disposeFnRef.current = () => rxNostr.dispose();
 
-      // Profile handler (shared)
+      // Shared profile handler
       const handleProfile = (packet: { event: { pubkey: string; content: string } }) => {
         try {
           const profile = JSON.parse(packet.event.content) as NostrProfile;
           setProfiles((prev) => {
+            if (prev.get(packet.event.pubkey)) return prev;
             const next = new Map(prev);
             next.set(packet.event.pubkey, profile);
             return next;
           });
         } catch {
-          /* ignore */
+          /* ignore malformed */
         }
+      };
+
+      // Batched profile fetcher for unknown pubkeys
+      const fetchedProfilePubkeys = new Set<string>();
+      const profileBatchReq = createRxForwardReq();
+      rxNostr
+        .use(
+          profileBatchReq.pipe(
+            bufferWhen(() => interval(1000)),
+            batch(),
+          ),
+        )
+        .pipe(uniq())
+        .subscribe({ next: handleProfile });
+
+      const ensureProfile = (pubkey: string) => {
+        if (fetchedProfilePubkeys.has(pubkey)) return;
+        fetchedProfilePubkeys.add(pubkey);
+        profileBatchReq.emit([{ kinds: [0], authors: [pubkey], limit: 1 }]);
       };
 
       // Fetch contact list (kind:3)
@@ -118,7 +147,7 @@ export function useNostr() {
       await new Promise<void>((resolve) => {
         const timeout = setTimeout(() => resolve(), 10_000);
         const contactReq = createRxBackwardReq();
-        rxNostr.use(contactReq).subscribe({
+        rxNostr.use(contactReq).pipe(uniq()).subscribe({
           next: (packet) => {
             for (const tag of packet.event.tags) {
               if (tag[0] === "p" && tag[1]) {
@@ -141,50 +170,73 @@ export function useNostr() {
       setFollows(followPubkeys);
       setIsConnected(true);
 
+      // Pre-register all followed authors for profile fetching
+      for (const a of authors) fetchedProfilePubkeys.add(a);
+
       if (authors.length === 0) return;
 
+      // Note handler: add note + ensure profile is fetched
       const handleNote = (packet: { event: { id: string; pubkey: string; content: string; created_at: number; tags: string[][] } }) => {
         setNotes((prev) => addNote(prev, packet.event));
+        ensureProfile(packet.event.pubkey);
       };
 
-      // Past notes (followed)
+      // Past notes (followed) with dedup
       const pastReq = createRxBackwardReq();
-      rxNostr.use(pastReq).subscribe(handleNote);
+      rxNostr.use(pastReq).pipe(uniq()).subscribe(handleNote);
       pastReq.emit([{ kinds: [1], authors, limit: 50 }]);
       pastReq.over();
 
-      // Real-time notes (followed)
+      // Real-time notes (followed) with dedup
       const liveReq = createRxForwardReq();
-      rxNostr.use(liveReq).subscribe(handleNote);
+      rxNostr.use(liveReq).pipe(uniq()).subscribe(handleNote);
       liveReq.emit([{ kinds: [1], authors }]);
 
-      // Profiles for followed authors
+      // Profiles for followed authors (bulk fetch with dedup)
       const profileReq = createRxBackwardReq();
-      rxNostr.use(profileReq).subscribe(handleProfile);
+      rxNostr.use(profileReq).pipe(uniq()).subscribe(handleProfile);
       profileReq.emit([{ kinds: [0], authors }]);
       profileReq.over();
 
-      // Global feed (all notes from relays)
-      const fetchedProfilePubkeys = new Set<string>(authors);
-      const globalProfileReq = createRxForwardReq();
-      rxNostr.use(globalProfileReq).subscribe(handleProfile);
+      // Reactions & reposts (kind:7 and kind:6) for followed authors' notes
+      const handleReaction = (packet: { event: { tags: string[][]; kind: number } }) => {
+        const eTag = packet.event.tags.find((t) => t[0] === "e");
+        if (!eTag?.[1]) return;
+        const noteId = eTag[1];
+        setNoteStats((prev) => {
+          const existing = prev.get(noteId) ?? { reactions: 0, reposts: 0 };
+          const next = new Map(prev);
+          if (packet.event.kind === 7) {
+            next.set(noteId, { ...existing, reactions: existing.reactions + 1 });
+          } else if (packet.event.kind === 6) {
+            next.set(noteId, { ...existing, reposts: existing.reposts + 1 });
+          }
+          return next;
+        });
+      };
 
+      const reactionReq = createRxBackwardReq();
+      rxNostr.use(reactionReq).pipe(uniq()).subscribe(handleReaction);
+      reactionReq.emit([{ kinds: [7, 6], "#p": authors, limit: 100 }]);
+      reactionReq.over();
+
+      const liveReactionReq = createRxForwardReq();
+      rxNostr.use(liveReactionReq).pipe(uniq()).subscribe(handleReaction);
+      liveReactionReq.emit([{ kinds: [7, 6], "#p": authors }]);
+
+      // Global feed with dedup
       const handleGlobalNote = (packet: { event: { id: string; pubkey: string; content: string; created_at: number; tags: string[][] } }) => {
         setGlobalNotes((prev) => addNote(prev, packet.event));
-        const pk = packet.event.pubkey;
-        if (!fetchedProfilePubkeys.has(pk)) {
-          fetchedProfilePubkeys.add(pk);
-          globalProfileReq.emit([{ kinds: [0], authors: [pk], limit: 1 }]);
-        }
+        ensureProfile(packet.event.pubkey);
       };
 
       const globalPastReq = createRxBackwardReq();
-      rxNostr.use(globalPastReq).subscribe(handleGlobalNote);
+      rxNostr.use(globalPastReq).pipe(uniq()).subscribe(handleGlobalNote);
       globalPastReq.emit([{ kinds: [1], limit: 50 }]);
       globalPastReq.over();
 
       const globalLiveReq = createRxForwardReq();
-      rxNostr.use(globalLiveReq).subscribe(handleGlobalNote);
+      rxNostr.use(globalLiveReq).pipe(uniq()).subscribe(handleGlobalNote);
       globalLiveReq.emit([{ kinds: [1] }]);
     })();
 
@@ -226,6 +278,7 @@ export function useNostr() {
     myNotes,
     timelineNotes,
     taggedNotes,
+    noteStats,
     profiles,
     isConnected,
     isLoggingIn,
