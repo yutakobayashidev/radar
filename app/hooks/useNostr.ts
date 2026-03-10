@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { NOSTR_RELAYS } from "~/data/nostr-config";
+import { NOSTR_RELAYS, OWNER_NPUB } from "~/data/nostr-config";
 
 export interface NostrNote {
   id: string;
@@ -27,51 +27,43 @@ declare global {
 const MAX_NOTES = 100;
 
 export function useNostr() {
-  const [pubkey, setPubkey] = useState<string | null>(null);
+  const [signerPubkey, setSignerPubkey] = useState<string | null>(null);
   const [follows, setFollows] = useState<string[]>([]);
   const [notes, setNotes] = useState<NostrNote[]>([]);
   const [profiles, setProfiles] = useState<Map<string, NostrProfile>>(
     new Map(),
   );
   const [isConnected, setIsConnected] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const disposeFnRef = useRef<(() => void) | null>(null);
 
   const login = useCallback(async () => {
     if (!window.nostr) {
       throw new Error("NIP-07 extension not found");
     }
-    setIsLoading(true);
+    setIsLoggingIn(true);
     try {
       const pk = await window.nostr.getPublicKey();
-      setPubkey(pk);
-      localStorage.setItem("nostr_pubkey", pk);
+      setSignerPubkey(pk);
+      localStorage.setItem("nostr_signer_pubkey", pk);
     } finally {
-      setIsLoading(false);
+      setIsLoggingIn(false);
     }
   }, []);
 
   const logout = useCallback(() => {
-    disposeFnRef.current?.();
-    disposeFnRef.current = null;
-    setPubkey(null);
-    setFollows([]);
-    setNotes([]);
-    setProfiles(new Map());
-    setIsConnected(false);
-    localStorage.removeItem("nostr_pubkey");
+    setSignerPubkey(null);
+    localStorage.removeItem("nostr_signer_pubkey");
   }, []);
 
-  // Restore pubkey from localStorage on mount
+  // Restore signer pubkey from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem("nostr_pubkey");
-    if (saved) setPubkey(saved);
+    const saved = localStorage.getItem("nostr_signer_pubkey");
+    if (saved) setSignerPubkey(saved);
   }, []);
 
-  // Once we have a pubkey, fetch contact list and build timeline
+  // Always build TL from owner's npub
   useEffect(() => {
-    if (!pubkey) return;
-
     let disposed = false;
 
     (async () => {
@@ -81,14 +73,17 @@ export function useNostr() {
         createRxBackwardReq,
       } = await import("rx-nostr");
       const { verifier } = await import("rx-nostr-crypto");
+      const { nip19 } = await import("nostr-tools");
 
       if (disposed) return;
+
+      const ownerHex = nip19.decode(OWNER_NPUB).data as string;
 
       const rxNostr = createRxNostr({ verifier });
       rxNostr.setDefaultRelays(NOSTR_RELAYS);
       disposeFnRef.current = () => rxNostr.dispose();
 
-      // Fetch contact list (kind:3) with timeout
+      // Fetch owner's contact list (kind:3)
       const followPubkeys: string[] = [];
 
       await new Promise<void>((resolve) => {
@@ -107,30 +102,30 @@ export function useNostr() {
             resolve();
           },
         });
-        contactReq.emit([{ kinds: [3], authors: [pubkey], limit: 1 }]);
+        contactReq.emit([{ kinds: [3], authors: [ownerHex], limit: 1 }]);
         contactReq.over();
       });
 
       if (disposed) return;
 
-      const authors = [pubkey, ...followPubkeys];
+      const authors = [ownerHex, ...followPubkeys];
       setFollows(followPubkeys);
       setIsConnected(true);
 
       if (authors.length === 0) return;
 
-      // Fetch past notes (kind:1) via backward req
+      // Fetch past notes
       const pastNotesReq = createRxBackwardReq();
       rxNostr.use(pastNotesReq).subscribe(handleNote);
       pastNotesReq.emit([{ kinds: [1], authors, limit: 50 }]);
       pastNotesReq.over();
 
-      // Subscribe to new notes in real-time
+      // Real-time notes
       const liveNotesReq = createRxForwardReq();
       rxNostr.use(liveNotesReq).subscribe(handleNote);
       liveNotesReq.emit([{ kinds: [1], authors }]);
 
-      // Fetch profiles (kind:0)
+      // Fetch profiles
       const profileReq = createRxBackwardReq();
       rxNostr.use(profileReq).subscribe((packet) => {
         try {
@@ -172,7 +167,7 @@ export function useNostr() {
       disposeFnRef.current = null;
       setIsConnected(false);
     };
-  }, [pubkey]);
+  }, []);
 
   const [hasExtension, setHasExtension] = useState(false);
   useEffect(() => {
@@ -180,12 +175,12 @@ export function useNostr() {
   }, []);
 
   return {
-    pubkey,
+    signerPubkey,
     follows,
     notes,
     profiles,
     isConnected,
-    isLoading,
+    isLoggingIn,
     hasExtension,
     login,
     logout,
