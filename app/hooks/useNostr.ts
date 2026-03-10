@@ -45,6 +45,7 @@ export function useNostr() {
   const [ownerHex, setOwnerHex] = useState<string | null>(null);
   const [follows, setFollows] = useState<string[]>([]);
   const [notes, setNotes] = useState<NostrNote[]>([]);
+  const [globalNotes, setGlobalNotes] = useState<NostrNote[]>([]);
   const [profiles, setProfiles] = useState<Map<string, NostrProfile>>(
     new Map(),
   );
@@ -97,6 +98,20 @@ export function useNostr() {
       rxNostr.setDefaultRelays(NOSTR_RELAYS);
       disposeFnRef.current = () => rxNostr.dispose();
 
+      // Profile handler (shared)
+      const handleProfile = (packet: { event: { pubkey: string; content: string } }) => {
+        try {
+          const profile = JSON.parse(packet.event.content) as NostrProfile;
+          setProfiles((prev) => {
+            const next = new Map(prev);
+            next.set(packet.event.pubkey, profile);
+            return next;
+          });
+        } catch {
+          /* ignore */
+        }
+      };
+
       // Fetch contact list (kind:3)
       const followPubkeys: string[] = [];
 
@@ -132,33 +147,45 @@ export function useNostr() {
         setNotes((prev) => addNote(prev, packet.event));
       };
 
-      // Past notes
+      // Past notes (followed)
       const pastReq = createRxBackwardReq();
       rxNostr.use(pastReq).subscribe(handleNote);
       pastReq.emit([{ kinds: [1], authors, limit: 50 }]);
       pastReq.over();
 
-      // Real-time notes
+      // Real-time notes (followed)
       const liveReq = createRxForwardReq();
       rxNostr.use(liveReq).subscribe(handleNote);
       liveReq.emit([{ kinds: [1], authors }]);
 
-      // Profiles
+      // Profiles for followed authors
       const profileReq = createRxBackwardReq();
-      rxNostr.use(profileReq).subscribe((packet) => {
-        try {
-          const profile = JSON.parse(packet.event.content) as NostrProfile;
-          setProfiles((prev) => {
-            const next = new Map(prev);
-            next.set(packet.event.pubkey, profile);
-            return next;
-          });
-        } catch {
-          /* ignore */
-        }
-      });
+      rxNostr.use(profileReq).subscribe(handleProfile);
       profileReq.emit([{ kinds: [0], authors }]);
       profileReq.over();
+
+      // Global feed (all notes from relays)
+      const fetchedProfilePubkeys = new Set<string>(authors);
+      const globalProfileReq = createRxForwardReq();
+      rxNostr.use(globalProfileReq).subscribe(handleProfile);
+
+      const handleGlobalNote = (packet: { event: { id: string; pubkey: string; content: string; created_at: number; tags: string[][] } }) => {
+        setGlobalNotes((prev) => addNote(prev, packet.event));
+        const pk = packet.event.pubkey;
+        if (!fetchedProfilePubkeys.has(pk)) {
+          fetchedProfilePubkeys.add(pk);
+          globalProfileReq.emit([{ kinds: [0], authors: [pk], limit: 1 }]);
+        }
+      };
+
+      const globalPastReq = createRxBackwardReq();
+      rxNostr.use(globalPastReq).subscribe(handleGlobalNote);
+      globalPastReq.emit([{ kinds: [1], limit: 50 }]);
+      globalPastReq.over();
+
+      const globalLiveReq = createRxForwardReq();
+      rxNostr.use(globalLiveReq).subscribe(handleGlobalNote);
+      globalLiveReq.emit([{ kinds: [1] }]);
     })();
 
     return () => {
@@ -195,6 +222,7 @@ export function useNostr() {
     ownerHex,
     follows,
     notes,
+    globalNotes,
     myNotes,
     timelineNotes,
     taggedNotes,
