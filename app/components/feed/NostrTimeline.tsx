@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { formatRelativeTime } from "~/data/types";
 import { LinkifiedText } from "./CardGrid";
 import type { NostrNote, NostrProfile } from "~/hooks/useNostr";
@@ -79,14 +80,16 @@ interface NostrDeckColumnProps {
   title: string;
   notes: NostrNote[];
   profiles: Map<string, NostrProfile>;
+  headerContent?: ReactNode;
 }
 
-export function NostrDeckColumn({ title, notes, profiles }: NostrDeckColumnProps) {
+export function NostrDeckColumn({ title, notes, profiles, headerContent }: NostrDeckColumnProps) {
   return (
     <div className="flex flex-col h-full w-96 flex-shrink-0 bg-white overflow-hidden">
       <div className="px-3 py-2 border-b border-gray-200 bg-white text-gray-900">
         <span className="text-sm font-semibold">{title}</span>
       </div>
+      {headerContent}
       <div className="flex-1 overflow-y-auto">
         {notes.length === 0 ? (
           <div className="p-4 text-center text-xs text-gray-400">
