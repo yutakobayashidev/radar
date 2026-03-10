@@ -103,6 +103,34 @@ export function Sidebar({
                   <span>Sources</span>
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/nostr"
+                  onClick={() => setSidebarOpen(false)}
+                  className={({ isActive }) =>
+                    `w-full flex items-center gap-2 px-2 py-1.5 rounded-md text-sm transition-colors ${
+                      isActive
+                        ? "bg-gray-100 text-gray-900 font-medium"
+                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    }`
+                  }
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                  <span>Nostr</span>
+                </NavLink>
+              </li>
             </ul>
           </div>
 

@@ -9,7 +9,7 @@ interface CardGridProps {
 
 const URL_REGEX = /(?:https?:\/\/|(?<![/@\w])(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:com|org|net|io|dev|co|jp|me|app|xyz|info|edu|gov)(?:\/[^\s)…]*)?)/gi;
 
-function LinkifiedText({ text, className }: { text: string; className?: string }) {
+export function LinkifiedText({ text, className }: { text: string; className?: string }) {
   const parts: ReactNode[] = [];
   let lastIndex = 0;
 
