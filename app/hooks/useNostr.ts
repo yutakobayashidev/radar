@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { NOSTR_RELAYS, OWNER_NPUB } from "~/data/nostr-config";
 
 export interface NostrNote {
@@ -6,6 +6,7 @@ export interface NostrNote {
   pubkey: string;
   content: string;
   created_at: number;
+  tags: string[][];
 }
 
 export interface NostrProfile {
@@ -24,10 +25,24 @@ declare global {
   }
 }
 
-const MAX_NOTES = 100;
+const MAX_NOTES = 200;
+
+function addNote(
+  prev: NostrNote[],
+  ev: { id: string; pubkey: string; content: string; created_at: number; tags: string[][] },
+) {
+  if (prev.some((n) => n.id === ev.id)) return prev;
+  const next = [
+    { id: ev.id, pubkey: ev.pubkey, content: ev.content, created_at: ev.created_at, tags: ev.tags },
+    ...prev,
+  ];
+  next.sort((a, b) => b.created_at - a.created_at);
+  return next.slice(0, MAX_NOTES);
+}
 
 export function useNostr() {
   const [signerPubkey, setSignerPubkey] = useState<string | null>(null);
+  const [ownerHex, setOwnerHex] = useState<string | null>(null);
   const [follows, setFollows] = useState<string[]>([]);
   const [notes, setNotes] = useState<NostrNote[]>([]);
   const [profiles, setProfiles] = useState<Map<string, NostrProfile>>(
@@ -56,13 +71,11 @@ export function useNostr() {
     localStorage.removeItem("nostr_signer_pubkey");
   }, []);
 
-  // Restore signer pubkey from localStorage
   useEffect(() => {
     const saved = localStorage.getItem("nostr_signer_pubkey");
     if (saved) setSignerPubkey(saved);
   }, []);
 
-  // Always build TL from owner's npub
   useEffect(() => {
     let disposed = false;
 
@@ -77,13 +90,14 @@ export function useNostr() {
 
       if (disposed) return;
 
-      const ownerHex = nip19.decode(OWNER_NPUB).data as string;
+      const hex = nip19.decode(OWNER_NPUB).data as string;
+      setOwnerHex(hex);
 
       const rxNostr = createRxNostr({ verifier });
       rxNostr.setDefaultRelays(NOSTR_RELAYS);
       disposeFnRef.current = () => rxNostr.dispose();
 
-      // Fetch owner's contact list (kind:3)
+      // Fetch contact list (kind:3)
       const followPubkeys: string[] = [];
 
       await new Promise<void>((resolve) => {
@@ -102,30 +116,34 @@ export function useNostr() {
             resolve();
           },
         });
-        contactReq.emit([{ kinds: [3], authors: [ownerHex], limit: 1 }]);
+        contactReq.emit([{ kinds: [3], authors: [hex], limit: 1 }]);
         contactReq.over();
       });
 
       if (disposed) return;
 
-      const authors = [ownerHex, ...followPubkeys];
+      const authors = [hex, ...followPubkeys];
       setFollows(followPubkeys);
       setIsConnected(true);
 
       if (authors.length === 0) return;
 
-      // Fetch past notes
-      const pastNotesReq = createRxBackwardReq();
-      rxNostr.use(pastNotesReq).subscribe(handleNote);
-      pastNotesReq.emit([{ kinds: [1], authors, limit: 50 }]);
-      pastNotesReq.over();
+      const handleNote = (packet: { event: { id: string; pubkey: string; content: string; created_at: number; tags: string[][] } }) => {
+        setNotes((prev) => addNote(prev, packet.event));
+      };
+
+      // Past notes
+      const pastReq = createRxBackwardReq();
+      rxNostr.use(pastReq).subscribe(handleNote);
+      pastReq.emit([{ kinds: [1], authors, limit: 50 }]);
+      pastReq.over();
 
       // Real-time notes
-      const liveNotesReq = createRxForwardReq();
-      rxNostr.use(liveNotesReq).subscribe(handleNote);
-      liveNotesReq.emit([{ kinds: [1], authors }]);
+      const liveReq = createRxForwardReq();
+      rxNostr.use(liveReq).subscribe(handleNote);
+      liveReq.emit([{ kinds: [1], authors }]);
 
-      // Fetch profiles
+      // Profiles
       const profileReq = createRxBackwardReq();
       rxNostr.use(profileReq).subscribe((packet) => {
         try {
@@ -136,30 +154,12 @@ export function useNostr() {
             return next;
           });
         } catch {
-          /* ignore malformed profiles */
+          /* ignore */
         }
       });
       profileReq.emit([{ kinds: [0], authors }]);
       profileReq.over();
     })();
-
-    function handleNote(packet: { event: { id: string; pubkey: string; content: string; created_at: number } }) {
-      const ev = packet.event;
-      setNotes((prev) => {
-        if (prev.some((n) => n.id === ev.id)) return prev;
-        const next = [
-          {
-            id: ev.id,
-            pubkey: ev.pubkey,
-            content: ev.content,
-            created_at: ev.created_at,
-          },
-          ...prev,
-        ];
-        next.sort((a, b) => b.created_at - a.created_at);
-        return next.slice(0, MAX_NOTES);
-      });
-    }
 
     return () => {
       disposed = true;
@@ -169,6 +169,22 @@ export function useNostr() {
     };
   }, []);
 
+  // Derived data for deck columns
+  const myNotes = useMemo(
+    () => (ownerHex ? notes.filter((n) => n.pubkey === ownerHex) : []),
+    [notes, ownerHex],
+  );
+
+  const timelineNotes = useMemo(
+    () => (ownerHex ? notes.filter((n) => n.pubkey !== ownerHex) : notes),
+    [notes, ownerHex],
+  );
+
+  const taggedNotes = useMemo(
+    () => notes.filter((n) => n.tags.some((t) => t[0] === "t")),
+    [notes],
+  );
+
   const [hasExtension, setHasExtension] = useState(false);
   useEffect(() => {
     setHasExtension(!!window.nostr);
@@ -176,8 +192,12 @@ export function useNostr() {
 
   return {
     signerPubkey,
+    ownerHex,
     follows,
     notes,
+    myNotes,
+    timelineNotes,
+    taggedNotes,
     profiles,
     isConnected,
     isLoggingIn,
