@@ -223,7 +223,6 @@ export default function Nostr() {
     reactions,
     noteStats,
     profiles,
-    isConnected,
     isLoggingIn,
     isOwner,
     isPublishing,
@@ -306,11 +305,6 @@ export default function Nostr() {
 
   return (
     <AppLayout title="Nostr" isDeckMode>
-      {!isConnected ? (
-        <div className="text-center py-12 text-gray-500">
-          Connecting to relays...
-        </div>
-      ) : (
         <div className="flex gap-px h-full overflow-x-auto snap-x snap-mandatory bg-gray-200">
           <NostrDeckColumn
             title="My Notes"
@@ -363,7 +357,6 @@ export default function Nostr() {
             noteStats={noteStats}
           />
         </div>
-      )}
     </AppLayout>
   );
 }
