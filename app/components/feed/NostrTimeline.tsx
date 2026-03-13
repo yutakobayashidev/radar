@@ -37,7 +37,7 @@ export function NostrNoteCard({ note, profile, stats }: NostrNoteCardProps) {
               {formatRelativeTime(timestamp)}
             </span>
           </div>
-          <p className="text-sm text-gray-800 mt-1 whitespace-pre-line line-clamp-6 leading-relaxed">
+          <p className="text-sm text-gray-800 mt-1 whitespace-pre-line leading-relaxed">
             <LinkifiedText text={note.content} />
           </p>
           {hashtags.length > 0 && (

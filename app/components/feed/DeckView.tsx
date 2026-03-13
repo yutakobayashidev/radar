@@ -102,12 +102,12 @@ function FeedCard({ item }: { item: RadarItemWithCategory }) {
           </div>
 
           {isTweet ? (
-            <p className="text-sm text-gray-800 mt-1 whitespace-pre-line line-clamp-6 leading-relaxed">
+            <p className="text-sm text-gray-800 mt-1 whitespace-pre-line leading-relaxed">
               <LinkifiedText text={item.summary} />
             </p>
           ) : (
             <>
-              <p className="text-sm font-medium text-gray-900 mt-1 line-clamp-2 leading-snug">
+              <p className="text-sm font-medium text-gray-900 mt-1 leading-snug">
                 {item.title}
               </p>
               <div className="mt-2 rounded-lg border border-gray-200 overflow-hidden">
