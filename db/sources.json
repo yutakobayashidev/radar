@@ -1822,5 +1822,14 @@
     "category": "Web Standards",
     "categorySlug": "web-standards",
     "kind": "articles"
+  },
+  {
+    "id": "distance-media",
+    "name": "DISTANCE.media",
+    "url": "https://distance.media/",
+    "description": "NTT出版 DISTANCE.media の記事（RSSなしのためJSONエンドポイントから取得）",
+    "category": "Media",
+    "categorySlug": "media",
+    "kind": "articles"
   }
 ]
