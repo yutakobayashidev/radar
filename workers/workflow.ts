@@ -5,6 +5,61 @@ import { eq, ne } from "drizzle-orm";
 import * as schema from "../db/schema";
 import { postToMastodon, formatFeedItemForMastodon } from "./mastodon";
 
+type ParsedLikeItem = {
+  title: string;
+  link: string;
+  description?: string;
+  pubDate?: string;
+};
+
+async function parseDistanceMediaItems(): Promise<ParsedLikeItem[]> {
+  const res = await fetch("https://distance.media/dist/js/distanceposts.json", {
+    signal: AbortSignal.timeout(10_000),
+  });
+  if (!res.ok) return [];
+
+  const json = await res.json() as {
+    data?: Array<{
+      type?: number;
+      article_id?: string;
+      title?: string;
+      subtitle?: string;
+      article_date?: string;
+      update_date?: string;
+      article_theme?: string;
+      article_category?: string;
+    }>;
+  };
+
+  const rows = Array.isArray(json.data) ? json.data : [];
+  return rows
+    .filter((x) => x.type === 0 && x.article_id && x.title)
+    .map((x) => ({
+      title: x.subtitle ? `${x.title}｜${x.subtitle}` : x.title || "Untitled",
+      link: `https://distance.media/article/${x.article_id}/`,
+      description: [x.article_theme, x.article_category].filter(Boolean).join(" / "),
+      pubDate: x.update_date || x.article_date,
+    }));
+}
+
+async function parseItemsBySource(source: { id: string; url: string }, text: string): Promise<ParsedLikeItem[]> {
+  const feed = parseFeed(text);
+  if (feed?.items?.length) {
+    return feed.items.map((item) => ({
+      title: item.title || "Untitled",
+      link: item.link || "",
+      description: item.description || "",
+      pubDate: item.pubDate,
+    }));
+  }
+
+  if (source.url.includes("distance.media") || source.id === "distance-media") {
+    return parseDistanceMediaItems();
+  }
+
+  return [];
+}
+
 export class MyWorkflow extends WorkflowEntrypoint<Env> {
   override async run(_event: WorkflowEvent<Params>, step: WorkflowStep) {
     const db = drizzle(this.env.DB, { schema });
@@ -49,18 +104,18 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
             continue;
           }
 
-          const htmlString = await response.text();
-          const feed = parseFeed(htmlString);
+          const bodyText = await response.text();
+          const parsedItems = await parseItemsBySource(source, bodyText);
 
-          if (!feed || !feed.items) {
-            console.error(`⚠️  No feed items found for ${source.url}`);
+          if (!parsedItems.length) {
+            console.error(`⚠️  No items found for ${source.url}`);
             continue;
           }
 
-          console.log(`✅ ${source.name}: ${feed.items.length} items`);
+          console.log(`✅ ${source.name}: ${parsedItems.length} items`);
           let newCount = 0;
 
-          for (const item of feed.items) {
+          for (const item of parsedItems) {
             totalItems++;
             const url = item.link || "";
 
