@@ -129,7 +129,7 @@ export function useNostr() {
 
       const rxNostr = createRxNostr({ verifier });
       rxNostr.setDefaultRelays(NOSTR_RELAYS);
-      rxNostrRef.current = rxNostr;
+      rxNostrRef.current = rxNostr as { send: (event: unknown) => unknown };
       disposeFnRef.current = () => {
         rxNostr.dispose();
         rxNostrRef.current = null;
@@ -195,7 +195,7 @@ export function useNostr() {
       if (disposed) return;
 
       // Fetch NIP-51 Lists (kind:30000) for category tagging
-      const validSlugs = new Set(categoryList.filter((c) => c.slug !== "all").map((c) => c.slug));
+      const validSlugs = new Set<string>(categoryList.filter((c) => c.slug !== "all").map((c) => c.slug));
       const lists = new Map<string, string[]>();
       await new Promise<void>((resolve) => {
         const timeout = setTimeout(() => resolve(), 10_000);

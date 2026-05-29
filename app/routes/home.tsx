@@ -84,7 +84,7 @@ export async function loader({ request, context }: Route.LoaderArgs) {
 
     const deckData: DeckData = {};
     activeCats.forEach((cat, i) => {
-      const rows = categoryResults[i];
+      const rows = categoryResults[i] as RadarItemWithCategory[];
       const hasMore = rows.length > DECK_ITEMS_PER_COLUMN;
       deckData[cat.slug] = {
         items: hasMore ? rows.slice(0, DECK_ITEMS_PER_COLUMN) : rows,

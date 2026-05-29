@@ -49,7 +49,7 @@ async function parseItemsBySource(source: { id: string; url: string }, text: str
       title: item.title || "Untitled",
       link: item.link || "",
       description: item.description || "",
-      pubDate: item.pubDate,
+      pubDate: item.pubDate?.toUTCString(),
     }));
   }
 

@@ -31,7 +31,7 @@ export function useNostrCategoryNotes() {
       rxNostr.setDefaultRelays(NOSTR_RELAYS);
       disposeFnRef.current = () => rxNostr.dispose();
 
-      const validSlugs = new Set(categoryList.filter((c) => c.slug !== "all").map((c) => c.slug));
+      const validSlugs = new Set<string>(categoryList.filter((c) => c.slug !== "all").map((c) => c.slug));
 
       // Fetch NIP-51 Lists (kind:30000)
       const lists = new Map<string, string[]>();
