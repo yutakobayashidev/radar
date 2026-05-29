@@ -48,8 +48,8 @@ export const categoryList = [
 ] as const;
 
 export type CategoryInfo = typeof categoryList[number];
-export type CategoryName = CategoryInfo["name"];
-export type CategorySlug = CategoryInfo["slug"];
+type CategoryName = CategoryInfo["name"];
+type CategorySlug = CategoryInfo["slug"];
 
 export function getCategoryBySlug(slug: string): CategoryInfo {
   return categoryList.find(c => c.slug === slug) || categoryList[0];

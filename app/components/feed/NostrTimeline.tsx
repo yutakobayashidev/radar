@@ -84,7 +84,7 @@ interface NostrTimelineProps {
   noteStats?: Map<string, NoteStats>;
 }
 
-export function NostrTimeline({ notes, profiles, noteStats }: NostrTimelineProps) {
+function NostrTimeline({ notes, profiles, noteStats }: NostrTimelineProps) {
   return (
     <div>
       {notes.map((note) => (
